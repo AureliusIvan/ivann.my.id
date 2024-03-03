@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+service Processing {
+  rpc Process (OnboardRequest) returns (stream OnboardStatusUpdate) {}
+}
+
+message OnboardRequest {
+  uint32 degreeId = 1;
+  uint32 orderId = 2;
+}
+
+enum OnboardStatus {
+    NEW = 0;
+    QUEUED = 1;
+    PROCESSING = 2;
+    DONE = 3;
+}
+
+message OnboardStatusUpdate {
+  OnboardStatus status = 1;
+}

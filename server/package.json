@@ -16,13 +16,18 @@
     "dev": "nodemon ./index.ts --exec ts-node",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "node ./dist/index.js"
+    "start": "node ./dist/index.js",
+    "start-degree": "node ./protos/main.js",
+    "start-processor": "node ./processor-ms/main.js",
+    "start:grpc": "concurrently 'npm run start-degree' 'npm run start-processor'"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@google/generative-ai": "^0.2.1",
+    "@grpc/grpc-js": "^1.10.1",
+    "@grpc/proto-loader": "^0.7.10",
     "@types/nodemailer": "^6.4.14",
     "axios": "^1.6.7",
     "bcrypt": "^5.1.1",
@@ -36,6 +41,7 @@
     "express-validator": "^7.0.1",
     "fast-jwt": "^4.0.0",
     "fastify": "^4.26.1",
+    "ioredis": "^5.3.2",
     "jsonwebtoken": "^9.0.2",
     "module-alias": "^2.2.3",
     "mongoose": "^8.2.0",
@@ -53,7 +59,9 @@
     "@types/compression": "^1.7.5",
     "@types/express": "^4.17.21",
     "@types/jsonwebtoken": "^9.0.6",
+    "@types/multer": "^1.4.11",
     "@types/node": "^20.11.24",
+    "concurrently": "^8.2.2",
     "joi": "^17.12.2",
     "nodemon": "^3.1.0",
     "typescript": "^5.3.3"

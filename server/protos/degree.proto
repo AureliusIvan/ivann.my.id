@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+service Degrees {
+  rpc Find (DegreeId) returns (Degree) {}
+}
+
+message DegreeId {
+  uint32 id = 1;
+}
+
+message Degree {
+  uint32 id = 1;
+  string title = 2;
+  string major = 3;
+}
