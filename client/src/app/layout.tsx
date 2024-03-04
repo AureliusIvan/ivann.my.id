@@ -1,11 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import Footer from "@/components/footer.component";
 import React, { PropsWithChildren, ReactNode } from "react";
 import { Navbar } from '@/components/navbar.component';
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,14 +11,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: PropsWithChildren<{ header?: ReactNode; footer?: boolean }>) {
+}:
+  { children: ReactNode }
+) {
   return (
     <html lang='en'>
-      <Navbar />
-      <main className="bg-bg1">
-        {children}
-      </main>
-      <Footer />
-    </html>
+      <body>
+        <main className="bg-bg1">
+          <Navbar />
+          {children}
+          <Footer />
+        </main>
+      </body>
+    </html >
   );
 }

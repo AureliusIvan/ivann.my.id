@@ -1,18 +1,19 @@
 import Image from "next/image";
-import { getContents } from '@/services/contents/content.service';
 import { Suspense } from 'react';
 import SectionContainer from '@/components/sectionContainer.component';
 import { BlogCard } from '@/components/card/blog.card.component';
 import { getPosts } from '@/services/contents/post.service';
+
 async function Posts() {
   // Wait for the playlists
   const Posts = await getPosts()
+
   return (
     <section
       className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
       items-center justify-center w-full h-full p-8 bg-gray-100 gap-8'
     >
-      {Posts.map((content: any, index: number) => (
+      {Posts?.map((content: any, index: number) => (
         <BlogCard
           key={index}
           title={content.title}
@@ -35,8 +36,9 @@ export default async function Page() {
           <Image
             src="https://res.cloudinary.com/dakp66ddf/image/upload/v1709459239/mrwbn57gkjx4rg86gevu.jpg"
             alt="title"
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{ objectFit: 'cover' }}
+            priority={true}
           />
         </div>
         <div className="w-full h-full p-8">

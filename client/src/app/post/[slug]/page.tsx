@@ -15,10 +15,10 @@ async function Post({ params }: any) {
       <Image
         src={Post.thumbnail}
         alt={Post.title}
-        // layout="fill"
+        fill
         width={500}
         height={500}
-        objectFit="cover"
+        style={{ objectFit: 'cover' }}
         className='w-full h-[5rem] md:h-[30rem] lg:h-[35rem] rounded-lg'
       />
       <h1
@@ -38,7 +38,7 @@ async function Post({ params }: any) {
   )
 }
 
-export default function Page({ params }: any) {
+export default async function Page({ params }: any) {
   return (
     <div>
       <Post params={params} />

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import ApplicationLogo from '@/components/applicationLogo.component';
 import SectionContainer from '@/components/sectionContainer.component';
+import Image from 'next/image';
 
 export default async function Footer() {
   return (
@@ -70,7 +71,8 @@ const SocialCard = ({ icon, link }: { icon: string, link?: string }) => {
       <div className="w-11 h-11 md:w-13 md:h-13 left-0 top-0 absolute rounded-full
                             bg-secondary cursor-pointer pointer-events-auto hover:bg-opacity-50 transition-all duration-300 ease-in-out p-[0.5rem]"
       >
-        <img
+        <Image
+          fill
           className='filter invert'
           src={icon} alt="" />
       </div>

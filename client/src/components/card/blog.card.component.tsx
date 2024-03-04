@@ -15,8 +15,8 @@ export const BlogCard = ({ title, description, image, date, author, slug }
         <Image
           src={image}
           alt={title}
-          layout="fill"
-          objectFit="cover"
+          fill
+          style={{ objectFit: 'cover' }}
           className="rounded-t-lg"
         />
       </div>
