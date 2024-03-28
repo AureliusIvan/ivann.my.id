@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import UserModel from '@src/data/models/user.model';
+import UserModel from '../data/models/user.model';
 
 
 class UserController {

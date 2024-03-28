@@ -1,8 +1,8 @@
 // content routes
 import { Router } from "express";
-import { ContentController } from "@src/controllers/content.controller";
-import { validateMiddleware } from '@src/middleware/validate.middleware';
-import { createContentSchema } from '@src/validators/content.validator';
+import { ContentController } from "../../controllers/content.controller";
+import { validateMiddleware } from '../../middleware/validate.middleware';
+import { createContentSchema } from '../../validators/content.validator';
 
 const contentRouter = Router();
 

@@ -1,11 +1,12 @@
 // content routes
 import { Router } from "express";
-import { validateMiddleware } from '@src/middleware/validate.middleware';
-import { createContentSchema } from '@src/validators/content.validator';
-import { GeminiController } from '@src/controllers/gemini.controller';
+import { validateMiddleware } from '../../middleware/validate.middleware';
+import { createContentSchema } from '../../validators/content.validator';
+import { GeminiController } from '../../controllers/gemini.controller';
 
 const geminiRouter = Router();
+const geminiController = new GeminiController();
 
-geminiRouter.post("/chat", new GeminiController().message);
-
+geminiRouter.post("/chat", geminiController.message);
+geminiRouter.get("/joke", geminiController.joke);
 export { geminiRouter };

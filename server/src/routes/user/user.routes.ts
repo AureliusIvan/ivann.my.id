@@ -1,7 +1,7 @@
 // route /
-import PostModel from '@src/data/models/post.model';
+import PostModel from '../../data/models/post.model';
 import express from 'express';
-import { PostController } from '@src/controllers/user/post.controller';
+import { PostController } from '../../controllers/user/post.controller';
 import userPostRouter from '../post.routes';
 import { contentRouter } from './content.routes';
 import { geminiRouter } from './gemini.routes';

@@ -1,4 +1,4 @@
-import { PostController } from '@src/controllers/user/post.controller';
+import { PostController } from '../controllers/user/post.controller';
 import { uploadFileMiddlware } from '../middleware/mullter.middleware';
 
 // route /api/post

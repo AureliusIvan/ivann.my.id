@@ -2,11 +2,11 @@
 
 import { Request, Response } from 'express';
 
-import PostModel from '@src/data/models/post.model';
-import { PostTypes } from '@src/types/post';
-import { ResponseFormat } from '@src/helpers/helpers';
-import { log_error } from '@src/utils/log_error';
-import { cacheHelper } from '@src/helpers/cache.helper';
+import PostModel from '../../data/models/post.model';
+import { PostTypes } from '../../types/post';
+import { ResponseFormat } from '../../helpers/helpers';
+import { log_error } from '../../utils/log_error';
+import { cacheHelper } from '../../helpers/cache.helper';
 import { ResponseTypes } from '../../types/response';
 
 // create class for post controller

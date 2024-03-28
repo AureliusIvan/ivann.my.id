@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 
-async function log_error(error: any, logDir: any = '@src/../logs/error.log') {
+async function log_error(error: any, logDir: any = `${__dirname}/../logs/`): Promise<void> {
   // Log the error to the console
   console.error(error);
   // Save the error to a file

@@ -1,7 +1,7 @@
 // content controller
 
 import { Request, Response } from "express";
-import ContentModel from "@src/data/models/content.model";
+import ContentModel from "../data/models/content.model";
 
 class ContentController {
   async createContent(req: Request, res: Response) {

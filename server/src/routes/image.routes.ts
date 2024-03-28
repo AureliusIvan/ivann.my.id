@@ -1,6 +1,6 @@
 // content routes
 import { Router } from "express";
-import { ImageController } from '@src/controllers/image.controller';
+import { ImageController } from '../controllers/image.controller';
 import { uploadFileMiddlware } from '../middleware/mullter.middleware';
 import { validateMiddleware } from '../middleware/validate.middleware';
 import { createImageUploadSchema } from '../validators/image.validator';

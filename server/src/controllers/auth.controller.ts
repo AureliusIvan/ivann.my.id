@@ -1,11 +1,11 @@
-import UserModel from '@src/data/models/user.model';
-import { ResponseFormat } from '@src/helpers/helpers';
-import { ResponseErrorType, ResponseTypes } from '@src/types/response';
-import { RegistrationTypes } from '@src/types/user';
-import { log_error } from '@src/utils/log_error';
+import UserModel from '../data/models/user.model';
+import { ResponseFormat } from '../helpers/helpers';
+import { ResponseErrorType, ResponseTypes } from '../types/response';
+import { RegistrationTypes } from '../types/user';
+import { log_error } from '../utils/log_error';
 import { Request, Response, response } from 'express';
 import bcrypt from 'bcrypt';
-import { generateToken } from '@src/services/auth.services';
+import { generateToken } from '../services/auth.services';
 
 class AuthController {
   async register(req: Request, res: Response) {

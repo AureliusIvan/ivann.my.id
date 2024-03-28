@@ -1,4 +1,4 @@
-import { cloudinary } from '@src/config/cloudinary.config';
+import { cloudinary } from '../config/cloudinary.config';
 
 const uploadImage = async (imagePath: any) => {
 

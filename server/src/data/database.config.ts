@@ -1,10 +1,9 @@
-import { config } from '@src/config/config';
-import { log_error } from '@src/utils/log_error';
+import { config } from '../config/config';
+import { log_error } from '../utils/log_error';
 import mongoose from 'mongoose';
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
-// const db_host = config.mongo.default.uri as string || 'mongodb+srv://ivan:Ham11Bur11@cluster0.ygfroaq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
-const db_host = 'mongodb+srv://ivan:Ham11Bur11@cluster0.ygfroaq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const db_host = 'mongodb://localhost:27017/express';
 
 const client = new MongoClient(db_host, {
   serverApi: {
@@ -15,9 +14,9 @@ const client = new MongoClient(db_host, {
 });
 async function connectDB() {
   try {
-    // await mongoose.connect(db_host, {
-    //   maxPoolSize: 10,
-    // });
+    await mongoose.connect(db_host, {
+      maxPoolSize: 10,
+    });
     await client.connect();
     await client.db('admin').command({ ping: 1 }).then(() => {
       console.log('Connected to the database');
