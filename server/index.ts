@@ -7,6 +7,10 @@ import { initScheduledJobs } from './src/crons/cron';
 import { cloudinary } from './src/config/cloudinary.config';
 import compression from 'compression';
 import { AppRouter } from './src/routes/routes';
+// import { s3 } from './src/config/aws-s3.config';
+// cors
+
+// allow cross-origin requests from *
 
 const bodyParser = require('body-parser')
 
@@ -29,7 +33,14 @@ app.use(bodyParser.json());
 app.use(express.static('public'))
 app.use('/storage', express.static('storage')); // serve static files
 
-console.log(cloudinary.config()); // debug
+
+// console.log(cloudinary.config()); // debug
+
+// (async () => {
+//   console.log(
+//     await s3.listBuckets().promise()
+//   );
+// })();
 
 
 // use user router

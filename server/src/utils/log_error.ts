@@ -5,7 +5,6 @@ const path = require('path');
 async function log_error(error: any, logDir: any = '@src/../logs/error.log') {
   // Log the error to the console
   console.error(error);
-
   // Save the error to a file
   const errorLogFile = path.join(logDir);
   const errorMessage = `${`error-` + new Date().toISOString()} - ${error.stack}\n`;
