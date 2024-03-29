@@ -65,6 +65,7 @@
     "@types/node": "^20.11.30",
     "babel-plugin-module-resolver": "^5.0.0",
     "concurrently": "^8.2.2",
+    "gulp": "^5.0.0",
     "joi": "^17.12.2",
     "nodemon": "^3.1.0",
     "typescript": "^5.4.3",
