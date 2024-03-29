@@ -8,7 +8,7 @@ import { AppRouter } from './routes/routes';
 import { ExpressApp } from './config/express.config';
 import { rabbitMQConnection } from './config/rabbitmq.config';
 import { SocketIO } from './config/socket-io.config';
-
+// import handler
 // allow cross-origin requests from *
 
 const bodyParser = require('body-parser')
@@ -66,3 +66,5 @@ const app = new ExpressApp(
 app.listen(APP_PORT, () => {
   console.log(`[server]: Server is running at http://localhost:${APP_PORT}`);
 });
+
+// listen to handle for sveltekit
