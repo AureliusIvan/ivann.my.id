@@ -8,10 +8,9 @@
     "test": "vitest",
     "build": "rm -rf dist && tsc",
     "start": "node ./dist/index.js",
-    "sh:start": "sh ./scripts/start.sh",
-    "start-degree": "node ./protos/main.js",
-    "start-processor": "node ./processor-ms/main.js",
-    "start:grpc": "concurrently 'npm run start-degree' 'npm run start-processor'"
+    "dev:all": "concurrently 'pnpm run dev' 'cd client/ && pnpm run dev'",
+    "build:all": "pnpm run build && cd client/ && pnpm run build",
+    "prod": "pnpm start ./dist/index.js"
   },
   "keywords": [],
   "author": "",
@@ -48,6 +47,7 @@
     "nodemailer": "^6.9.13",
     "redis": "^4.6.13",
     "socket.io": "^4.7.5",
+    "svelte-view-engine": "1.2.0-b",
     "ts-lint": "^4.5.1",
     "ts-node": "^10.9.2",
     "yup": "^1.4.0"
