@@ -20,3 +20,21 @@ npm install gulp --save-dev
 ```
 
 ## Getting Started
+### Auto-Creating service, controller, model, and route
+To create a new service, controller, model, and route, you can use the following command:
+
+```bash
+gulp create:controller --name <name>
+
+gulp create:model --name <name>
+
+gulp create:route --name <name>
+
+gulp create:service --name <name>
+
+gulp create:apidoc --name <name>
+
+gulp task create:all --name <name>
+```
+
+Where `<name>` is the name of the file you want to create.

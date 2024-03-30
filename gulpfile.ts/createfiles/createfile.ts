@@ -70,7 +70,7 @@ function createNewModel(modelName: string = 'ModelExample', cb: Function) {
 import { Request, Response } from 'express';
 
 class ${modelName
-} {
+    } {
   public async index(req: Request, res: Response): Promise<Response> {
     return res.json({ message: 'Hello World' });
   }
@@ -86,10 +86,11 @@ export { ${modelName} }
 
 
 // create docs at api specs
-function createNewDocs(cb: Function) {
+function createNewDocs(name: string, cb: Function) {
+  name = name.toLowerCase();
   const docsContent = `# API Documentation
 `;
-  fs.writeFileSync(`docs/api-specs/docs.md`, docsContent, 'utf8');
+  fs.writeFileSync(`docs/api-specs/${name}-api.md`, docsContent, 'utf8');
   cb();
 }
 
@@ -100,6 +101,6 @@ const createNewAll = (name: string, cb: Function) => {
   createNewRoute(name, cb);
   createNewService(name, cb);
   createNewModel(name, cb);
-  createNewDocs(cb);
+  createNewDocs(name, cb);
 }
-export { createNewController , createNewAll}
+export { createNewController, createNewAll }

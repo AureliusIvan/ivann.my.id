@@ -4,7 +4,7 @@ import { Router } from 'express';
 import { adminRouter } from './admin/admin.routes';
 import { authRouter } from './auth.routes';
 import { imageRouter } from './image.routes';
-import userPostRouter from './post.routes';
+import userPostRouter from './post.route';
 import { geminiRouter } from './user/gemini.routes';
 
 const AppRouter = Router();

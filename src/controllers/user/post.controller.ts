@@ -8,14 +8,15 @@ import { ResponseFormat } from '../../helpers/helpers';
 import { log_error } from '../../utils/log_error';
 import { cacheHelper } from '../../helpers/cache.helper';
 import { ResponseTypes } from '../../types/response';
+import { redisService } from '../../services/redis.service';
 
 // create class for post controller
 class PostController {
   // create a post
   async createPost(request: Request, response: Response) {
-    // console.log(request);
     const blog = new PostModel(request.body);
     try {
+      await redisService.set('testing-key', 'ini value redis')
       if (!request.file) {
         response.json(
           { message: "Please upload a file" }
@@ -36,6 +37,7 @@ class PostController {
 
   async getPosts(request: Request, response: Response) {
     try {
+      const redisVal = await redisService.get('testing-key')
       // if (await cacheHelper.get('posts') !== null || await cacheHelper.get('posts') !== undefined) {
       //   const posts = await cacheHelper.get('posts');
       //   const res: ResponseTypes = {
@@ -52,7 +54,8 @@ class PostController {
       const res: ResponseTypes = {
         status: 200,
         message: "Success getting posts from database",
-        data: posts,
+        // data: posts,
+        data: redisVal
       }
       response.json(res);
     } catch (error: any) {

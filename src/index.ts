@@ -8,8 +8,9 @@ import { AppRouter } from './routes/routes';
 import { ExpressApp } from './config/express.config';
 import { rabbitMQConnection } from './config/rabbitmq.config';
 import { SocketIO } from './config/socket-io.config';
-// import handler
-// allow cross-origin requests from *
+import path from 'path';
+
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 const bodyParser = require('body-parser')
 
@@ -43,8 +44,7 @@ const APP_PORT: string | number = process.env.PORT || 4000;
 // app.use(express.static('public'))
 // app.use('/storage', express.static('storage')); // serve static files
 
-dotenv.config();
-
+// dotenv.config();
 // start service
 initScheduledJobs();
 connectDB();
