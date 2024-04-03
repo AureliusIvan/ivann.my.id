@@ -1,4 +1,5 @@
 import jwt, { Secret } from 'jsonwebtoken';
+require('dotenv').config();
 
 const secret: Secret = process.env.SALT as Secret;
 

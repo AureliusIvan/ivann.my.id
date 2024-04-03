@@ -7,7 +7,12 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
+    "strictPropertyInitialization": true,
+    "paths": {
+      "@/*": ["src/*"],
+      "@/controllers/*": ["src/controllers*"],
+    },
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts"],
   "exclude": ["node_modules"]

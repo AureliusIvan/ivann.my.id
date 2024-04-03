@@ -59,6 +59,8 @@ class AuthController {
   }
 
   async login(req: Request, res: Response) {
+    const { email, password } = req.body;
+
     try {
       const user = await UserModel.findOne({
         email: req.body.email
@@ -72,16 +74,18 @@ class AuthController {
         return;
       }
       // compare password
+
       const is_password_valid = bcrypt.compare(req.body.password, user.password);
       if (!is_password_valid) {
-        res.json(ResponseFormat(
-          400,
-          'Invalid password'
-        ))
+        res.json(
+          ResponseFormat(
+            400,
+            'Invalid password'
+          )
+        )
         return;
       }
       // generate jwt token
-
       const token = generateToken();
       user.token = token;
       await user.save();
@@ -101,6 +105,10 @@ class AuthController {
   }
 
   async logout(req: Request, res: Response) {
+    res.json(ResponseFormat(
+      200,
+      'Logout successful'
+    ))
   }
 }
 

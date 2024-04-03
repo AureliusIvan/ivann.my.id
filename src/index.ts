@@ -9,6 +9,7 @@ import { ExpressApp } from './config/express.config';
 import { rabbitMQConnection } from './config/rabbitmq.config';
 import { SocketIO } from './config/socket-io.config';
 import path from 'path';
+import express from 'express';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
@@ -51,10 +52,12 @@ connectDB();
 // rabbitMQConnection.connect();
 new SocketIO();
 
+
 const Middleware = [
-  compression(),
-  bodyParser.json(),
-  bodyParser.urlencoded({ extended: true })
+  express.json,
+  compression,
+  bodyParser.json,
+  bodyParser.urlencoded
 ];
 
 

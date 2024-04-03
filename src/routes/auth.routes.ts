@@ -1,12 +1,24 @@
+import { authenticateMiddleware } from '../middleware/auth.middleware';
 import { AuthController } from '../controllers/auth.controller';
 import { validateMiddleware } from '../middleware/validate.middleware';
-import { registerSchema } from '../validators/auth.validator';
+import { loginSchema, registerSchema } from '../validators/auth.validator';
 
 const Router = require('express');
 const authRouter = Router()
 
-authRouter.post('/register', validateMiddleware(registerSchema), new AuthController().register)
-authRouter.post('/login', new AuthController().login)
-authRouter.post('/logout', new AuthController().logout)
+const authController = new AuthController()
+
+authRouter.post('/register',
+  validateMiddleware(registerSchema),
+  authController.register)
+
+authRouter.post('/login',
+  validateMiddleware(loginSchema),
+  authController.login
+)
+
+authRouter.get('/logout',
+  authenticateMiddleware,
+  authController.logout)
 
 export { authRouter }

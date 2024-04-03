@@ -9,13 +9,13 @@ async function log_error(error: any, logDir: any = `${__dirname}/../logs/`): Pro
   const errorLogFile = path.join(logDir);
   const errorMessage = `${`error-` + new Date().toISOString()} - ${error.stack}\n`;
 
-  fs.appendFile(errorLogFile, errorMessage, (err: any) => {
-    if (err) {
-      console.error(`Error occurred while writing to error log file: ${err}`);
-    } else {
-      console.log(`Error logged to ${errorLogFile}`);
-    }
-  });
+  // fs.appendFile(errorLogFile, errorMessage, (err: any) => {
+  //   if (err) {
+  //     console.error(`Error occurred while writing to error log file: ${err}`);
+  //   } else {
+  //     console.log(`Error logged to ${errorLogFile}`);
+  //   }
+  // });
 }
 
 

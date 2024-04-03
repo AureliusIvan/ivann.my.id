@@ -3,11 +3,11 @@
 # Initialize all service dependencies
 
 # Check if Node.js is installed
-if ! command -v node &> /dev/null
-then
-  echo "Error: Node.js is not installed. Please install Node.js before running this script."
-  exit 1
-fi
+# if ! command -v node &> /dev/null
+# then
+#   echo "Error: Node.js is not installed. Please install Node.js before running this script."
+#   exit 1
+# fi
 
 # Install pnpm (if not already installed)
 if ! command -v pnpm &> /dev/null
@@ -17,18 +17,17 @@ then
 fi
 
 # Install dependencies for client and server directories
+pnpm install
+echo "Node Modules for client installed succesfully!"
 echo "Installing dependencies..."
 cd client && pnpm install
 echo "Node Modules for client installed succesfully!"
 cd ..
-cd server && pnpm install
-echo "Node Modules for client installed succesfully!"
-
 echo "Dependencies installed successfully."
 
 # build docker images
 # make sure docker service running
-SERVICE_NAME="docker.service"
+# SERVICE_NAME="docker.service"
 
 # Check if Docker service is running
 # if ! docker service ps $SERVICE_NAME >/dev/null 2>&1; then
@@ -37,4 +36,5 @@ SERVICE_NAME="docker.service"
 # else
 #   echo "Docker service '$SERVICE_NAME' is running."
 # fi
+sudo systemctl start docker
 docker-compose up -d

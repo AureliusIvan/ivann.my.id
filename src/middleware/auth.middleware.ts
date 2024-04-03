@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import UserModel from '../data/models/content.model';
-
+require('dotenv').config();
 
 const authenticateMiddleware = async (req: any, res: any, next: any) => {
   const token = req.headers.authorization?.split(' ')[1];
@@ -16,7 +16,6 @@ const authenticateMiddleware = async (req: any, res: any, next: any) => {
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-
     req.user = user;
     next();
   } catch (error) {
