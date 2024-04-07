@@ -1,14 +1,22 @@
+import { LogClass } from './decorator'
+
+type networkstatus = 200 | 201 | 400 | 401 | 404 | 500
+
+
+
+@LogClass
 interface ResponseTypes {
-  status : number
+  status: networkstatus
   message: string
   data?: any
 }
 
 
+@LogClass
 interface ResponseErrorType {
-  status: number
+  status: networkstatus
   message: string
   error?: any
 }
 
-export {ResponseTypes, ResponseErrorType}
+export { ResponseTypes, ResponseErrorType }

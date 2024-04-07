@@ -9,13 +9,10 @@ import { geminiRouter } from './user/gemini.routes';
 
 const AppRouter = Router();
 
-AppRouter.get('/test', (req, res) => {
-  res.json({ message: 'Welcome to the API' });
-});
 
-AppRouter.use('/', authRouter);
+
+AppRouter.use('/auth', authRouter);
 AppRouter.use('/admin', adminRouter);
-// AppRouter.use('/user', userRouter);
 AppRouter.use('/post', userPostRouter);
 AppRouter.use('/image', imageRouter);
 AppRouter.use('/gemini', geminiRouter);

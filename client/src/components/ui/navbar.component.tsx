@@ -10,11 +10,13 @@ interface NavbarRouteTypes {
 function Navbar({ routes }: Readonly<{ routes: NavbarRouteTypes[] }>) {
   return (
     <nav
-      className='flex justify-center space-x-4 py-4 bg-gray-800 text-white'
+      className='flex justify-center items-center space-x-4 py-4 bg-gray-800 text-white'
     >
       {
         routes.map((page, index) => (
-          <Link key={index} href={`/${page.path}`}>
+          <Link
+            className='hover:text-gray-300'
+            key={index} href={`/${page.path}`}>
             {page.name}
           </Link>
         ))

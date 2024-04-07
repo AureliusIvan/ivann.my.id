@@ -1,11 +1,10 @@
 import UserModel from '../data/models/user.model';
-import { ResponseFormat } from '../helpers/helpers';
-import { ResponseErrorType, ResponseTypes } from '../types/response';
 import { RegistrationTypes } from '../types/user';
 import { log_error } from '../utils/log_error';
-import { Request, Response, response } from 'express';
+import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
-import { generateToken } from '../services/auth.services';
+import { generateToken, getTokenData, saveToken, verifyToken } from '../services/auth.services';
+import { handleError, handleInvalidCredentialsError, handleNotFoundError, handleSuccess } from '../helpers/response.helper';
 
 class AuthController {
   async register(req: Request, res: Response) {
@@ -16,13 +15,7 @@ class AuthController {
         email: email
       });
       if (is_email_exists) {
-        const response: ResponseErrorType = {
-          status: 400,
-          message: "Email already exists"
-        }
-        res.statusCode = 400;
-        res.json(response);
-        return;
+        return handleInvalidCredentialsError(res, 'Email already exists');
       }
 
       const is_username_exists = await UserModel.findOne({
@@ -30,31 +23,14 @@ class AuthController {
       });
 
       if (is_username_exists) {
-        const response: ResponseErrorType = {
-          status: 400,
-          message: "Username already exists"
-        }
-        res.statusCode = 400;
-        res.json(response);
-        return;
+        return handleInvalidCredentialsError(res, 'Username already exists');
       }
 
       const user = await UserModel.create({ username, email, password });
-      const response: ResponseTypes = {
-        status: 200,
-        message: "User created successfully",
-        data: user
-      }
-      res.json(response);
+      return handleSuccess(res, 'User created successfully', user)
     }
     catch (error) {
-      const response: ResponseErrorType = {
-        status: 200,
-        message: "Registration Error",
-        error: error
-      }
-      res.statusCode = 400;
-      res.json(response);
+      return handleError(res, 'Registration Error', error);
     }
   }
 
@@ -62,42 +38,25 @@ class AuthController {
     const { email, password } = req.body;
 
     try {
-      const user = await UserModel.findOne({
-        email: req.body.email
-      });
-
+      const user = await UserModel.findOne({ email: email });
       if (!user) {
-        res.json(ResponseFormat(
-          400,
-          'User not found'
-        ))
-        return;
+        return handleNotFoundError(res, 'User not found');
       }
-      // compare password
 
-      const is_password_valid = bcrypt.compare(req.body.password, user.password);
+      const is_password_valid = bcrypt.compare(password, user.password);
       if (!is_password_valid) {
-        res.json(
-          ResponseFormat(
-            400,
-            'Invalid password'
-          )
-        )
-        return;
+        return handleInvalidCredentialsError(res, 'Invalid credentials');
       }
-      // generate jwt token
+
       const token = generateToken();
+      saveToken(user.id, token, new Date(Date.now() + 3600000));
       user.token = token;
       await user.save();
 
-      const response: ResponseTypes = {
-        status: 200,
-        message: 'Login successful',
-        data: {
-          token,
-        }
+      const data = {
+        token: token
       }
-      res.json(response);
+      return handleSuccess(res, 'Login successful', data)
     }
     catch (error) {
       log_error(error);
@@ -105,10 +64,21 @@ class AuthController {
   }
 
   async logout(req: Request, res: Response) {
-    res.json(ResponseFormat(
-      200,
-      'Logout successful'
-    ))
+    // delete token from db (later)
+    return handleSuccess(res, 'Logout successful');
+  }
+
+  async me(req: Request, res: Response) {
+    const token = req.headers.authorization;
+    if (!token) {
+      return handleInvalidCredentialsError(res, 'Invalid credentials');
+    }
+    const user_data = await getTokenData(token);
+    if (!user_data) {
+      console.log('No token found');
+      return handleInvalidCredentialsError(res, 'Invalid credentials');
+    }
+    return handleSuccess(res, 'User found', user_data);
   }
 }
 

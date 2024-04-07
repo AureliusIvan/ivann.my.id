@@ -102,7 +102,9 @@ const uploadFileMiddlwareS3 = (fieldname: string) => (req: Request, res: Respons
       locations = files[0]?.location ?? ''
     }
 
-    req.body.files = locations
+    // req.body.files = locations
+    // with fieldname
+    req.body[fieldname] = locations;
     // Proceed to the next middleware or route handler
     next();
   });
@@ -122,4 +124,8 @@ const uploadFileMiddleware = (option: OptionType) => (req: Request, res: Respons
   return uploadFileMiddlwareLocal(req, res, next)
 }
 
-export { uploadFileMiddlwareLocal, uploadFileMiddlwareS3, uploadFileMiddleware };
+export {
+  uploadFileMiddlwareLocal,
+  uploadFileMiddlwareS3,
+  uploadFileMiddleware
+};

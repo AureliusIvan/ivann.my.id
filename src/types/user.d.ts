@@ -10,12 +10,15 @@ interface LoginTypes {
 }
 
 interface UserTypes {
-  id: string;
+  _id: string;
   username: string;
   email: string;
   password: string;
   role: string;
   verified: boolean;
+  secretToken: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export {

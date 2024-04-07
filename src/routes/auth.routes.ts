@@ -21,4 +21,9 @@ authRouter.get('/logout',
   authenticateMiddleware,
   authController.logout)
 
+
+authRouter.get('/me',
+  authenticateMiddleware,
+  authController.me)
+
 export { authRouter }

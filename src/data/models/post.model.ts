@@ -1,7 +1,9 @@
 // blog_app/models/article.js
+import { PostTypes } from '@/types/post';
 import mongoose from "mongoose";
 
-const PostSchema = new mongoose.Schema({
+const PostSchema = new mongoose.Schema<PostTypes>({
+
   title: {
     type: String,
     required: true,
@@ -22,7 +24,7 @@ const PostSchema = new mongoose.Schema({
   thumbnail: {
     type: String,
   },
-  date: { type: Date, default: Date.now },
+  date: { type: Date, default: Date.now }
 });
 
 // index slug

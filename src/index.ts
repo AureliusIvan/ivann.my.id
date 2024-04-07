@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 import 'module-alias/register';
-import { log_error } from './utils/log_error';
-import { connectDB } from './data/database.config';
+import { connectDB } from './data/mongo-database.config';
 import { initScheduledJobs } from './crons/cron';
 import compression from 'compression';
 import { AppRouter } from './routes/routes';
@@ -10,6 +9,7 @@ import { rabbitMQConnection } from './config/rabbitmq.config';
 import { SocketIO } from './config/socket-io.config';
 import path from 'path';
 import express from 'express';
+import { queues } from './config/queue.config';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 

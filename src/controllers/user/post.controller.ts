@@ -1,4 +1,4 @@
-// post controller
+// Post Controller
 
 import { Request, Response } from 'express';
 
@@ -8,24 +8,17 @@ import { ResponseFormat } from '../../helpers/helpers';
 import { log_error } from '../../utils/log_error';
 import { cacheHelper } from '../../helpers/cache.helper';
 import { ResponseTypes } from '../../types/response';
-import { redisService } from '../../services/redis.service';
+import { redisService } from '../../config/redis.config';
 
 // create class for post controller
 class PostController {
   // create a post
   async createPost(request: Request, response: Response) {
+    console.log(request.body)
     const blog = new PostModel(request.body);
     try {
       await redisService.set('testing-key', 'ini value redis')
-      if (!request.file) {
-        response.json(
-          { message: "Please upload a file" }
-        );
-        return;
-      }
-
       blog.slug = blog.title.toLowerCase().split(' ').join('-');
-      blog.thumbnail = process.env.PROJECT_URL + "/" + request.file.path;
       await blog.save();
       response.json(blog);
     } catch (error: any) {
@@ -55,7 +48,7 @@ class PostController {
         status: 200,
         message: "Success getting posts from database",
         // data: posts,
-        data: redisVal
+        data: posts
       }
       response.json(res);
     } catch (error: any) {
@@ -83,6 +76,19 @@ class PostController {
 
   // delete all posts
   async deletePosts(request: Request, response: Response) {
+    try {
+      await PostModel.deleteMany();
+      response.json(
+        { message: "All posts deleted" }
+      );
+    } catch (error: any) {
+      response.json(
+        { message: error.message }
+      );
+    }
+  }
+
+  async deleteAllPosts(request: Request, response: Response) {
     try {
       await PostModel.deleteMany();
       response.json(

@@ -5,6 +5,7 @@
   "main": "index.ts",
   "rootDir:":"./",
   "scripts": {
+    "dev:watch": "node --watch ./src/index.ts",
     "dev": "nodemon ./src/index.ts --exec ts-node",
     "test": "vitest",
     "build": "rm -rf dist && tsc",
@@ -14,7 +15,7 @@
     "prod": "pnpm start ./dist/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Aurelius Ivan Wijaya",
   "license": "ISC",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.540.0",

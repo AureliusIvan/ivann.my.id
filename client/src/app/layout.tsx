@@ -5,6 +5,7 @@ import { Navbar } from '@/components/ui/navbar.component';
 import type { NavbarRouteTypes } from '@/components/ui/navbar.component';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/theme-provider';
+import Footer from '@/components/ui/footer';
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,14 @@ const Routes: NavbarRouteTypes[] = [
   {
     path: 'showcase',
     name: 'Showcase Banget'
+  },
+  {
+    path: 'chat',
+    name: 'Chat'
+  },
+  {
+    path: 'login',
+    name: 'Login'
   }
 ]
 
@@ -49,7 +58,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar routes={Routes} />
-          {children}
+          <main className='min-h-screen'>
+            {children}
+          </main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

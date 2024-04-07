@@ -1,0 +1,24 @@
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 40px;
+  aspect-ratio: 1;
+  --c:no-repeat linear-gradient(#046D8B 0 0);
+  background:
+    var(--c) 0 50%,
+    var(--c) right 0 bottom 20px,
+    var(--c) 100% 0,
+    var(--c) 50% 0,
+    var(--c) right 20px bottom 0,
+    var(--c) 0 100%;
+  animation: l5 1.5s infinite alternate;
+}
+@keyframes l5 {
+  0%     {background-size: 0    4px,4px 0  ,0   4px,4px 0   ,0    4px,4px 0   }
+  16.67% {background-size: 100% 4px,4px 0  ,0   4px,4px 0   ,0    4px,4px 0   }
+  33.33% {background-size: 100% 4px,4px 50%,0   4px,4px 0   ,0    4px,4px 0   }
+  50%    {background-size: 100% 4px,4px 50%,50% 4px,4px 0   ,0    4px,4px 0   }
+  66.67% {background-size: 100% 4px,4px 50%,50% 4px,4px 100%,0    4px,4px 0   }
+  83.33% {background-size: 100% 4px,4px 50%,50% 4px,4px 100%,50%  4px,4px 0   }
+  95%,
+  100%   {background-size: 100% 4px,4px 50%,50% 4px,4px 100%,50%  4px,4px 50% }
+}

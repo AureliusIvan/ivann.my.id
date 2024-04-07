@@ -1,4 +1,4 @@
-// express init
+// express service  init
 import express, { Application, Router } from 'express';
 const bodyParser = require('body-parser')
 require('dotenv').config();

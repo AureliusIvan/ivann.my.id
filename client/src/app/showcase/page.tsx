@@ -5,11 +5,6 @@ export default function Showcase() {
     <main>
       <section>
         <h1>Showcase</h1>
-        <p>Check out the showcase!</p>
-        <Button
-        >
-          Click me
-        </Button>
       </section>
     </main>
   )
