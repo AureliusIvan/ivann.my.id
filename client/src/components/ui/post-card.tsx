@@ -28,12 +28,13 @@ export function PostCard({ className, post, ...props }: CardProps & { post: Post
         <CardDescription>You have 3 unread messages.</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
-        {/* <Image
+        <Image
           src={post.thumbnail}
           alt="Post Image"
           width={380}
           height={200}
-        /> */}
+          
+        />
       </CardContent>
       <CardFooter>
         <Button className="w-full">

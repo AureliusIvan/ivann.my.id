@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
-  "rootDir:":"./",
+  "rootDir:": "./",
   "scripts": {
     "dev:watch": "node --watch ./src/index.ts",
     "dev": "nodemon ./src/index.ts --exec ts-node",
@@ -12,7 +12,8 @@
     "start": "node ./dist/index.js",
     "dev:all": "concurrently 'pnpm run dev' 'cd client/ && pnpm run dev'",
     "build:all": "pnpm run build && cd client/ && pnpm run build",
-    "prod": "pnpm start ./dist/index.js"
+    "prod": "pnpm start ./dist/index.js",
+    "seed": "ts-node ./src/data/seeders/seed.ts"
   },
   "keywords": [],
   "author": "Aurelius Ivan Wijaya",
@@ -56,6 +57,7 @@
     "@babel/cli": "^7.24.1",
     "@babel/core": "^7.24.3",
     "@babel/preset-env": "^7.24.3",
+    "@faker-js/faker": "^8.4.1",
     "@types/amqplib": "^0.10.5",
     "@types/bcrypt": "^5.0.2",
     "@types/compression": "^1.7.5",
