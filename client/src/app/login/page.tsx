@@ -1,4 +1,4 @@
-'use client'
+'use server'
 import { BellRing, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -17,18 +17,7 @@ import { LoginButton } from './part/login.button'
 import React, { useState } from 'react'
 
 
-// Login <Pa></Pa>ge
 export default async function LoginPage() {
-  // submit
-  async function submit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    const data = {
-      email: 'aureliusivanwijaya@gmail.com',
-      password: '12345678'
-    }
-    const response = await AuthService.login(data.email, data.password) as any
-    // console.log(response)
-  }
 
   return (
     <main>
@@ -36,9 +25,6 @@ export default async function LoginPage() {
         className='flex flex-col items-center justify-center h-screen gap-4'
       >
         <form
-          onSubmit={submit}
-        // action={'/api/login'}
-        // method='post'
         >
           <Card className={cn("w-[380px]")}>
             <CardHeader>

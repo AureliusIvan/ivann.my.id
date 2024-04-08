@@ -4,19 +4,19 @@ const END_POINT = process.env.SERVER_ENDPOINT;
 
 const PostService = {
   getAll: async () => {
-    // const response = await axios.get('/api/post/get');
-    const response = await fetch(`${END_POINT}/api/post/get`, {
+    const response = await fetch(END_POINT + `/api/post/get`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
       next: {
-        revalidate: 3600
+        revalidate: 1,
       }
     })
       .then(response => response.json())
       .then(data => data)
-      .catch(error => console.error(error))
+    // .catch(error => console.error(error))
+    // console.log(response)
     return response;
   },
   get: async (id: string) => {

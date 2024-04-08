@@ -66,6 +66,7 @@ const uploadFileMiddlwareS3 = (fieldname: string) => (req: Request, res: Respons
 
     // Validate file types and sizes
     files.forEach((file: any) => {
+      // log file
       const allowedTypes = ['image/jpeg', 'image/png', 'image/svg', 'image/webp'];
       const maxSize = 5 * 1024 * 1024; // 5MB
 

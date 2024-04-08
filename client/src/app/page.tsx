@@ -12,7 +12,7 @@ async function Post() {
     <section
       className='grid grid-cols-3 gap-4'
     >
-      {data.data.map((post: any) => (
+      {data?.data?.map((post: any) => (
         <PostCard key={post._id}
           title={post.title}
           post={post}
