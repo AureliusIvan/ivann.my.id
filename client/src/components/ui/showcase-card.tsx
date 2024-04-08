@@ -1,7 +1,8 @@
+// showcase-card.tsx
 'use server'
 // Post Card Component
 import React from 'react';
-import { BellRing, Check, ChevronRight } from "lucide-react"
+import { BellRing, Check } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -19,7 +20,7 @@ import Link from 'next/link';
 
 type CardProps = React.ComponentProps<typeof Card>
 
-export async function PostCard({ className, post, ...props }: CardProps & { post: PostTypes }) {
+export async function ShowcaseCard({ className, post, ...props }: CardProps & { post: PostTypes }) {
   return (
     <Card className={cn("w-[380px]", className)} {...props}>
       <CardHeader>
@@ -30,7 +31,6 @@ export async function PostCard({ className, post, ...props }: CardProps & { post
       </CardHeader>
       <CardContent className="grid gap-4">
         <Image
-          className='rounded-lg'
           priority
           src={post.thumbnail}
           alt="Post Image"
@@ -42,8 +42,7 @@ export async function PostCard({ className, post, ...props }: CardProps & { post
       <CardFooter>
         <Button
           className="w-full">
-          More
-          <ChevronRight className="mr-2 h-4 w-4" />
+          <Check className="mr-2 h-4 w-4" /> More
         </Button>
         {/* <Link
           className='text-blue-500 hover:text-blue-600'

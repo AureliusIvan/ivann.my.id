@@ -1,32 +1,83 @@
 'use server'
-
 import { Textarea } from '@/components/ui/textarea'
-import axios from 'axios'
 
-// async function GetData() {
-//   const data = await axios.get('http://localhost:3000/api/login')
-//     .then(response => {
-//       console.log(response)
-//       return response.data
-//     })
-//     .then(data => data)
-//     .catch(error => console.error(error))
-//   // console.log(data)
-//   return data
-// }
+type ChatType = {
+  sender: string
+  message: string
+}
+
+const chat: ChatType[] = [
+  {
+    sender: 'Ivan',
+    message: 'Hello, how can I help you today?'
+  },
+  {
+    sender: 'You',
+    message: 'I need help with my code.'
+  }
+]
+
+async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  'use client'
+  event.preventDefault()
+  const formData = new FormData(event.currentTarget)
+  const message = formData.get('message')
+}
+
 
 export default async function ChatPage() {
-
   return (
     <main>
-      <section>
-        <h1>Chat</h1>
-        <section
-          className='grid grid-cols-3 gap-4'
+      <form
+        // onSubmit={handleSubmit}
+        className='flex flex-col gap-4'
+        acceptCharset='utf-8'
+      // action='/api/chat'
+      >
+        <h1
+          className='text-4xl font-bold'
         >
-          <Textarea />
+          Chat with Ivan.AI
+        </h1>
+        {/* chat box section */}
+        <section
+          className='flex flex-col gap-4 border-2 border-gray-200 p-4 rounded-lg h-96 overflow-y-auto'
+        >
+          {chat.map((message, index) => {
+            return (
+              <div
+                key={index}
+                className='flex flex-col gap-2'
+              >
+                <h2
+                  className='font-bold'
+                >
+                  {message.sender}
+                </h2>
+                <p
+                  className='bg-gray-700 p-2 rounded-lg'>
+                  {message.message}
+                </p>
+              </div>
+            )
+
+          })}
         </section>
-      </section>
+        <section
+          className='flex flex-col gap-4'
+        >
+          <Textarea
+            name='message'
+            placeholder='Type your message here...'
+          />
+          <button
+            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
+            type='submit'
+          >
+            Send
+          </button>
+        </section>
+      </form>
     </main>
   )
 }

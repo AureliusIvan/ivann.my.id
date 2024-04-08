@@ -8,6 +8,11 @@ const nextConfig = {
         hostname: 'placehold.co',
         protocol: 'https',
         // pathname: '/*',
+      },
+      {
+        // https://picsum.photos/200/300
+        hostname: 'picsum.photos',
+        protocol: 'https',
       }
     ]
   }

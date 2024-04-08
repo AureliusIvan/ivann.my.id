@@ -19,6 +19,12 @@ const config = {
       },
     },
     extend: {
+      colors: {
+        primaryLight: "#F9F7EC",
+        primaryDark: "#121212",
+        textPrimaryDark: "#FFFBE1",
+        textPrimaryLight: "#43423E",
+      },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },

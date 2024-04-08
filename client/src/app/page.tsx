@@ -1,6 +1,7 @@
 'use server'
 import { Loading } from '@/components/ui/loading/loading';
 import { PostCard } from '@/components/ui/post-card';
+import { Title } from '@/components/ui/title/title';
 import PostService from '@/services/post.service';
 import { Suspense } from 'react';
 
@@ -29,12 +30,19 @@ async function Home() {
       className='flex flex-col items-center justify-center w-full h-full min-h-screen '
     >
       <section
+        className='flex flex-col items-center justify-center  gap-4'
       >
-        <h1
-          className='text-4xl font-bold'
+        <Title
+          title='Find What You Need'
+        />
+        <div
+          className='flex flex-col items-center justify-center w-full gap-4'
         >
-          Home
-        </h1>
+          <input type="text"
+            placeholder='Search Post...'
+            className='w-full p-2 border-2 border-gray-300 rounded-lg bg-transparent focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent'
+          />
+        </div>
         <Suspense fallback={<Loading />}>
           <Post />
         </Suspense>

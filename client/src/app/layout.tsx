@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import { Noto_Sans as Font } from "next/font/google";
 import "./globals.css";
 import { Navbar } from '@/components/ui/navbar.component';
 import type { NavbarRouteTypes } from '@/components/ui/navbar.component';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/theme-provider';
 import Footer from '@/components/ui/footer';
-
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -15,9 +14,20 @@ export const metadata: Metadata = {
 };
 
 
-const fontSans = FontSans({
-  subsets: ["latin"],
+// const fontSans = FontSans({
+//   subsets: ["latin"],
+//   variable: "--font-sans",
+// })
+// bebas neue
+// const fontSans = FontSans({
+//   subsets: ["latin"],
+//   variable: "--font-sans",
+// })
+
+const font = Font({
+  weight: "400",
   variable: "--font-sans",
+  subsets: ["latin"],
 })
 
 const Routes: NavbarRouteTypes[] = [
@@ -49,7 +59,7 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
+          font.variable
         )}
       >
         <ThemeProvider
@@ -58,11 +68,17 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar routes={Routes} />
-          <main className='min-h-screen'>
+          <main className='min-h-screen
+          dark:bg-primaryDark
+          dark:text-textPrimaryDark
+          bg-primaryLight
+          text-textPrimaryLight
+          '>
+            <Navbar routes={Routes} />
+
             {children}
+            <Footer />
           </main>
-          <Footer />
         </ThemeProvider>
       </body>
     </html>
