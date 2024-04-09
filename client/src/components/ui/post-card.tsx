@@ -21,7 +21,7 @@ type CardProps = React.ComponentProps<typeof Card>
 
 export async function PostCard({ className, post, ...props }: CardProps & { post: PostTypes }) {
   return (
-    <Card className={cn("w-[380px]", className)} {...props}>
+    <Card className={cn("w-[380px] max-w-[100%] bg-transparent", className)} {...props}>
       <CardHeader>
         <CardTitle>
           {post.title}

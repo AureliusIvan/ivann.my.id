@@ -27,7 +27,7 @@ async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 
 export default async function ChatPage() {
   return (
-    <main>
+    <main className='page'>
       <form
         // onSubmit={handleSubmit}
         className='flex flex-col gap-4'

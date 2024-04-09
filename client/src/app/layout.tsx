@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Noto_Sans as Font } from "next/font/google";
+// import { Shadows_Into_Light as Font } from "next/font/google";
+import { Poppins as Font } from "next/font/google";
+
 import "./globals.css";
 import { Navbar } from '@/components/ui/navbar.component';
 import type { NavbarRouteTypes } from '@/components/ui/navbar.component';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/components/theme-provider';
 import Footer from '@/components/ui/footer';
-// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Ivan Personal Blog",
@@ -68,7 +69,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className='min-h-screen
+          <main className='min-h-screen h-full overflow-x-hidden relative
           dark:bg-primaryDark
           dark:text-textPrimaryDark
           bg-primaryLight
@@ -77,7 +78,7 @@ export default function RootLayout({
             <Navbar routes={Routes} />
 
             {children}
-            <Footer />
+            {/* <Footer /> */}
           </main>
         </ThemeProvider>
       </body>

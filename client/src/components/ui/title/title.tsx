@@ -1,14 +1,20 @@
 'use client'
 // Title Component
 import React from 'react';
-// import { useRef } from 'react';
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { Dancing_Script as Font } from "next/font/google";
+import { cn } from '@/lib/utils';
+
+
+const font = Font({
+  weight: "400",
+  variable: "--font-sans",
+  subsets: ["latin"],
+})
+
 
 gsap.registerPlugin(useGSAP);
-
-
-
 
 export async function Title({ title }: { title: string }) {
 
@@ -53,12 +59,13 @@ export async function Title({ title }: { title: string }) {
 
   return (
     <h1
-      className='text-4xl font-bold text-center box flex'
+      className={cn('text-secondaryLight  text-4xl font-bold text-center box flex z-[1] isolate relative overflow-hidden', font.variable)}
     >
       {/* {title} */}
       {letters.map((word, index) => {
         return (
-          <div key={index} className={`box${index}`}
+          <div key={index}
+            className={cn(`box${index}`, font.variable)}
           >
             {word}
           </div>

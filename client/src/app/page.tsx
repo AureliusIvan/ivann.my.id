@@ -1,4 +1,5 @@
 'use server'
+import GameScreen from '@/components/game/game-screen';
 import { Loading } from '@/components/ui/loading/loading';
 import { PostCard } from '@/components/ui/post-card';
 import { Title } from '@/components/ui/title/title';
@@ -11,7 +12,7 @@ async function Post() {
 
   return (
     <section
-      className='grid grid-cols-3 gap-4'
+      className='grid grid-cols-1 md:grid-cols-3 gap-4 '
     >
       {data?.data?.map((post: any) => (
         <PostCard key={post._id}
@@ -27,7 +28,7 @@ async function Post() {
 async function Home() {
   return (
     <main
-      className='flex flex-col items-center justify-center w-full h-full min-h-screen '
+      className='flex flex-col items-center justify-center w-full h-full min-h-screen page'
     >
       <section
         className='flex flex-col items-center justify-center  gap-4'
@@ -35,6 +36,7 @@ async function Home() {
         <Title
           title='Find What You Need'
         />
+        <GameScreen />
         <div
           className='flex flex-col items-center justify-center w-full gap-4'
         >

@@ -12,14 +12,15 @@ function Navbar({ routes }: Readonly<{ routes: NavbarRouteTypes[] }>) {
   let currentPath = usePathname().split('/')[1]
   return (
     <nav
-      className='flex justify-center items-center space-x-4 py-4  bg-transparent'
+      className='flex justify-center items-center  bg-transparent
+      gap-4 p-4 relative z-10 w-full h-16'
     >
       {
         routes.map((page, index) => {
           if (page.path === currentPath) {
             return (
               <Link
-                className='hover:text-gray-300 text-green-400'
+                className='hover:text-gray-300 text-secondaryLight font-bold '
                 key={index} href={`/${page.path}`}>
                 {page.name}
               </Link>
@@ -27,7 +28,8 @@ function Navbar({ routes }: Readonly<{ routes: NavbarRouteTypes[] }>) {
           }
           return (
             <Link
-              className='hover:text-gray-300'
+              className='hover:text-gray-300 global-border
+              '
               key={index} href={`/${page.path}`}>
               {page.name}
             </Link>

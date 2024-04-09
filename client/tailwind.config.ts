@@ -22,6 +22,7 @@ const config = {
       colors: {
         primaryLight: "#F9F7EC",
         primaryDark: "#121212",
+        secondaryLight: "#163C26",
         textPrimaryDark: "#FFFBE1",
         textPrimaryLight: "#43423E",
       },

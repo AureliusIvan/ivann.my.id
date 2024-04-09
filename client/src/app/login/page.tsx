@@ -21,39 +21,41 @@ import Link from 'next/link'
 export default async function LoginPage() {
 
   return (
-    <section
-      className='flex flex-col items-center justify-center  w-full gap-4'
-    >
-      <form
+    <main className='page'>
+      <section
+        className='flex flex-col items-center justify-center  w-full gap-4'
       >
-        <Card className={cn("w-[380px]")}>
-          <CardHeader>
-            <CardTitle>Login</CardTitle>
-            <CardDescription>Fill Auth.</CardDescription>
-          </CardHeader>
-          <CardContent className="grid gap-4">
-            <Input placeholder='Email' type='text' />
-            <Input placeholder='Password' type='password' />
-          </CardContent>
-          <CardFooter
-            className='flex flex-col gap-4'
-          >
-            {/* <LoginButton /> */}
-            <Button
-              type='submit'
-              className="w-full">
-              <Check className="mr-2 h-4 w-4" /> Login
-            </Button>
-
-            <Link
-              className='text-blue-500 hover:text-blue-600'
-              href='/forgot-password'
+        <form
+        >
+          <Card className={cn("w-[380px]")}>
+            <CardHeader>
+              <CardTitle>Login</CardTitle>
+              <CardDescription>Fill Auth.</CardDescription>
+            </CardHeader>
+            <CardContent className="grid gap-4">
+              <Input placeholder='Email' type='text' />
+              <Input placeholder='Password' type='password' />
+            </CardContent>
+            <CardFooter
+              className='flex flex-col gap-4'
             >
-              Forgot Password?
-            </Link>
-          </CardFooter>
-        </Card>
-      </form>
-    </section>
+              {/* <LoginButton /> */}
+              <Button
+                type='submit'
+                className="w-full">
+                <Check className="mr-2 h-4 w-4" /> Login
+              </Button>
+
+              <Link
+                className='text-blue-500 hover:text-blue-600'
+                href='/forgot-password'
+              >
+                Forgot Password?
+              </Link>
+            </CardFooter>
+          </Card>
+        </form>
+      </section>
+    </main>
   );
 }

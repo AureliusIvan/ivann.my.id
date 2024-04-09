@@ -9,7 +9,6 @@ async function Footer() {
       <div>
         <h1>Footer</h1>
         <section>
-          <Loading />
         </section>
       </div>
     </footer>
