@@ -1,10 +1,8 @@
-// content controller
-
 import { Request, Response } from "express";
 import ContentModel from "../data/models/content.model";
 
 class ContentController {
-  async createContent(req: Request, res: Response) {
+  async createContent(req: Request, res: Response) : Promise<void> {
     try {
       const { title, content } = req.body;
       const newContent = await ContentModel.create({ title, content });

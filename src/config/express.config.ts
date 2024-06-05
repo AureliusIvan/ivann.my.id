@@ -1,48 +1,41 @@
-// express service  init
-import express, { Application, Router } from 'express';
-const bodyParser = require('body-parser')
-require('dotenv').config();
+import express, {Application} from 'express';
+import bodyParser from "body-parser";
+import morgan from "morgan";
+import {config as env} from "dotenv";
 
+env();
 
 class ExpressApp {
-  private app: Application;
-  constructor(middleware: any[] = [], router: any = null) {
-    this.app = express();
-    this.initMiddleware(middleware);
-    this.initRoutes(router);
-  }
-  public getApp(): Application {
-    return this.app;
-  }
+    private readonly app: Application;
 
-  // map all middleware here
-  public initMiddleware(middleware: any): void {
-    this.app.use(express.json());
-    this.app.use(bodyParser.urlencoded({ extended: false }))
-    this.app.use(express.urlencoded({ extended: true }));
-    this.app.use(express.static('public'));
+    constructor(
+        middleware: any[] = [],
+        router: any = null) {
+        this.app = express();
+        this.initMiddleware(middleware);
+        this.initRoutes(router);
+    }
 
-    // for (const m of middleware) {
-    //   this.app.use(m);
-    // }
-  }
+    public getApp(): Application {
+        return this.app;
+    }
 
-  public setRouter(router: any): void {
-    // default route
+    public initMiddleware(middleware: any): void {
+        this.app.use(express.json());
+        this.app.use(bodyParser.urlencoded({extended: false}))
+        this.app.use(express.urlencoded({extended: true}));
+        this.app.use(express.static('public'));
+        this.app.use(morgan('dev'));
+        middleware.forEach((m: any) => {
+            this.app.use(m());
+        });
 
-    this.app.get('/', (req: any, res: any) => {
-      res.send('Hello World');
-    });
-    // map all routes here
-    this.app.use('/api', router);
-  }
+    }
 
-
-  private initRoutes = (router: any) => {
-    // const router = Router()
-    this.app.use('/api', router)
-    this.app.use('/storage', express.static('storage'));
-  }
+    private initRoutes = (router: any) => {
+        this.app.use('/api', router)
+        this.app.use('/storage', express.static('storage'));
+    }
 }
 
-export { ExpressApp };
+export {ExpressApp};

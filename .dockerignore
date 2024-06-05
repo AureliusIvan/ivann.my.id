@@ -1,0 +1,3 @@
+./volumes/*
+*/docker-compose.yml
+*/Dockerfile

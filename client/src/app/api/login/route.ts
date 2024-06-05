@@ -1,6 +1,4 @@
 // api/login/route.ts
-import AuthService from '@/services/auth.service'
-
 import { NextResponse, NextRequest } from 'next/server'
 
 export function GET(req: NextRequest) {

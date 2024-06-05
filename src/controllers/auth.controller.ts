@@ -75,7 +75,6 @@ class AuthController {
     }
     const user_data = await getTokenData(token);
     if (!user_data) {
-      console.log('No token found');
       return handleInvalidCredentialsError(res, 'Invalid credentials');
     }
     return handleSuccess(res, 'User found', user_data);

@@ -1,4 +1,4 @@
-'use server'
+'use client'
 import { BellRing, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -15,10 +15,23 @@ import { Input } from '@/components/ui/input'
 import AuthService from '@/services/auth.service'
 import { LoginButton } from './part/login.button'
 import React, { useState } from 'react'
-import Link from 'next/link'
+// import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 
-export default async function LoginPage() {
+export default function LoginPage() {
+  const router = useRouter()
+  async function login(
+    email: string,
+    password: string
+  ) {
+    const response: any = await AuthService.login(email, password)
+    if (response) {
+      router.push('/admin')
+    } else {
+      console.log('Login failed')
+    }
+  }
 
   return (
     <main className='page'>
@@ -41,17 +54,21 @@ export default async function LoginPage() {
             >
               {/* <LoginButton /> */}
               <Button
-                type='submit'
+                type='button'
+                onClick={(e) => {
+                  e.preventDefault()
+                  login("email", "password")
+                }}
                 className="w-full">
                 <Check className="mr-2 h-4 w-4" /> Login
               </Button>
 
-              <Link
+              {/* <Link
                 className='text-blue-500 hover:text-blue-600'
                 href='/forgot-password'
               >
                 Forgot Password?
-              </Link>
+              </Link> */}
             </CardFooter>
           </Card>
         </form>
@@ -59,3 +76,4 @@ export default async function LoginPage() {
     </main>
   );
 }
+

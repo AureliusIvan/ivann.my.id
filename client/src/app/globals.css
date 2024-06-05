@@ -3,25 +3,32 @@
 @tailwind utilities;
 
 
-:root{
-  @media screen and (max-width: 768px){
-    .page{
-      padding: 1rem 1rem;
+:root {
+    @media screen and (max-width: 768px) {
+        .page {
+            padding: 1rem 1rem;
+        }
     }
-  }
 
-  @media screen and (min-width: 768px){
-    .page{
-      padding: 2rem 2rem;
+    @media screen and (min-width: 768px) {
+        .page {
+            padding: 2rem 2rem;
+        }
     }
-  }
-
-  h1{
-    @apply text-4xl;
-    @apply font-bold;
-  }
 
 
+    --secondary-glow: conic-gradient(
+            from 10deg at 50% 50%,
+                /*#97b5da 120deg,*/ /*#0d9a4b 160deg,*/ #450d9a 160deg,
+            transparent 360deg
+    );
 
+
+    #main-page {
+        background: var(--secondary-glow);
+        background-size: 200% 100%;
+        animation: gradient 15s linear infinite;
+    }
+    
 }
 

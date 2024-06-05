@@ -13,8 +13,18 @@ const nextConfig = {
         // https://picsum.photos/200/300
         hostname: 'picsum.photos',
         protocol: 'https',
+      },
+      {
+        hostname: "avatars.githubusercontent.com",
       }
     ]
+  }
+  ,
+  serverRuntimeConfig: {
+    apiURL: process.env.API_URL
+  },
+  publicRuntimeConfig: {
+    apiURL: process.env.API_URL
   }
 }
 

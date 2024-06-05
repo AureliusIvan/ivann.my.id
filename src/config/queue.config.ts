@@ -1,18 +1,18 @@
-import { RedisQueueService } from '../services/redis-queue.service'
+// // import { RedisQueueService } from '../services/redis-queue.service'
 
-interface Queue {
-  name: string
-}
+// interface Queue {
+//   name: string
+// }
 
-const QueueConfig: Queue[] = [
-  {
-    name: 'EmailQueue',
-  },
-]
+// const QueueConfig: Queue[] = [
+//   {
+//     name: 'EmailQueue',
+//   },
+// ]
 
-// map each queue to a new instance of RedisQueueService
-const queues = QueueConfig.map((queue: Queue) => {
-  return new RedisQueueService(queue.name)
-})
+// // map each queue to a new instance of RedisQueueService
+// const queues = QueueConfig.map((queue: Queue) => {
+//   return new RedisQueueService(queue.name)
+// })
 
-export { queues }
+// export { queues }

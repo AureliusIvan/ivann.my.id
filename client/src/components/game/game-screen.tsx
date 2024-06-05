@@ -1,19 +1,16 @@
-'use client'
-// Game Screen Component
+'use server'
 
-import React from 'react'
-import { Character } from './character'
-import Environment from './environment'
+import {Character} from '@/components/game/character'
+import Environment from '@/components/game/environment'
 
-function GameScreen() {
-
-  return (
-    <div className="game-screen w-full overflow-x-hidden isolate z-10 relative">
-      <Environment>
-        <Character />
-      </Environment>
-    </div>
-  )
-}
+const GameScreen = async () => (
+    <section
+        className="game-screen w-full overflow-x-hidden isolate z-10 relative"
+    >
+        <Environment>
+            {/*<Character/>*/}
+        </Environment>
+    </section>
+);
 
 export default GameScreen

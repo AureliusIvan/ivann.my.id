@@ -8,3 +8,8 @@ node_modules
 
 src/storage/*
 storage/*
+.pnpm-store/*
+.pnpm-lock.yaml
+/.idea
+/.fleet
+/.vscode

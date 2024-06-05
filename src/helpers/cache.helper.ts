@@ -1,10 +1,7 @@
-// Cache Helper
 import { Redis } from 'ioredis';
 interface CacheOptions {
   ttl?: number; // Time-to-live in seconds (optional)
 }
-
-
 
 class CacheHelper {
   private readonly redis: Redis;
@@ -26,10 +23,8 @@ class CacheHelper {
   }
 
   async set(key: string, value: any, options?: CacheOptions): Promise<void> {
-    const stringValue = JSON.stringify(value); // Stringify value for Redis
-    // await this.redis.set(key, stringValue, options?.ttl ? 'EX' + options.ttl : undefined);
+    const stringValue = JSON.stringify(value);
     await this.redis.set(key, stringValue, (err, res) => {
-      // Handle error or response here
       if (err) {
         console.log('Redis error: ', err);
       }
@@ -37,12 +32,14 @@ class CacheHelper {
   }
 
   async delete(key: string): Promise<number> {
-    return await this.redis.del(key);
+    return this.redis.del(key);
   }
 }
 
 
-const cacheHelper = new CacheHelper(process.env.REDIS_URL || 'redis://localhost:6379')
+const REDIS_HOSTNAME: string = `redis-${process.env.PROJECT_NAME}` || 'localhost'
+const url: string = process.env.REDIS_URL || `redis://${REDIS_HOSTNAME}:6379`
+const cacheHelper = new CacheHelper(url)
 
 export {
   cacheHelper
