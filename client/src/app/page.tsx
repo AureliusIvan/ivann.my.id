@@ -1,12 +1,13 @@
 'use server'
 
-import GameScreen from '@/components/game/game-screen';
 import {Loading} from '@/components/ui/loading/loading';
 import {PostCard} from '@/components/ui/post-card';
 import {Title} from '@/components/ui/title';
 import PostService from '@/services/post.service';
 import {Suspense} from 'react';
 import {InProgressSection} from "@/components/section/in-progress";
+import GameScreen from '@/components/game/game-screen';
+
 
 async function Post() {
     const data = await PostService.getAll()

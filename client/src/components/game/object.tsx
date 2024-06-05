@@ -1,14 +1,13 @@
 'use client'
-// Game Object Class with GSAP
 
-import React, {useEffect, useRef} from 'react';
+import {useRef, ReactNode} from 'react';
 import gsap from 'gsap';
 import {useGSAP} from '@gsap/react';
 
 gsap.registerPlugin(useGSAP);
 
 interface GameObjectProps {
-    children: React.ReactNode
+    children: ReactNode
 }
 
 export function GameObject({children}: GameObjectProps) {

@@ -71,6 +71,7 @@ export default function RootLayout(
                 className='min-h-screen h-full overflow-x-hidden relative
                 dark:bg-primaryDark dark:text-textPrimaryDark
                 bg-primaryLight text-textPrimaryLight'>
+
                 <Navbar routes={Routes}/>
 
                 {children}

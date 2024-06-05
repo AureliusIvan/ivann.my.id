@@ -1,14 +1,13 @@
 'use server'
 
-import {Character} from '@/components/game/character'
-import Environment from '@/components/game/environment'
+import dynamic from 'next/dynamic'
+const Environment = dynamic(() => import('@/components/game/environment'), { ssr: false })
 
 const GameScreen = async () => (
     <section
         className="game-screen w-full overflow-x-hidden isolate z-10 relative"
     >
         <Environment>
-            {/*<Character/>*/}
         </Environment>
     </section>
 );

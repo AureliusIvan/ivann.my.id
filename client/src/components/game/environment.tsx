@@ -4,9 +4,9 @@ import React from 'react'
 import '@/components/game/styling/environment.scss'
 import gsap from 'gsap';
 import {useGSAP} from '@gsap/react';
-import {GameObject} from "@/components/game/object";
 import Lottie from "lottie-react";
 import UfoLottie from "@/static/lotties/ufo-lotties.json";
+import {GameObject} from '@/components/game/object'
 
 gsap.registerPlugin(useGSAP);
 
@@ -43,7 +43,7 @@ function Environment(
                 {/*{children}*/}
             </GameObject>
         </section>
-)
+    )
 }
 
 export default Environment
