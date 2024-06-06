@@ -8,8 +8,8 @@ services:
     tty: true
     ports:
       -
-      - "3000:3000"
-      - "4000:4000"
+      - 3000:3000
+      - 4000:4000
     volumes:
       - .:/app
       - ./volumes/logs:/app/logs
@@ -26,7 +26,7 @@ services:
     container_name: redis-${PROJECT_NAME}
     image: redis:alpine
     ports:
-      - "6379:6379"
+      - 6379:6379
     networks:
       - cmsnetwork
     volumes:
@@ -37,7 +37,7 @@ services:
     image: mongo:latest
     tty: true
     ports:
-      - "27017:27017"
+      - 27017:27017
     networks:
       - cmsnetwork
     volumes:
