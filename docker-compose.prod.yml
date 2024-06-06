@@ -5,6 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     working_dir: /app
+    privileged: true
     tty: true
     ports:
       - 3000:3000
@@ -20,8 +21,8 @@ services:
       - redis
       - mongo
     command:
-        - make
-        - prod
+      - make
+      - prod
 
   redis:
     container_name: redis-${PROJECT_NAME}
