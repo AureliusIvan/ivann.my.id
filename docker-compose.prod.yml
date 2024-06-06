@@ -20,9 +20,9 @@ services:
     depends_on:
       - redis
       - mongo
-#    command:
-#      - make
-#      - prod
+    command:
+      - make
+      - prod
 
   redis:
     container_name: redis-${PROJECT_NAME}
