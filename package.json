@@ -17,10 +17,9 @@
     "dev": "nodemon ./src/index.ts --exec ts-node",
     "build": "rm -rf dist && tsc",
     "start": "node ./dist/index.js",
-    "start:prod": "pnpm install --force && rm -rf dist && tsc && node ./dist/index.js",
     "dev:all": "concurrently 'pnpm run dev' 'cd client/ && pnpm run dev:turbo'",
     "build:all": "pnpm run build && cd client/ && pnpm run build",
-    "prod": "pnpm start ./dist/index.js",
+    "start:prod": "concurrently 'pnpm run start' 'cd client/ && pnpm run start",
     "seed": "ts-node ./src/data/seeders/seed.ts",
     "test": "vitest"
   },

@@ -1,12 +1,13 @@
 services:
   app:
+    container_name: app-${PROJECT_NAME}
     build:
       context: .
       dockerfile: Dockerfile
     working_dir: /app
     tty: true
-    container_name: app-${PROJECT_NAME}
     ports:
+      -
       - "3000:3000"
       - "4000:4000"
     volumes:
@@ -19,10 +20,11 @@ services:
     depends_on:
       - redis
       - mongo
+    command: ["./update.sh"]
 
   redis:
-    image: redis:alpine
     container_name: redis-${PROJECT_NAME}
+    image: redis:alpine
     ports:
       - "6379:6379"
     networks:
@@ -31,8 +33,8 @@ services:
       - ./volumes/redis:/data
 
   mongo:
-    image: mongo:latest
     container_name: mongo-${PROJECT_NAME}
+    image: mongo:latest
     tty: true
     ports:
       - "27017:27017"

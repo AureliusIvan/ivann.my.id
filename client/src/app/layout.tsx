@@ -22,7 +22,6 @@ const font = Montserrat({
     subsets: ["latin"],
 })
 
-
 const Routes: NavbarRouteTypes[] = [
     {
         path: '',
@@ -32,14 +31,10 @@ const Routes: NavbarRouteTypes[] = [
         path: 'showcase',
         name: 'Showcase'
     },
-    // {
-    //     path: 'chat',
-    //     name: 'Chat'
-    // },
-    // {
-    //     path: 'login',
-    //     name: 'Login'
-    // }
+    {
+        path: 'changelog',
+        name: 'Changelog'
+    }
 ]
 
 interface RootLayoutProps {
@@ -51,7 +46,7 @@ export default function RootLayout(
     {children}: Readonly<RootLayoutProps>
 ) {
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html lang="en">
         <body
             className={cn(
                 "min-h-screen bg-background font-sans " +

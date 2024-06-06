@@ -1,31 +1,11 @@
 'use server'
 
 import {Loading} from '@/components/ui/loading/loading';
-import {PostCard} from '@/components/ui/post-card';
 import {Title} from '@/components/ui/title';
-import PostService from '@/services/post.service';
 import {Suspense} from 'react';
 import {InProgressSection} from "@/components/section/in-progress";
 import GameScreen from '@/components/game/game-screen';
 
-
-async function Post() {
-    const data = await PostService.getAll()
-
-    return (
-        <section
-            className='grid grid-cols-1 md:grid-cols-3 gap-4'
-        >
-            {data?.data?.map((post: any) => (
-                <PostCard key={post._id}
-                          title={post.title}
-                          post={post}
-                >
-                </PostCard>
-            ))}
-        </section>
-    )
-}
 
 async function Home() {
     return (
@@ -38,7 +18,7 @@ async function Home() {
                 className='flex flex-col items-center justify-center gap-4'
             >
                 <Title>
-                    (on development) <br/>
+                    {/*(on development) <br/>*/}
                     Hi. I&#39;am Ivan.<br/>
                     a Developer.
                 </Title>
@@ -62,14 +42,12 @@ async function Home() {
                 (on development)
                 {/* Post List */}
                 <Suspense fallback={<Loading/>}>
-                    <Post/>
                 </Suspense>
             </section>
 
 
             {/* Achievement Section */}
             <section>
-
             </section>
 
             {/* In Progress */}
@@ -85,10 +63,12 @@ async function Home() {
 
             {/*  */}
             <section>
+
                 <Title>
                     Awards
                 </Title>
                 (on development)
+
             </section>
         </main>
 

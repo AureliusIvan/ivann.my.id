@@ -1,4 +1,3 @@
-// Axios COnfig
 import axios from 'axios';
 
 let axiosInstance = axios.create({
