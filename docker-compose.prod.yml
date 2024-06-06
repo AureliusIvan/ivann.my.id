@@ -19,7 +19,9 @@ services:
     depends_on:
       - redis
       - mongo
-    command: ["./update.sh"]
+    command:
+        - make
+        - prod
 
   redis:
     container_name: redis-${PROJECT_NAME}

@@ -19,7 +19,7 @@
     "start": "node ./dist/index.js",
     "dev:all": "concurrently 'pnpm run dev' 'cd client/ && pnpm run dev:turbo'",
     "build:all": "pnpm run build && cd client/ && pnpm run build",
-    "start:prod": "concurrently 'pnpm run start' 'cd client/ && pnpm run start",
+    "start:prod": "concurrently 'pnpm run start' 'cd client/ && pnpm run start'",
     "seed": "ts-node ./src/data/seeders/seed.ts",
     "test": "vitest"
   },

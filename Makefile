@@ -7,4 +7,8 @@ dev:
 	@cd client && pnpm dev
 
 prod:
-	@docker compose -f docker-compose.prod.yml up --build --force-recreate
+	@pnpm install
+	@cd client && pnpm install
+	@pnpm build
+	@pnpm build:all
+	@pnpm start:prod
