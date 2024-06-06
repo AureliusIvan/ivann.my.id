@@ -5,24 +5,19 @@ import {AppRouter} from './routes/routes';
 import {ExpressApp} from './config/express.config';
 import path from 'path';
 import express from 'express';
-import cors from "cors";
 import morgan from "morgan";
-import bodyParser from "body-parser";
 
-dotenv.config({path: path.resolve(__dirname, '../.env')});
+dotenv.config({
+  path: path.resolve(__dirname, '../.env')
+});
+
 const APP_PORT: string | number = process.env.PORT || 4000;
 
-const corsOptions = {
-    origin: '*',
-    optionsSuccessStatus: 200,
-};
+connectDB().then(r => console.log(r)).catch(e => console.log(e));
 
-connectDB();
 const Middleware = [
-    express.json,
-    compression,
-    bodyParser.json,
-    bodyParser.urlencoded
+  express.json,
+  compression
 ];
 
 const app: express.Application = new ExpressApp(
@@ -30,10 +25,9 @@ const app: express.Application = new ExpressApp(
     AppRouter
 ).getApp();
 
-app.use(cors(corsOptions));
 app.use(morgan('dev'));
 
 app.listen(APP_PORT,
     () => {
-        console.log(`[server]: Server is running at http://localhost:${APP_PORT}`);
+      console.log(`[server]: Server is running at http://localhost:${APP_PORT}`);
     });

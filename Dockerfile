@@ -5,4 +5,6 @@ RUN npm install -g pnpm
 
 RUN mkdir -p /app/src/storage
 RUN chown -R node:node /app/src/storage
-USER node
+
+USER root
+WORKDIR /app
