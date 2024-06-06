@@ -4,6 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile
     working_dir: /app
+    privileged: true
     tty: true
     container_name: app-${PROJECT_NAME}
     ports:
