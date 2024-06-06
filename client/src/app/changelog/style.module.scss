@@ -1,0 +1,64 @@
+.markdown {
+  padding: 0 2rem;
+  margin: 0 auto;
+  max-width: 800px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-color);
+
+  h1 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  ol {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  li {
+    list-style-type: disc;
+    list-style-position: inside;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}

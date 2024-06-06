@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/hover-card";
 import {getGithubData} from "@/app/action";
 
-
 const Spotify = async () => {
   return (
       <div
@@ -30,13 +29,16 @@ const Spotify = async () => {
 
         <section>
           <h1>
-            On Repeat
-          </h1>
-          <p
-              className={"font-bold"}
-          >
             Beautiful Things by Benson Boone
-          </p>
+          </h1>
+
+          <a
+              target={"_blank"}
+              href={"https://open.spotify.com/track/7n1T7g1Z4X7x8gV7RJZTJ4?si=3e8b8c5c2c1e4b7d"}
+              className={"font-bold underline"}
+          >
+            On Spotify
+          </a>
         </section>
       </div>
   )
@@ -61,7 +63,7 @@ const Github = async () => {
             alt={"spotify icon"}
         />
         <div
-        className={"flex flex-col"}
+            className={"flex flex-col"}
         >
           <span>
             <HoverCard>
@@ -80,11 +82,13 @@ const Github = async () => {
             | {data?.public_repos} Repositories
           </span>
 
-          <span
-              className={"font-bold"}
+          <a
+              target={"_blank"}
+              href={data?.html_url || "#"}
+              className={"font-bold underline"}
           >
             On Github
-          </span>
+          </a>
         </div>
       </section>
   )

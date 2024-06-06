@@ -1,4 +1,5 @@
-import { Redis } from 'ioredis';
+import {Redis} from 'ioredis';
+
 interface CacheOptions {
   ttl?: number; // Time-to-live in seconds (optional)
 }

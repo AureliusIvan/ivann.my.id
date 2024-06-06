@@ -1,4 +1,4 @@
-import { log_error } from '../utils/log_error';
+import {log_error} from '../utils/log_error';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv'
 
@@ -12,10 +12,9 @@ async function connectDB(): Promise<void> {
     await mongoose.connect(MONGO_DB_HOST_URL, {
       maxPoolSize: 10,
     });
-    console.log('[database] Connected to the database (MongoDB) on port 27017');
   } catch (error) {
     await log_error(error)
   }
 }
 
-export { connectDB };
+export {connectDB};

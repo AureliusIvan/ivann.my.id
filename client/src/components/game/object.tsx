@@ -1,41 +1,42 @@
 'use client'
 
-import {useRef, ReactNode} from 'react';
 import gsap from 'gsap';
+import {useRef, ReactNode} from 'react';
 import {useGSAP} from '@gsap/react';
 
 gsap.registerPlugin(useGSAP);
 
 interface GameObjectProps {
-    children: ReactNode
+  children: ReactNode
 }
 
 export function GameObject({children}: GameObjectProps) {
-    const boxRef = useRef(null);
-    const handleClick = () => {
-        // GSAP animation for jump
+  const boxRef = useRef(null);
+  const handleClick = () => {
+    // GSAP animation for jump
+    gsap.to(boxRef.current, {
+      duration: 0.5,
+      x: '+=30',
+      y: '-=50',
+      ease: 'power2.in',
+      onComplete: () => {
         gsap.to(boxRef.current, {
-            duration: 0.5,
-            x: '+=30',
-            y: '-=50',
-            ease: 'power2.inOut',
-            onComplete: () => {
-                gsap.to(boxRef.current, {
-                    duration: 1,
-                    y: '+=50',
-                    ease: 'bounce.out'
-                });
-            }
+          duration: 1,
+          y: '+=50',
+          ease: 'bounce.out'
         });
-    };
+      }
+    });
+  };
 
-    return (
-        <div
-            ref={boxRef}
-            onTouchMove={(e) => e.preventDefault()}
-            onClick={handleClick}
-            className='game-object z-[100]'>
-            {children}
-        </div>
-    )
+  return (
+      <div
+          ref={boxRef}
+          onTouchMove={(e) => e.preventDefault()}
+          onClick={handleClick}
+          className='game-object z-[100]'>
+
+        {children}
+      </div>
+  )
 }

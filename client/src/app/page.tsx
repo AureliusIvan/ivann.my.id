@@ -8,71 +8,72 @@ import GameScreen from '@/components/game/game-screen';
 
 
 async function Home() {
-    return (
-        <main
-            className='flex flex-col items-center justify-center
+  return (
+      <main
+          className='flex flex-col items-center justify-center
             w-full h-full gap-4 p-6'
+      >
+
+        {/* Hero Section */}
+        <section
+            className='flex flex-col items-center justify-center gap-4'
         >
-            {/* Hero Section */}
-            <section
-                className='flex flex-col items-center justify-center gap-4'
-            >
-                <Title>
-                    {/*(on development) <br/>*/}
-                    Hi. I&#39;am Ivan.<br/>
-                    a Developer.
-                </Title>
+          <Title>
+            {/*(on development) <br/>*/}
+            Hi. I&#39;am Ivan.<br/>
+            a Developer.
+          </Title>
 
-                <GameScreen/>
+          <GameScreen/>
 
-                <div
-                    className='flex flex-col items-center justify-center w-full gap-4'
-                >
-                </div>
+          <div
+              className='flex flex-col items-center justify-center w-full gap-4'
+          >
+          </div>
 
-            </section>
+        </section>
 
-            {/* Post Section */}
-            <section
-                className={"w-full flex flex-col items-center justify-center gap-4"}
-            >
-                <Title>
-                    Recent Post
-                </Title>
-                (on development)
-                {/* Post List */}
-                <Suspense fallback={<Loading/>}>
-                </Suspense>
-            </section>
+        {/* Post Section */}
+        <section
+            className={"w-full flex flex-col items-center justify-center gap-4"}
+        >
+          <Title>
+            Recent Post
+          </Title>
+          (on development)
+          {/* Post List */}
+          <Suspense fallback={<Loading/>}>
+          </Suspense>
+        </section>
 
 
-            {/* Achievement Section */}
-            <section>
-            </section>
+        {/* Achievement Section */}
+        <section>
+        </section>
 
-            {/* In Progress */}
-            <section
-                className={"w-full flex flex-col items-center justify-center gap-4 m-4"}
-            >
-                <Title>
-                    Project
-                </Title>
-                (on development)
-                <InProgressSection/>
-            </section>
+        {/* In Progress */}
+        <section
+            className={"w-full flex flex-col items-center justify-center gap-4 m-4"}
+        >
+          <Title>
+            Project
+          </Title>
+          (on development)
+          <InProgressSection/>
+        </section>
 
-            {/*  */}
-            <section>
+        {/*  */}
+        <section>
 
-                <Title>
-                    Awards
-                </Title>
-                (on development)
+          <Title>
+            Awards
+          </Title>
+          (on development)
 
-            </section>
-        </main>
+        </section>
+      </main>
 
-    )
+  )
 }
 
 

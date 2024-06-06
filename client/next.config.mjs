@@ -1,5 +1,10 @@
+import generated from "@next/mdx";
+
+const withMDX = generated()
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   images: {
     dangerouslyAllowSVG: true,
     remotePatterns: [
@@ -16,6 +21,7 @@ const nextConfig = {
       },
       {
         hostname: "res.cloudinary.com",
+        protocol: "https"
       }
     ]
   }
@@ -28,4 +34,5 @@ const nextConfig = {
   }
 }
 
-export default nextConfig;
+// export default nextConfig;
+export default withMDX(nextConfig);

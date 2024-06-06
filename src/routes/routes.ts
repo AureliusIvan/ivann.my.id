@@ -8,11 +8,11 @@ import {geminiRouter} from './user/gemini.routes';
 
 const AppRouter: Router = Router();
 
-AppRouter.use('/auth', authRouter);
-AppRouter.use('/admin', adminRouter);
-AppRouter.use('/post', userPostRouter);
-AppRouter.use('/image', imageRouter);
-AppRouter.use('/gemini', geminiRouter);
+// AppRouter.use('/auth', authRouter);
+// AppRouter.use('/admin', adminRouter);
+// AppRouter.use('/post', userPostRouter);
+// AppRouter.use('/image', imageRouter);
+// AppRouter.use('/gemini', geminiRouter);
 
 
 export {AppRouter};
