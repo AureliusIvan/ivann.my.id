@@ -9,6 +9,5 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: 'https://ivann.my.id/sitemap.xml',
-    host: 'https://ivann.my.id',
   }
 }

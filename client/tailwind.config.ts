@@ -60,7 +60,7 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "typing": "typing 2s steps(20) infinite alternate, blink .7s infinite"
+        "typing": "typing 1s steps(10) 1 alternate, blink .7s infinite alternate"
       },
     },
   },

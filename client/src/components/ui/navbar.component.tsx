@@ -40,16 +40,21 @@ function Navbar({routes}: Readonly<{ routes: NavbarRouteTypes[] }>) {
                   handleRouteChange(index)
                   return (
                       <Link
-                          className='hover:text-gray-300 font-bold bg-gray-700 px-[0.3rem] rounded-md transform-gpu transition-transform'
+                          className='dark:hover:text-gray-300 font-bold bg-blue-50 bg-opacity-20
+                          dark:bg-gray-700 px-[0.3rem]
+                          rounded-md transform-gpu transition-transform
+                          flex flex-row'
                           key={index} href={`/${page.path}`}>
 
-                              <span className={"font-light"}>
+                        <h4 className={"font-light"}>
+                          user:/
+                        </h4>
 
-                                user:/
-
-                                </span>
-
-                        {page.name.toLowerCase()}
+                        <h4
+                            className={"animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white "}
+                        >
+                          {page.name.toLowerCase()}
+                        </h4>
                       </Link>
                   )
                 }

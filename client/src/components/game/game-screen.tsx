@@ -7,9 +7,15 @@ const Environment = dynamic(() => import('@/components/game/environment'), {ssr:
 
 const GameScreen = async () => (
     <section
-        className="game-screen w-full overflow-x-hidden isolate z-10 relative"
+        className="game-screen overflow-x-hidden isolate z-10 relative min-w-[100vw] min-h-[10rem] w-full h-full "
     >
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={
+        <div
+            className={"min-w-[100vw] min-h-[10rem] w-full h-full bg-gray-700 bg-opacity-20"}
+        >
+          loading...
+        </div>
+      }>
         <Environment>
           {/*  might be character here */}
         </Environment>
