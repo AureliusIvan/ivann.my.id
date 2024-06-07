@@ -1,5 +1,6 @@
-// api/login/route.ts
-import { NextResponse, NextRequest } from 'next/server'
+"use server"
+
+import {NextResponse, NextRequest} from 'next/server'
 
 export function GET(req: NextRequest) {
   return NextResponse.json({
@@ -10,5 +11,5 @@ export function GET(req: NextRequest) {
 
 export function POST(req: NextRequest) {
   console.log(req.body)
-  return NextResponse.json({ message: 'Hello from the API!' })
+  return NextResponse.json({message: 'Hello from the API!'})
 }

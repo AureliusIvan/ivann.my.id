@@ -42,7 +42,7 @@ export default function RootLayout(
     {children}: Readonly<RootLayoutProps>
 ) {
   return (
-      <html lang="en" suppressHydrationWarning>
+      <html lang="en" suppressHydrationWarning className={"transform-gpu transition-all "}>
       <body
           className={cn(
               "min-h-screen bg-background font-sans " +

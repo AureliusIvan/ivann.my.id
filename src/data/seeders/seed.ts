@@ -1,5 +1,5 @@
-import { connectDB } from '../mongo-database.config';
-import { PostSeeder } from './post.seeder';
+import {connectDB} from '../mongo-database.config';
+import {PostSeeder} from './post.seeder';
 
 async function seeder() {
   console.log('Connecting to database...');

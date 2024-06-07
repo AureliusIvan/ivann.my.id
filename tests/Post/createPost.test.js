@@ -1,12 +1,12 @@
 // create post test
-import { describe } from 'vitest';
-import { initTestServer } from '../test-utils/init-test-server';
+import {describe} from 'vitest';
+import {initTestServer} from '../test-utils/init-test-server';
 
 // init server
 describe('Post', () => {
   app = initTestServer();
   // before all tests
-  
+
   it('should create a post', async () => {
     // create a post
     const post = await createPost({

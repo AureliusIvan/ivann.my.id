@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/hover-card";
 import {getGithubData} from "@/app/action";
 
+
 const Spotify = async () => {
   return (
       <div
@@ -119,14 +120,22 @@ async function Footer() {
         >
           <h1>Or.. send me a mail!</h1>
 
-          <Image
-              className={
-                  "w-12 h-12 pointer-events-auto " +
-                  "cursor-pointer hover:scale-125 " +
-                  "transition-transform duration-300 " +
-                  "ease-in-out"}
-              src={Mail}
-              alt={"mail icon"}/>
+          <a
+              href={"mailto:aureliusivanwijaya@gmail.com?subject=Hello Ivan!&body=Hello Ivan! I want to say..."}
+              target={"_blank"}
+          >
+
+            <Image
+                className={
+                    "w-12 h-12 pointer-events-auto " +
+                    "cursor-pointer hover:scale-125 " +
+                    "transition-transform duration-300 " +
+                    "ease-in-out"}
+                src={Mail}
+                alt={"mail icon"}
+            />
+
+          </a>
         </section>
 
       </footer>

@@ -1,7 +1,5 @@
 'use client'
 
-import '@/components/game/styling/environment.scss'
-
 import React from 'react'
 import gsap from 'gsap';
 import Lottie from "lottie-react";

@@ -17,7 +17,7 @@ const data = [
     id: 0,
     title: 'File Morph',
     description: 'To Do',
-    image: 'https://picsum.photos/200/300'
+    image: 'https://picsum.photos/200/300',
   },
   {
     id: 1,

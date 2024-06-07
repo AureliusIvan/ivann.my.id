@@ -72,18 +72,18 @@
 <!-- <script src="/socket.io/socket.io.js"></script> -->
 <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
 <script>
-    const socket = io();
+  const socket = io();
 
-    const form = document.getElementById('form');
-    const input = document.getElementById('input');
+  const form = document.getElementById('form');
+  const input = document.getElementById('input');
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        if (input.value) {
-            socket.emit('chat message', input.value);
-            input.value = '';
-        }
-    });
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (input.value) {
+      socket.emit('chat message', input.value);
+      input.value = '';
+    }
+  });
 </script>
 </body>
 

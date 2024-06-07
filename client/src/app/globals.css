@@ -19,7 +19,7 @@
 
     --secondary-glow: conic-gradient(
             from 10deg at 50% 50%,
-                /*#97b5da 120deg,*/ /*#0d9a4b 160deg,*/ #450d9a 160deg,
+            #450d9a 160deg,
             transparent 360deg
     );
 
@@ -29,6 +29,5 @@
         background-size: 200% 100%;
         animation: gradient 15s linear infinite;
     }
-
 }
 
