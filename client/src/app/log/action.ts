@@ -15,7 +15,7 @@ const handleGetChangelog = async () => {
     return cache.get(cacheKey);
   }
 
-  const file = await fs.readFile(process.cwd() + '/src/data/changelog/v1_0_0.md', 'utf8');
+  const file = await fs.readFile(process.cwd() + '/../README.md', 'utf8');
   const result = {
     name: 'v1_0_0',
     content: file

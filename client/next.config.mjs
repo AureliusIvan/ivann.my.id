@@ -4,7 +4,17 @@ const withMDX = generated()
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  compiler: {
+    styledComponents: true
+  },
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+  experimental: {
+    webVitalsAttribution: ['CLS', 'LCP']
+  },
+  devIndicators: {
+    buildActivity: true,
+    buildActivityPosition: 'bottom-right',
+  },
   images: {
     dangerouslyAllowSVG: true,
     remotePatterns: [

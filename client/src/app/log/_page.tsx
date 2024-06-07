@@ -2,18 +2,12 @@
 
 import dynamic from "next/dynamic";
 import {Title} from "@/components/ui/title";
-import {handleGetChangelog} from "@/app/changelog/action";
+import {handleGetChangelog} from "@/app/log/action";
 import {Suspense} from "react";
-import {GetServerSideProps} from "next";
 
 const MarkdownPreview = dynamic(() => import('@/components/ui/markdown-preview'), {
   ssr: false
 })
-
-
-
-
-
 
 export default async function ChangelogPage() {
   let data = await handleGetChangelog()

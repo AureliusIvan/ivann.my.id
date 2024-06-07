@@ -29,7 +29,7 @@ const Routes: NavbarRouteTypes[] = [
     name: 'Home'
   },
   {
-    path: 'changelog',
+    path: 'log',
     name: 'log'
   }
 ]
