@@ -2,14 +2,14 @@
 
 import {NextResponse, NextRequest} from 'next/server'
 
-export function GET(req: NextRequest) {
+export async function GET() {
   return NextResponse.json({
     data: "Hello from the API!",
     message: 'Hello from the API!'
   })
 }
 
-export function POST(req: NextRequest) {
+export async function POST(req: NextRequest) {
   console.log(req.body)
   return NextResponse.json({message: 'Hello from the API!'})
 }
