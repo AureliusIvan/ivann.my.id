@@ -1,5 +1,7 @@
 FROM node:lts-iron
 
+ENV NODE_OPTIONS="--max-old-space-size=4096"
+
 RUN passwd -d root
 RUN npm install -g pnpm
 
