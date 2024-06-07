@@ -1,35 +1,18 @@
 'use server'
 
+import type {Metadata} from 'next'
+
 import {Loading} from '@/components/ui/loading/loading';
 import {Title} from '@/components/ui/title';
 import {Suspense} from 'react';
 import {InProgressSection} from "@/components/section/in-progress";
 import GameScreen from '@/components/game/game-screen';
 
-import type {Metadata, ResolvingMetadata} from 'next'
 
-type Props = {
-  params: { id: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
-
-export async function generateMetadata(
-    {params, searchParams}: Props,
-    parent: ResolvingMetadata
-): Promise<Metadata> {
-  // read route params
-  const id = params.id
-
-  // fetch data
-  // const product = await fetch(`https://.../${id}`).then((res) => res.json())
-  //
-  // // optionally access and extend (rather than replace) parent metadata
-  // const previousImages = (await parent).openGraph?.images || []
-
+export async function generateMetadata(): Promise<Metadata> {
   return {
     title: `Aurelius Ivan Wijaya - Developer`,
     openGraph: {
-      // images: ['/some-specific-page-image.jpg', ...previousImages],
       description: "I am Ivan, a software engineer who loves to write about web development, technology, and life.",
       type: 'website',
       emails: ['aureliusivanwijaya@gmail.com'],
