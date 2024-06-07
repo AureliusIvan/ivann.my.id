@@ -9,7 +9,6 @@ import {cn} from '@/lib/utils';
 import {ThemeProvider} from '@/components/theme-provider';
 import {Montserrat} from 'next/font/google'
 import Footer from "@/components/ui/footer";
-import Head from "next/head";
 
 
 export const metadata: Metadata = {
@@ -44,16 +43,6 @@ export default function RootLayout(
 ) {
   return (
       <html lang="en" suppressHydrationWarning>
-
-      <Head>
-        <title>{metadata.title?.toString()}</title>
-        <link rel="icon" href="/icon?<generated>" type="image/png" sizes="32x32"/>
-        <meta charSet="UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <meta httpEquiv="X-UA-Compatible" content="ie=edge"/>
-        <meta name="description" content={metadata.description?.toString()}/>
-      </Head>
-
       <body
           className={cn(
               "min-h-screen bg-background font-sans " +

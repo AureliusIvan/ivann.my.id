@@ -10,9 +10,7 @@ import {
 } from "@/components/ui/card";
 import {Button} from "@/components/ui/button";
 import Image from "next/image";
-
 import GithubIcon from "@/static/svg/github-icon.svg";
-import BlurImage from "@/static/images/blur.png";
 
 const data = [
   {

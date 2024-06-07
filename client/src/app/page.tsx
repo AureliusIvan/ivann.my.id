@@ -6,6 +6,38 @@ import {Suspense} from 'react';
 import {InProgressSection} from "@/components/section/in-progress";
 import GameScreen from '@/components/game/game-screen';
 
+import type {Metadata, ResolvingMetadata} from 'next'
+
+type Props = {
+  params: { id: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+export async function generateMetadata(
+    {params, searchParams}: Props,
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const id = params.id
+
+  // fetch data
+  // const product = await fetch(`https://.../${id}`).then((res) => res.json())
+  //
+  // // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+
+  return {
+    title: `Aurelius Ivan Wijaya - Developer`,
+    openGraph: {
+      // images: ['/some-specific-page-image.jpg', ...previousImages],
+      description: "I am Ivan, a software engineer who loves to write about web development, technology, and life.",
+      type: 'website',
+      emails: ['aureliusivanwijaya@gmail.com'],
+      countryName: 'Indonesia',
+      siteName: 'Aurelius Ivan Wijaya',
+    },
+  }
+}
 
 async function Home() {
   return (
@@ -41,9 +73,11 @@ async function Home() {
             Recent Post
           </Title>
           (on development)
-          {/* Post List */}
+          {/* Post List */
+          }
           <Suspense fallback={<Loading/>}>
           </Suspense>
+
         </section>
 
 
@@ -53,7 +87,8 @@ async function Home() {
 
         {/* In Progress */}
         <section
-            className={"w-full flex flex-col items-center justify-center gap-4 m-4"}
+            className={"w-full flex flex-col items-center " +
+                "justify-center gap-4 m-4"}
         >
           <Title>
             Project
@@ -62,12 +97,13 @@ async function Home() {
           <InProgressSection/>
         </section>
 
-        {/*  */}
+        {/* Awards Section */}
         <section>
 
           <Title>
             Awards
           </Title>
+
           (on development)
 
         </section>
