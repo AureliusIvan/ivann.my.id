@@ -30,9 +30,6 @@ services:
       - cmsnetwork
     volumes:
       - ./volumes/mongo:/data/db
-    command:
-      - sleep
-      - infinity
 
 networks:
   cmsnetwork:
