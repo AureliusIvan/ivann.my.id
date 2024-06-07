@@ -8,7 +8,9 @@ import {Navbar} from '@/components/ui/navbar.component';
 import {cn} from '@/lib/utils';
 import {ThemeProvider} from '@/components/theme-provider';
 import {Montserrat} from 'next/font/google'
-import Footer from "@/components/ui/footer";
+import dynamic from 'next/dynamic';
+
+const Footer = dynamic(() => import('@/components/ui/footer'), {})
 
 
 export const metadata: Metadata = {
@@ -38,7 +40,7 @@ interface RootLayoutProps {
 }
 
 
-export default function RootLayout(
+export default async function RootLayout(
     {children}: Readonly<RootLayoutProps>
 ) {
   return (
@@ -64,7 +66,6 @@ export default function RootLayout(
                 bg-primaryLight text-textPrimaryLight'>
 
           <Navbar routes={Routes}/>
-
           {children}
 
           <Footer/>

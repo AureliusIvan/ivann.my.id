@@ -1,4 +1,4 @@
-FROM node:lts-iron
+FROM node:lts-alpine3.20
 
 ENV NODE_OPTIONS="--max-old-space-size=4096"
 

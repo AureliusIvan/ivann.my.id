@@ -6,17 +6,21 @@ import {cn} from "@/lib/utils";
 
 interface TitleProps {
     children?: ReactNode,
-    animate?: "typing"
+    animate?: "typing",
+    size?: "small" | "medium" | "large"
 }
 
-const Title = async ({children, animate}: TitleProps) => {
-    const animation: string = `overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5 animate-${animate}`
+const Title = async ({children, animate, size}: TitleProps) => {
+    const animation: string = `overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5 animate-${animate} `
+    const fontsize: string = size === "small" ? "text-2xl" : size === "medium" ? "text-3xl" : "text-3xl md:text-[4rem]"
     return (
         <div className={"w-max"}>
             <h1
                 className={cn(
-                    'w-max text-4xl font-bold text-white text-center',
-                    animate && animation
+                    'w-max font-bold text-white text-center text-4xl leading-loose',
+                    animate && animation,
+                    size ? fontsize : "text-4xl",
+                    "leading-[4.5rem] tracking-tight"
                 )}
             >
                 {children}

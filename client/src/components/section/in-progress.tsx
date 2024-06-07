@@ -18,24 +18,28 @@ const data = [
     title: 'File Morph',
     description: 'To Do',
     image: 'https://picsum.photos/200/300',
+    github: ''
   },
   {
     id: 1,
     title: 'Ghostrun',
     description: 'In Progress',
-    image: 'https://picsum.photos/200/300'
+    image: 'https://picsum.photos/200/300',
+    github: ''
   },
   {
     id: 2,
     title: 'Perfume Recommender AI',
     description: 'Done',
-    image: 'https://picsum.photos/200/300'
+    image: 'https://picsum.photos/200/300',
+    github: ''
   },
   {
     id: 3,
     title: 'Kantong Neko',
     description: 'Done',
-    image: 'https://picsum.photos/200/300'
+    image: 'https://picsum.photos/200/300',
+    github: ''
   },
   {
     id: 4,
@@ -47,7 +51,8 @@ const data = [
     id: 4,
     title: 'Seven Days at UMN',
     description: 'a game project',
-    image: 'https://picsum.photos/200/300'
+    image: 'https://picsum.photos/200/300',
+    github: ''
   }
 ]
 
@@ -63,7 +68,8 @@ const InProgressSection = async () => {
             <Card
                 key={post.id}
                 className={
-                  "rounded-3xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300 pointer-events-auto cursor-pointer"
+                  "rounded-3xl shadow-lg overflow-hidden hover:scale-105 transition-transform " +
+                    "duration-300 pointer-events-auto cursor-pointer"
                 }
             >
               <CardHeader>
@@ -94,26 +100,30 @@ const InProgressSection = async () => {
               </CardContent>
 
               <CardFooter>
-
-                <Button
-                    className={
-                      "rounded-full p-2"
-                    }
-                    title={"View on Github"}
-                    variant={"outline"}
-                    size={"icon"}
+                <a
+                    href={post.github}
+                    target={"_blank"}
                 >
+                  <Button
+                      className={
+                        "rounded-full p-2"
+                      }
+                      title={"View on Github"}
+                      variant={"outline"}
+                      size={"icon"}
+                  >
 
-                  <Image
-                      className={"dark:invert"}
-                      src={GithubIcon}
-                      alt={"Github Icon"}
-                      width={24}
-                      height={24}
-                  />
+                    <Image
+                        className={"dark:invert"}
+                        src={GithubIcon}
+                        alt={"Github Icon"}
+                        width={24}
+                        height={24}
+                        priority
+                    />
 
-                </Button>
-
+                  </Button>
+                </a>
               </CardFooter>
             </Card>
         ))}

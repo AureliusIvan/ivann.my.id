@@ -2,12 +2,14 @@
 
 import type {Metadata} from 'next'
 
-import {Loading} from '@/components/ui/loading/loading';
+import dynamic from 'next/dynamic';
 import {Title} from '@/components/ui/title';
-import {Suspense} from 'react';
 import {InProgressSection} from "@/components/section/in-progress";
-import GameScreen from '@/components/game/game-screen';
+import PostSection from "@/components/section/post";
 
+const GameScreen = dynamic(() => import('@/components/game/game-screen'), {
+  ssr: true,
+})
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -22,6 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
+
 async function Home() {
   return (
       <main
@@ -31,53 +34,59 @@ async function Home() {
 
         {/* Hero Section */}
         <section
-            className='flex flex-col items-center justify-center gap-4'
+            className='
+            flex flex-col items-center justify-center gap-4
+            mt-10 min-h-[20vh] w-full
+            '
         >
-          <Title>
+          <Title size={"large"}>
             {/*(on development) <br/>*/}
-            Hi. I&#39;am Ivan.<br/>
-            a Developer.
+            Hi. I&#39;m Ivan.<br/>
+            a developer.
           </Title>
 
-          <GameScreen/>
 
-          <div
-              className='flex flex-col items-center justify-center w-full gap-4'
-          >
-          </div>
+          <p className={"text-center font-light animate"}>
+            I loves to write about web development, <br/>
+            technology, and life.
+          </p>
+
+        </section>
+
+        {/* Game Section */}
+        <section
+        >
+
+          <GameScreen/>
 
         </section>
 
         {/* Post Section */}
         <section
-            className={"w-full flex flex-col items-center justify-center gap-4"}
+            className="w-full flex flex-col
+            items-center justify-center gap-4"
         >
           <Title>
             Recent Post
           </Title>
           (on development)
-          {/* Post List */
-          }
-          <Suspense fallback={<Loading/>}>
-          </Suspense>
-
+          <PostSection/>
         </section>
 
-
-        {/* Achievement Section */}
-        <section>
-        </section>
 
         {/* In Progress */}
         <section
-            className={"w-full flex flex-col items-center " +
-                "justify-center gap-4 m-4"}
+            className="w-full flex flex-col items-center
+            justify-center gap-4 m-4"
         >
           <Title>
             Project
           </Title>
+
           (on development)
+
           <InProgressSection/>
+
         </section>
 
         {/* Awards Section */}

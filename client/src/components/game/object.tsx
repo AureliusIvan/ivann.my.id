@@ -16,14 +16,15 @@ export function GameObject({children}: GameObjectProps) {
     // GSAP animation for jump
     gsap.to(boxRef.current, {
       duration: 0.5,
-      x: '+=30',
-      y: '-=50',
-      ease: 'power2.in',
+      x: '+=0',
+      y: '-=30',
+      ease: 'power1',
       onComplete: () => {
-        gsap.to(boxRef.current, {
-          duration: 1,
-          y: '+=50',
-          ease: 'bounce.out'
+        gsap.to(
+            boxRef.current,
+            {
+              y: '+=30',
+              ease: 'circ'
         });
       }
     });

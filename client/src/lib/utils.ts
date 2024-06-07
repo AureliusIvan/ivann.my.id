@@ -24,12 +24,6 @@ export function randomColor() {
 }
 
 export function randomPosition() {
-  // return x and y position
-  // return {
-  //   x: Math.floor(Math.random() * 100),
-  //   y: Math.floor(Math.random() * 100)
-  // }
-
   const screenWidth = 100;
   const screenHeight = 100;
 

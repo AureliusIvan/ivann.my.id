@@ -50,7 +50,6 @@ const Github = async () => {
   const data = await getGithubData();
   return (
       <section
-          // href={data?.html_url || "#"}
           className={
               'select-none pointer-events-auto cursor-pointer ' +
               'flex flex-row gap-2.5 ' +

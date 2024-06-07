@@ -22,7 +22,8 @@ function Environment(
       duration: 10,
       x: '100vw',
       repeat: -1,
-      ease: 'none'
+      ease: 'none',
+      startAt: {x: -50}
     })
   })
 
@@ -30,16 +31,17 @@ function Environment(
       <section
           className="game-environment w-full h-full relative
             overflow-x-hidden overflow-visible
-            isolate z-10 bg-gray-700 bg-opacity-20
-            border-r-8 px-4 py-4 min-w-[100vw] min-h-[10rem]"
+            isolate z-10 px-4 py-4 min-w-[100vw] min-h-[10rem]"
       >
         <GameObject>
           <Lottie
               id='game-background'
-              className={'w-auto h-[5rem] absolute left-0 z-[0] bg-cover bg-center bg-no-repeat'}
+              className='w-auto h-[5rem] absolute'
               animationData={UfoLottie}
           />
+
           {/*{children}*/}
+
         </GameObject>
       </section>
   )
