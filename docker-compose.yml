@@ -1,15 +1,15 @@
 services:
   app:
+    container_name: app-${PROJECT_NAME}
     build:
       context: .
       dockerfile: Dockerfile
     working_dir: /app
     privileged: true
+    user: root
     tty: true
-    container_name: app-${PROJECT_NAME}
     ports:
-      - "3000:3000"
-      - "4000:4000"
+      - 3000:3000
     volumes:
       - .:/app
       - ./volumes/logs:/app/logs
@@ -18,29 +18,21 @@ services:
     networks:
       - cmsnetwork
     depends_on:
-      - redis
       - mongo
 
-  redis:
-    image: redis:alpine
-    container_name: redis-${PROJECT_NAME}
-    ports:
-      - "6379:6379"
-    networks:
-      - cmsnetwork
-    volumes:
-      - ./volumes/redis:/data
-
   mongo:
-    image: mongo:latest
     container_name: mongo-${PROJECT_NAME}
+    image: mongo:5.0-focal
     tty: true
     ports:
-      - "27017:27017"
+      - 27017:27017
     networks:
       - cmsnetwork
     volumes:
       - ./volumes/mongo:/data/db
+    command:
+      - sleep
+      - infinity
 
 networks:
   cmsnetwork:
