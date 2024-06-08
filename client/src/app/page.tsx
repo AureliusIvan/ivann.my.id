@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
       emails: ['aureliusivanwijaya@gmail.com'],
       countryName: 'Indonesia',
       siteName: 'Aurelius Ivan Wijaya',
-    },
+    }
   }
 }
 
@@ -29,7 +29,7 @@ async function Home() {
   return (
       <main
           className='flex flex-col items-center justify-center
-            w-full h-full gap-4 p-6'
+            w-full h-full gap-4 p-6 relative'
       >
 
         {/* Hero Section */}
@@ -66,11 +66,12 @@ async function Home() {
             className="w-full flex flex-col
             items-center justify-center gap-4"
         >
-          <Title>
+          <Title size={"medium"}>
             Recent Post
           </Title>
-          (on development)
+
           <PostSection/>
+
         </section>
 
 
@@ -79,7 +80,7 @@ async function Home() {
             className="w-full flex flex-col items-center
             justify-center gap-4 m-4"
         >
-          <Title>
+          <Title size={"medium"}>
             Project
           </Title>
 

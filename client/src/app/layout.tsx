@@ -4,14 +4,15 @@ import type {Metadata} from "next";
 import type {NavbarRouteTypes} from '@/components/ui/navbar.component';
 
 import {ReactNode} from "react";
-import {Navbar} from '@/components/ui/navbar.component';
-import {cn} from '@/lib/utils';
 import {ThemeProvider} from '@/components/theme-provider';
 import {Montserrat} from 'next/font/google'
 import dynamic from 'next/dynamic';
+import {
+  GoogleTagManager,
+} from '@next/third-parties/google'
 
 const Footer = dynamic(() => import('@/components/ui/footer'), {})
-
+const Navbar = dynamic(() => import('@/components/ui/navbar.component'), {})
 
 export const metadata: Metadata = {
   title: "Aurelius Ivan Wijaya",
@@ -44,14 +45,15 @@ export default async function RootLayout(
     {children}: Readonly<RootLayoutProps>
 ) {
   return (
-      <html lang="en" suppressHydrationWarning className={"transform-gpu transition-all "}>
-      <body
-          className={cn(
-              "min-h-screen bg-background font-sans " +
-              "antialiased",
-              font.variable
-          )}
+      <html
+          lang="en"
+          suppressHydrationWarning
+          className={font.className}
       >
+
+      <GoogleTagManager gtmId="GTM-W2N78S3C"/>
+
+      <body>
 
       <ThemeProvider
           attribute="class"
@@ -61,11 +63,14 @@ export default async function RootLayout(
       >
         <main
             id={'main-page'}
-            className='min-h-screen h-full overflow-x-hidden relative
-                dark:bg-primaryDark dark:text-textPrimaryDark
-                bg-primaryLight text-textPrimaryLight'>
+            className='
+            min-h-screen h-full overflow-x-hidden relative
+            dark:bg-primaryDark dark:text-textPrimaryDark
+            bg-primaryLight text-textPrimaryLight'
+        >
 
           <Navbar routes={Routes}/>
+
           {children}
 
           <Footer/>

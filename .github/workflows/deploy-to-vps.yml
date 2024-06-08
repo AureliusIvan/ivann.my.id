@@ -1,7 +1,4 @@
-# Deploy to VPS workflow
-
 name: Deploy to VPS
-
 on:
   push:
     branches:
@@ -9,17 +6,17 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: node-lts-alpine3.20
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
+      #      - name: Checkout code
+      #        uses: actions/checkout@v2
+      #
+      #      - name: Install dependencies
+      #        run: pnpm install
+      #
+      #      - name: Build
+      #        run: npm run build
 
       - name: Deploy
         uses: appleboy/ssh-action@master
@@ -32,6 +29,3 @@ jobs:
             rm -rf *
             cp -r $GITHUB_WORKSPACE/dist/* .
             ls -l
-
-      - name: Succes
-        run: echo "Deployed successfully"

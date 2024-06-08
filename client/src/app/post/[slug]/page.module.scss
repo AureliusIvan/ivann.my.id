@@ -1,0 +1,48 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+  min-height: 100vh;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    max-width: 800px;
+    text-align: left;
+    margin-top: 1rem;
+  }
+
+  pre {
+    background-color: #2e2e2e;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    color: #e1b970;
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: 5px;
+  }
+}

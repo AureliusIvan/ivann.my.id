@@ -16,15 +16,16 @@ const handleGetChangelog = async () => {
   }
 
   const file = await fs.readFile(process.cwd() + '/../README.md', 'utf8');
+  const date = await fs.stat(process.cwd() + '/../README.md');
   const result = {
     name: 'v1_0_0',
-    content: file
+    content: file,
+    date: date.mtime
   }
 
   cache.set(cacheKey, result);
   return result;
 }
-
 
 export {
   handleGetChangelog

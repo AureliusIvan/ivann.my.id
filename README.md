@@ -1,4 +1,4 @@
-# Update v1.0.0
+# Update v1.0.1
 
 ## Added
 
@@ -7,6 +7,7 @@
 3. markdown integration for changelog
 4. Update UI for the changelog page
 5. Dark mode support
+6. Added a new page for the post page
 
 ## Changed
 

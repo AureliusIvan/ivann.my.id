@@ -1,7 +1,23 @@
 import {MetadataRoute} from 'next'
+import {getAllSlugs} from "@/app/action";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+const getPostSiteMap = async () => {
+  const slugs = await getAllSlugs()
+  return slugs.map(slug => {
+    return {
+      url: `https://ivann.my.id/posts/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.8,
+    }
+  })
+}
+
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const data = await getPostSiteMap()
+
+  let sitemapData = [
     {
       url: 'https://ivann.my.id',
       lastModified: new Date(),
@@ -13,6 +29,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.8,
-    }
+    },
   ]
+
+  sitemapData = sitemapData.concat(data)
+  return sitemapData as MetadataRoute.Sitemap
 }

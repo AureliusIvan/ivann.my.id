@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import {DarkModeToggle} from './dark-mode-toogle'
 import {usePathname} from 'next/navigation'
-import {useEffect, useState} from "react";
 
 interface NavbarRouteTypes {
   path: string
@@ -11,17 +10,6 @@ interface NavbarRouteTypes {
 }
 
 function Navbar({routes}: Readonly<{ routes: NavbarRouteTypes[] }>) {
-  const [currentRoute, setCurrentRoute] = useState<Number>(0)
-
-  useEffect(() => {
-    // console.log('currentRoute', currentRoute)
-  }, [currentRoute])
-
-  const handleRouteChange = (index: number) => {
-    // setCurrentRoute(index)
-    // console.log('currentRoute', index)
-  }
-
   let currentPath: string = usePathname().split('/')[1]
   return (
       <nav
@@ -37,7 +25,6 @@ function Navbar({routes}: Readonly<{ routes: NavbarRouteTypes[] }>) {
         {
           routes.map((page, index) => {
                 if (page.path === currentPath) {
-                  handleRouteChange(index)
                   return (
                       <Link
                           className='dark:hover:text-gray-300 font-bold bg-blue-50 bg-opacity-20
@@ -88,4 +75,5 @@ function UrlLink({path, name}: NavbarRouteTypes) {
 
 
 export {Navbar}
+export default Navbar
 export type {NavbarRouteTypes}
