@@ -35,7 +35,7 @@ const Spotify = async () => {
 
           <a
               target={"_blank"}
-              href={"https://open.spotify.com/track/7n1T7g1Z4X7x8gV7RJZTJ4?si=3e8b8c5c2c1e4b7d"}
+              href={"https://open.spotify.com/track/6tNQ70jh4OwmPGpYy6R2o9?si=365309aa3c0b493b"}
               className={"font-bold underline"}
           >
             On Spotify
@@ -44,7 +44,6 @@ const Spotify = async () => {
       </div>
   )
 }
-
 
 const Github = async () => {
   const data = await getGithubData();
@@ -94,6 +93,33 @@ const Github = async () => {
   )
 }
 
+
+interface SocialMediaIconProps {
+  id: string,
+  href: string,
+  alt: string
+}
+
+const SocialMediaIcon = ({id, href, alt}: SocialMediaIconProps) => {
+  return (
+      <a
+          href={href}
+          target={"_blank"}
+          className={"bg-gray-800 rounded-full p-[0.5rem]"}
+      >
+        <Image
+            className='w-6 h-6 pointer-events-auto cursor-pointer
+            hover:scale-125 transition-transform duration-300 ease-in-out'
+            src={`/image/icon-${id}.svg`}
+            alt={alt}
+            width={48}
+            height={48}
+        />
+      </a>
+  )
+}
+
+
 async function Footer() {
   return (
       <footer
@@ -117,6 +143,12 @@ async function Footer() {
         <section
             className={"flex flex-col items-center justify-center gap-4"}
         >
+
+          <div className="flex gap-2.5">
+            <SocialMediaIcon id={"linkedin"} href={"https://www.linkedin.com/in/aurelius-ivan-wijaya/"} alt={"linkedin"}/>
+            <SocialMediaIcon id={"instagram"} href={"https://www.instagram.com/aureli.van/"} alt={"instagram"}/>
+          </div>
+
           <h1>Or.. send me a mail!</h1>
 
           <a

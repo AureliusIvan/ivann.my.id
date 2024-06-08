@@ -40,17 +40,32 @@ async function Home() {
             '
         >
           <Title size={"large"}>
-            {/*(on development) <br/>*/}
+
             Hi. I&#39;m Ivan.<br/>
             a developer.
+
           </Title>
 
 
-          <p className={"text-center font-light animate"}>
+          <p className={"text-center font-light"}>
+
             I loves to write about web development, <br/>
             technology, and life.
+
           </p>
 
+          {/*  downlowad cv*/}
+
+          <a
+              href={'/cv.pdf'}
+              target={"_blank"}
+              className="
+              text-center font-bold
+              bg-neutral-900 text-white py-2 px-4
+                          dark:bg-gray-700 rounded-3xl"
+          >
+            Download CV
+          </a>
         </section>
 
         {/* Game Section */}
@@ -90,16 +105,6 @@ async function Home() {
 
         </section>
 
-        {/* Awards Section */}
-        <section>
-
-          <Title>
-            Awards
-          </Title>
-
-          (on development)
-
-        </section>
       </main>
 
   )

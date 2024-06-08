@@ -20,16 +20,6 @@ const config = {
       },
     },
     extend: {
-      colors: {
-        primaryLight: "#F9F7EC",
-        primaryDark: "#121212",
-        secondaryLight: "#163C26",
-        textPrimaryDark: "#FFFBE1",
-        textPrimaryLight: "#43423E",
-      },
-      fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
-      },
       keyframes: {
         "accordion-down": {
           from: {height: "0"},
@@ -55,9 +45,14 @@ const config = {
           "100%": {
             borderColor: "white"
           }
+        },
+        spin: {
+          from: {transform: "rotate(0deg)"},
+          to: {transform: "rotate(360deg)"}
         }
       },
       animation: {
+        "intro": "spin 0.5s ease-out",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "typing": "typing 1s steps(10) 1 alternate, blink .7s infinite alternate"

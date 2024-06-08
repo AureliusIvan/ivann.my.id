@@ -2,7 +2,7 @@
 
 import {ReactNode} from 'react'
 import {cn} from "@/lib/utils";
-
+import {createElement} from "react";
 
 interface TitleProps {
   children?: ReactNode,
@@ -11,22 +11,22 @@ interface TitleProps {
 }
 
 const Title = async ({children, animate, size}: TitleProps) => {
-  const animation: string = `overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5 animate-${animate}`
-  const fontsize: string = size === "small" ? "text-2xl" : size === "medium" ? "text-3xl" : "text-3xl md:text-[4rem]"
+  const animation = animate ? `overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-5 animate-${animate}` : '';
+  const fontSize = size === 'small' ? 'text-2xl' : size === 'medium' ? 'text-3xl' : 'text-3xl md:text-[4rem] leading-[2.5rem] md:leading-[4.5rem]';
+  const baseClasses = 'w-max font-bold te xt-white text-center tracking-tighter drop-shadow-2xl';
+  const headingTag = size === 'small' ? 'h3' : size === 'medium' ? 'h2' : 'h1';
+
   return (
-      <div className={"w-max"}>
-        <h1
-            className={cn(
-                'w-max font-bold text-white text-center text-4xl',
-                animate && animation,
-                size ? fontsize : "text-4xl",
-                "leading-[2rem] md:leading-[4.5rem] tracking-tighter"
-            )}
-        >
-          {children}
-        </h1>
+      <div className="w-max">
+        {createElement(
+            headingTag,
+            {className: cn(baseClasses, fontSize, animation)},
+            children
+        )}
       </div>
-  )
-}
+  );
+};
+
+export default Title;
 
 export {Title}

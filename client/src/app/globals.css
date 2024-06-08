@@ -26,26 +26,16 @@
     #main-page {
         background: var(--bg-conic);
         background-size: 200% 100%;
-        animation: spin 15s linear infinite;
     }
 }
 
 
-.animated-background {
-    background-size: 400%;
-
-    -webkit-animation: animation 3s ease infinite;
-    -moz-animation: animation 3s ease infinite;
-    animation: animation 3s ease infinite;
-}
-
-@keyframes animation {
-    0%,
-    100% {
+/*intro */
+@keyframes spin {
+    0% {
         background-position: 0% 50%;
     }
-
-    50% {
+    100% {
         background-position: 100% 50%;
     }
 }

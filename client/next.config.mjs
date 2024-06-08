@@ -6,7 +6,8 @@ const withMDX = mdx()
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   experimental: {
-    webVitalsAttribution: ['CLS', 'LCP']
+    webVitalsAttribution: ['CLS', 'LCP'],
+    mdxRs: true,
   },
   images: {
     dangerouslyAllowSVG: true,
