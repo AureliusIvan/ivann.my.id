@@ -1,8 +1,5 @@
 import express, {Application} from 'express';
 import morgan from "morgan";
-import {config as env} from "dotenv";
-
-env();
 
 class ExpressApp {
   private readonly app: Application;

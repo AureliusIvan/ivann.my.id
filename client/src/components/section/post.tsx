@@ -10,7 +10,7 @@ async function PostSection() {
   const res: any = await getPostData()
   return (
       <section
-          className={"grid grid-cols-1 gap-4 w-full max-w-3xl p-4"}
+          className={"grid grid-cols-1 gap-4 w-full max-w-3xl p-2"}
       >
         {
           res.map((post: PostData) => {

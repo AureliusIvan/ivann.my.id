@@ -2,9 +2,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  gap: 20px;
+  padding-inline: 20px;
   min-height: 100vh;
+
+
+  .article {
+    animation: fadeIn 0.3s ease-in-out 1;
+    will-change: opacity, transform;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(50vh);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
   h1 {
     font-size: 2rem;
@@ -44,5 +60,11 @@
   img {
     max-width: 100%;
     border-radius: 5px;
+  }
+
+  a{
+    color: #a4ff9c;
+    text-decoration: none;
+    font-weight: 700;
   }
 }

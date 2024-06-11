@@ -55,7 +55,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button"
 
 
-const LinkButton = React.forwardRef<HTMLAnchorElement, ButtonProps| any>(
+const LinkButton = React.forwardRef<HTMLAnchorElement, ButtonProps | any>(
     ({className, variant, size, asChild = false, ...props}, ref) => {
       const Comp = asChild ? Slot : "a" as any
       return (
@@ -75,4 +75,5 @@ LinkButton.displayName = "LinkButton"
 export {
   Button,
   LinkButton,
-  buttonVariants}
+  buttonVariants
+}

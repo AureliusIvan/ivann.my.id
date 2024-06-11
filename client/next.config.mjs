@@ -6,8 +6,15 @@ const withMDX = mdx()
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   experimental: {
-    webVitalsAttribution: ['CLS', 'LCP'],
     mdxRs: true,
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      }
+    }
   },
   images: {
     dangerouslyAllowSVG: true,
