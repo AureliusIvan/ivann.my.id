@@ -10,10 +10,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import {useSound} from "@/providers/useSound";
 
 export function DarkModeToggle() {
-  const {isSoundOn, toggleSound} = useSound()
+  const {setTheme} = useTheme()
+
   return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -29,11 +29,14 @@ export function DarkModeToggle() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuItem onClick={() => toggleSound(true)}>
-            On
+          <DropdownMenuItem onClick={() => setTheme("light")}>
+            Light
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => toggleSound(false)}>
-            Off
+          <DropdownMenuItem onClick={() => setTheme("dark")}>
+            Dark
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setTheme("system")}>
+            System
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
