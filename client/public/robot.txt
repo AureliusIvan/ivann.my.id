@@ -1,4 +1,3 @@
 User-Agent: *
-Allow: /
 Disallow: /private/
 Sitemap: https://ivann.my.id/sitemap.xml

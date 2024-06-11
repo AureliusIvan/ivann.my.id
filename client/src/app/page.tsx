@@ -20,6 +20,10 @@ export async function generateMetadata(): Promise<Metadata> {
       emails: ['aureliusivanwijaya@gmail.com'],
       countryName: 'Indonesia',
       siteName: 'Aurelius Ivan Wijaya',
+    },
+    robots: {
+      follow: true,
+      index: true,
     }
   }
 }

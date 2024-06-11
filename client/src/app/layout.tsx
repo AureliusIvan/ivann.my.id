@@ -17,6 +17,21 @@ const Navbar = dynamic(() => import('@/components/ui/navbar.component'), {})
 export const metadata: Metadata = {
   title: "Aurelius Ivan Wijaya",
   description: "I'm Ivan, a software engineer who loves to write about web development, technology, and life.",
+  robots: {
+    follow: true,
+    index: true,
+    notranslate: true,
+  },
+  openGraph: {
+    description: "I am Ivan, a software engineer who loves to write about web development, technology, and life.",
+    type: 'website',
+    emails: ['aureliusivanwijaya@gmail.com'],
+    countryName: 'Indonesia',
+    siteName: 'Aurelius Ivan Wijaya'
+  },
+  applicationName: 'Aurelius Ivan Wijaya',
+  keywords: ['Ivan', 'Aurelius', 'Wijaya', 'Software Engineer', 'Web Development', 'Technology', 'Life'],
+  icons: 'https://ivann.my.id/favicon.ico'
 };
 
 const font = Montserrat({

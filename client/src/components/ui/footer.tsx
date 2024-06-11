@@ -103,6 +103,7 @@ interface SocialMediaIconProps {
 const SocialMediaIcon = ({id, href, alt}: SocialMediaIconProps) => {
   return (
       <a
+          title={alt}
           href={href}
           target={"_blank"}
           className={"bg-gray-800 rounded-full p-[0.5rem]"}
@@ -152,6 +153,7 @@ async function Footer() {
           <h1>Or.. send me a mail!</h1>
 
           <a
+              title={"email to ivan"}
               href={"mailto:aureliusivanwijaya@gmail.com?subject=Hello Ivan!&body=Hello Ivan! I want to say..."}
               target={"_blank"}
           >
@@ -163,7 +165,7 @@ async function Footer() {
                     "transition-transform duration-300 " +
                     "ease-in-out"}
                 src={Mail}
-                alt={"mail icon"}
+                alt={"email aureliusivanwijaya@gmail.com"}
             />
 
           </a>

@@ -1,5 +1,7 @@
 "use server"
 
+import type { Metadata, ResolvingMetadata } from 'next'
+
 import styles from './page.module.scss'
 import Link from "next/link";
 import Image from "next/image";
@@ -9,9 +11,23 @@ import {getPostDataBySlug} from "@/app/action";
 import {LinkButton} from "@/components/ui/button";
 import {cn} from "@/lib/utils"
 
+export async function generateMetadata(
+    {params}: { params: { slug: string } },
+    parent: ResolvingMetadata
+): Promise<Metadata> {
+  const res: any = await getPostDataBySlug(params.slug)
+  return {
+    title: res.title,
+    description: res.description,
+    openGraph: {
+      description: res.description,
+      type: 'website',
+    }
+  }
+}
+
 export default async function Page({params}: { params: { slug: string } }) {
   const res: any = await getPostDataBySlug(params.slug)
-
   if (!res) {
     return <div>404</div>
   }
@@ -37,6 +53,7 @@ export default async function Page({params}: { params: { slug: string } }) {
 
             {/* close button */}
             <Link
+                title={'Back to home'}
                 className='text-blue-500'
                 href={'/'}>
               <Image
