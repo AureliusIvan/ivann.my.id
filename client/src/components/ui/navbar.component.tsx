@@ -55,7 +55,6 @@ function Navbar({routes}: Readonly<{ routes: NavbarRouteTypes[] }>) {
               }
           )
         }
-
         <DarkModeToggle/>
       </nav>
   )

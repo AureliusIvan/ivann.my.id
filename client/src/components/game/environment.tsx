@@ -33,6 +33,7 @@ function Environment(
             overflow-x-hidden overflow-visible
             isolate z-10 px-4 py-4 min-w-[100vw] min-h-[10rem]"
       >
+
         <GameObject>
           <Lottie
               id='game-background'

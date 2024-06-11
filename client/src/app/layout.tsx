@@ -7,9 +7,11 @@ import {ReactNode} from "react";
 import {ThemeProvider} from '@/components/theme-provider';
 import {Montserrat} from 'next/font/google'
 import dynamic from 'next/dynamic';
+import {SoundProvider} from "@/providers/useSound";
 import {
   GoogleTagManager,
 } from '@next/third-parties/google'
+import {LottieBackground} from "@/components/ui/lottie-background";
 
 const Footer = dynamic(() => import('@/components/ui/footer'), {})
 const Navbar = dynamic(() => import('@/components/ui/navbar.component'), {})
@@ -76,21 +78,24 @@ export default async function RootLayout(
           enableSystem={true}
           disableTransitionOnChange={true}
       >
-        <main
-            id={'main-page'}
-            className='
+        <LottieBackground>
+          <SoundProvider>
+            <main
+                id={'main-page'}
+                className='
             min-h-screen h-full overflow-x-hidden relative
             dark:bg-primaryDark dark:text-textPrimaryDark
             bg-primaryLight text-textPrimaryLight'
-        >
+            >
 
-          <Navbar routes={Routes}/>
+              <Navbar routes={Routes}/>
 
-          {children}
+              {children}
 
-          <Footer/>
-        </main>
-
+              <Footer/>
+            </main>
+          </SoundProvider>
+        </LottieBackground>
       </ThemeProvider>
 
       </body>
