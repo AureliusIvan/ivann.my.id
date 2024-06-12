@@ -68,7 +68,7 @@ const InProgressSection = async () => {
             <Card
                 key={post.id}
                 className={
-                  "rounded-3xl shadow-lg overflow-hidden hover:scale-105 transition-transform " +
+                  "rounded-3xl shadow-lg overflow-hidden md:hover:scale-105 transition-transform " +
                     "duration-300 pointer-events-auto cursor-pointer"
                 }
             >
