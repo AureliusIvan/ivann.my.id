@@ -6,6 +6,8 @@ import dynamic from 'next/dynamic';
 import {Title} from '@/components/ui/title';
 import {InProgressSection} from "@/components/section/in-progress";
 import PostSection from "@/components/section/post";
+import Image from "next/image";
+import Star from "@/static/svg/star-alt.svg";
 
 const GameScreen = dynamic(() => import('@/components/game/game-screen'), {
   ssr: true,
@@ -40,8 +42,7 @@ async function Home() {
         <section
             className='
             flex flex-col items-center justify-center gap-4
-            mt-10 min-h-[20vh] w-full
-            '
+            mt-10 min-h-[20vh] w-full'
         >
           <Title size={"large"}>
 
@@ -58,18 +59,29 @@ async function Home() {
 
           </p>
 
-          {/*  downlowad cv*/}
+          {/*  download cv*/}
 
           <a
+              title={"Download CV"}
               href={'/cv.pdf'}
               target={"_blank"}
               className="
               text-center font-bold
               bg-neutral-900 text-white py-2 px-4
-                          dark:bg-gray-700 rounded-3xl"
+              dark:bg-gray-700 rounded-3xl relative cursor-pointer md:hover:bg-neutral-800"
           >
             Download CV
+            <Image
+                alt={'background'}
+                src={Star}
+                id={'star'}
+                className="w-[1.5rem] h-auto absolute right-[-10px] top-[-10px] animate-spin"
+                width={1920}
+                height={1080}
+                priority
+            />
           </a>
+
         </section>
 
         {/* Game Section */}
@@ -94,7 +106,7 @@ async function Home() {
         </section>
 
 
-        {/* In Progress */}
+         {/*In Progress */}
         <section
             className="w-full flex flex-col items-center
             justify-center gap-4 m-4"

@@ -76,25 +76,21 @@ export default async function RootLayout(
           attribute="class"
           defaultTheme="dark"
           enableSystem={true}
-          disableTransitionOnChange={true}
       >
         <LottieBackground>
-          <SoundProvider>
-            <main
-                id={'main-page'}
-                className='
-            min-h-screen h-full overflow-x-hidden relative
-            dark:bg-primaryDark dark:text-textPrimaryDark
-            bg-primaryLight text-textPrimaryLight'
-            >
+          <main
+              id={'main-page'}
+              className='min-h-screen h-full overflow-x-hidden relative
+                dark:bg-primaryDark dark:text-textPrimaryDark
+                bg-primaryLight text-textPrimaryLight'
+          >
 
-              <Navbar routes={Routes}/>
+            <Navbar routes={Routes}/>
 
-              {children}
+            {children}
 
-              <Footer/>
-            </main>
-          </SoundProvider>
+            <Footer/>
+          </main>
         </LottieBackground>
       </ThemeProvider>
 

@@ -1,8 +1,8 @@
 'use client'
 
-import React from 'react'
+import React, {useEffect} from 'react'
 import gsap from 'gsap';
-import Lottie from "lottie-react";
+import lottie from 'lottie-web';
 import UfoLottie from "@/static/lotties/ufo-lotties.json";
 import {useGSAP} from '@gsap/react';
 import {GameObject} from '@/components/game/object'
@@ -16,14 +16,28 @@ interface EnvironmentProps {
 function Environment(
     {children}: Readonly<EnvironmentProps>
 ) {
+  useEffect(() => {
+    // lottie.loadAnimation({
+    //   // @ts-ignore
+    //   container: document.getElementById('game-background'),
+    //   renderer: 'svg',
+    //   loop: false,
+    //   autoplay: false,
+    //   animationData: UfoLottie,
+    // }).stop()
+  }, [])
+  let tl = gsap.timeline({
+    repeat: -1,
+    yoyo: true,
+    repeatDelay: 5,
+    ease: 'power3',
+  })
+
   useGSAP(() => {
-    // loop the background unlimited
-    gsap.to('#game-background', {
-      duration: 10,
+    tl.to('#game-background', {
       x: '100vw',
-      repeat: -1,
-      ease: 'none',
-      startAt: {x: -50}
+      duration: 10,
+      repeatDelay: 5,
     })
   })
 
@@ -35,10 +49,9 @@ function Environment(
       >
 
         <GameObject>
-          <Lottie
-              id='game-background'
-              className='w-auto h-[5rem] absolute'
-              animationData={UfoLottie}
+          <div
+              id={'game-background'}
+              className="w-[1rem] h-[1rem] absolute object-cover transform-gpu duration-300 z-[-4]"
           />
 
           {/*{children}*/}
