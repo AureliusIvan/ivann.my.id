@@ -5,13 +5,13 @@ import type {NavbarRouteTypes} from '@/components/ui/navbar.component';
 
 import {ReactNode} from "react";
 import {ThemeProvider} from '@/components/theme-provider';
-import {Montserrat} from 'next/font/google'
 import dynamic from 'next/dynamic';
-import {SoundProvider} from "@/providers/useSound";
 import {
   GoogleTagManager,
 } from '@next/third-parties/google'
-import {LottieBackground} from "@/components/ui/lottie-background";
+import {MontserratFont} from "@/app/font/font";
+import {SpeedInsights} from "@vercel/speed-insights/next"
+import {Analytics} from "@vercel/analytics/next";
 
 const Footer = dynamic(() => import('@/components/ui/footer'), {})
 const Navbar = dynamic(() => import('@/components/ui/navbar.component'), {})
@@ -36,12 +36,6 @@ export const metadata: Metadata = {
   icons: 'https://ivann.my.id/favicon.ico'
 };
 
-const font = Montserrat({
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-sans",
-  subsets: ["latin"],
-})
-
 const Routes: NavbarRouteTypes[] = [
   {
     path: '',
@@ -65,33 +59,31 @@ export default async function RootLayout(
       <html
           lang="en"
           suppressHydrationWarning
-          className={font.className}
+          className={MontserratFont.className}
       >
 
       <GoogleTagManager gtmId="GTM-W2N78S3C"/>
+      <SpeedInsights/>
+      <Analytics/>
 
       <body>
-
       <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem={true}
       >
-        <LottieBackground>
-          <main
-              id={'main-page'}
-              className='min-h-screen h-full overflow-x-hidden relative
+        <main
+            id={'main-page'}
+            className='min-h-screen h-full overflow-x-hidden relative
                 dark:bg-primaryDark dark:text-textPrimaryDark
                 bg-primaryLight text-textPrimaryLight'
-          >
+        >
 
-            <Navbar routes={Routes}/>
+          <Navbar routes={Routes}/>
 
-            {children}
+          {children}
 
-            <Footer/>
-          </main>
-        </LottieBackground>
+          <Footer/>
+        </main>
       </ThemeProvider>
 
       </body>

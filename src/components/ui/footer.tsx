@@ -126,7 +126,7 @@ async function Footer() {
       <footer
           id={"footer"}
           className={
-            `text-white md:p-[4rem] p-[1.5rem] flex md:flex-row justify-between flex-col md:items-center md:gap-4 `
+            `text-white md:p-[4rem] p-[1.5rem] flex md:flex-row justify-between flex-col md:items-center md:gap-4 bg-gray-800 dark:bg-gray-900`
           }
       >
         <section

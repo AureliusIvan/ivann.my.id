@@ -2,16 +2,9 @@
 
 import type {Metadata} from 'next'
 
-import dynamic from 'next/dynamic';
 import {Title} from '@/components/ui/title';
-import {InProgressSection} from "@/components/section/in-progress";
+import {ProjectSection} from "@/components/section/project";
 import PostSection from "@/components/section/post";
-import Image from "next/image";
-import Star from "@/static/svg/star-alt.svg";
-
-const GameScreen = dynamic(() => import('@/components/game/game-screen'), {
-  ssr: true,
-})
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -42,54 +35,28 @@ async function Home() {
         <section
             className='
             flex flex-col items-center justify-center gap-4
-            mt-10 min-h-[20vh] w-full'
+            mt-10 min-h-[30vh] w-full'
         >
           <Title size={"large"}>
-
-            Hi. I&#39;m Ivan.<br/>
-            a developer.
-
+            The Boring Web
           </Title>
-
-
-          <p className={"text-center font-light"}>
-
-            I loves to write about web development, <br/>
-            technology, and life.
-
-          </p>
+          <span>
+            by Ivan
+          </span>
 
           {/*  download cv*/}
-
           <a
               title={"Download CV"}
               href={'/cv.pdf'}
               target={"_blank"}
               className="
+              border
               text-center font-bold
-              bg-neutral-900 text-white py-2 px-4
-              dark:bg-gray-700 rounded-3xl relative cursor-pointer md:hover:bg-neutral-800"
+              bg-black text-white py-2 px-4
+              dark:bg-black relative cursor-pointer md:hover:bg-neutral-800"
           >
             Download CV
-            <Image
-                alt={'background'}
-                src={Star}
-                id={'star'}
-                className="w-[1.5rem] h-auto absolute right-[-10px] top-[-10px] animate-spin"
-                width={1920}
-                height={1080}
-                priority
-            />
           </a>
-
-        </section>
-
-        {/* Game Section */}
-        <section
-        >
-
-          <GameScreen/>
-
         </section>
 
         {/* Post Section */}
@@ -115,9 +82,9 @@ async function Home() {
             Project
           </Title>
 
-          (on development)
+          (on development 🛠️)
 
-          <InProgressSection/>
+          <ProjectSection/>
 
         </section>
 

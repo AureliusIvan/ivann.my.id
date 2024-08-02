@@ -11,12 +11,12 @@ const cache = new LRUCache<string, { name: string, content: string }>({
 const handleGetChangelog = async () => {
   const cacheKey = 'v1_0_0';
 
-  if (cache.has(cacheKey)) {
+  if (cache.has(cacheKey) && process.env.NODE_ENV === 'production') {
     return cache.get(cacheKey);
   }
 
-  const file = await fs.readFile(process.cwd() + '/../README.md', 'utf8');
-  const date = await fs.stat(process.cwd() + '/../README.md');
+  const file = await fs.readFile(process.cwd() + '/README.md', 'utf8');
+  const date = await fs.stat(process.cwd() + '/README.md');
   const result = {
     name: 'v1_0_0',
     content: file,

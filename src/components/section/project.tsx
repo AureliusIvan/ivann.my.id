@@ -56,11 +56,11 @@ const data = [
   }
 ]
 
-const InProgressSection = async () => {
+const ProjectSection = async () => {
   return (
       <article
           className={
-            'grid grid-cols-1 md:grid-cols-3 gap-4'
+            'max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-4 border p-2'
           }
       >
 
@@ -68,8 +68,8 @@ const InProgressSection = async () => {
             <Card
                 key={post.id}
                 className={
-                  "rounded-3xl shadow-lg overflow-hidden md:hover:scale-105 transition-transform " +
-                    "duration-300 pointer-events-auto cursor-pointer"
+                  `shadow-lg overflow-hidden md:hover:opacity-60 border border-gray-200 dark:border-white   
+                  transition-transform duration-300 pointer-events-auto cursor-pointer`
                 }
             >
               <CardHeader>
@@ -88,7 +88,7 @@ const InProgressSection = async () => {
 
                 <Image
                     className={
-                      `w-full h-52 object-cover object-center rounded-3xl`
+                      `w-full h-52 object-cover object-center`
                     }
                     src={post.image}
                     alt={"Image"}
@@ -106,7 +106,7 @@ const InProgressSection = async () => {
                 >
                   <Button
                       className={
-                        "rounded-full p-2"
+                        "p-2"
                       }
                       title={"View on Github"}
                       variant={"outline"}
@@ -131,4 +131,4 @@ const InProgressSection = async () => {
   );
 }
 
-export {InProgressSection}
+export {ProjectSection}

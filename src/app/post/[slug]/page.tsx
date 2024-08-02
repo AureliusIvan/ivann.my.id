@@ -1,6 +1,6 @@
 "use server"
 
-import type { Metadata, ResolvingMetadata } from 'next'
+import type {Metadata, ResolvingMetadata} from 'next'
 
 import styles from './page.module.scss'
 import Link from "next/link";
@@ -41,7 +41,7 @@ export default async function Page({params}: { params: { slug: string } }) {
             className={cn(
                 styles.article,
                 'backdrop-blur-2xl bg-white/30 dark:bg-white/10 p-4 ' +
-                'rounded-lg w-full max-w-[50rem] mx-auto mt-4'
+                'w-full max-w-[50rem] mx-auto mt-4'
             )}
         >
 

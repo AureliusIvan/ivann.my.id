@@ -12,7 +12,7 @@ const Card = forwardRef<
       <div
           ref={ref}
           className={cn(
-              `rounded-[2rem] border-[1px] border-neutral-50 
+              `border-[1px] border-neutral-50 
                 dark:border-none backdrop-blur-2xl 
                 bg-white/30 dark:bg-white/10 shadow-sm 
                 dark:text-neutral-50 `,

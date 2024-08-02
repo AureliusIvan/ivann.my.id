@@ -14,7 +14,7 @@ function Navbar({routes}: Readonly<{ routes: NavbarRouteTypes[] }>) {
   return (
       <nav
           className={
-            `flex justify-center items-center  
+            `flex justify-center items-center
             bg-transparent gap-4 p-4 relative z-10 w-full h-16`
           }
       >
@@ -27,14 +27,18 @@ function Navbar({routes}: Readonly<{ routes: NavbarRouteTypes[] }>) {
                 if (page.path === currentPath) {
                   return (
                       <Link
-                          className='dark:hover:text-gray-300 font-bold bg-blue-50 bg-opacity-20
+                          className='
+                          dark:hover:text-gray-300 font-bold
+                          bg-blue-50 bg-opacity-20
                           dark:bg-gray-700 px-[0.3rem]
-                          rounded-md transform-gpu transition-transform
+                          border dark:border-white border-black
+                          transform-gpu transition-transform
                           flex flex-row'
-                          key={index} href={`/${page.path}`}>
+                          key={index}
+                          href={`/${page.path}`}>
 
                         <h4 className={"font-light"}>
-                          user:/
+                          root:/
                         </h4>
 
                         <h4
@@ -63,7 +67,7 @@ function Navbar({routes}: Readonly<{ routes: NavbarRouteTypes[] }>) {
 function UrlLink({path, name}: NavbarRouteTypes) {
   return (
       <Link
-          className={"hover:text-gray-300 global-border"}
+          className={"hover:text-gray-300 font-bold"}
           href={`/${path}`}
           key={path}
       >
