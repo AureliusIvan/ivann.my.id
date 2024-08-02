@@ -1,6 +1,0 @@
-logs/*
-mongo/*
-rabbitmq/*
-redis/*
-storage/*
-nextjs_cache/*
