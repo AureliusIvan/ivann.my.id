@@ -12,6 +12,7 @@ import {
 import {MontserratFont} from "@/app/font/font";
 import {SpeedInsights} from "@vercel/speed-insights/next"
 import {Analytics} from "@vercel/analytics/next";
+import {cn} from "@/lib/utils";
 
 const Footer = dynamic(() => import('@/components/ui/footer'), {})
 const Navbar = dynamic(() => import('@/components/ui/navbar.component'), {})
@@ -73,9 +74,15 @@ export default async function RootLayout(
       >
         <main
             id={'main-page'}
-            className='min-h-screen h-full overflow-x-hidden relative
-                dark:bg-primaryDark dark:text-textPrimaryDark
-                bg-primaryLight text-textPrimaryLight'
+            className={cn(MontserratFont.className,
+                `min-h-screen h-full overflow-x-hidden relative
+                dark:bg-black dark:text-textPrimaryDark
+                bg-primaryLight text-textPrimaryLight
+                selection:text-white
+                selection:bg-black
+                selection:dark:bg-white
+                selection:dark:text-black`
+            )}
         >
 
           <Navbar routes={Routes}/>

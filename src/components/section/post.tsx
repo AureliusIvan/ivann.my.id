@@ -14,7 +14,11 @@ async function PostSection() {
   const res: any = await getPostData()
   return (
       <article
-          className={"grid grid-cols-1 gap-2 w-full max-w-3xl p-2 border"}
+          className={`
+          grid grid-cols-1 gap-2 
+          w-full max-w-3xl 
+          p-2 
+          border border-black dark:border-white`}
       >
         {
           res.map((post: PostTypes) => {
@@ -24,9 +28,8 @@ async function PostSection() {
                       className='
                          md:p-4 p-4
                          flex flex-col gap-2
-                         border dark:border-neutral-800
+                         border border-black dark:border-white
                          backdrop-blur-2xl
-                         bg-white/30 dark:bg-white/10
                          dark:text-neutral-50
                          shadow-lg overflow-hidden hover:opacity-60 transition-transform
                          duration-300 pointer-events-auto cursor-pointer
@@ -40,6 +43,7 @@ async function PostSection() {
 
                   <MDXRemote source={post.description}/>
                   <Button
+                      className={`border border-black dark:border-white rounded-none`}
                       variant={"secondary"}
                       size={"sm"}
                   >
