@@ -4,8 +4,9 @@ import {promises as fs} from 'fs';
 import path from 'path';
 import matter from "gray-matter";
 import {LRUCache} from 'lru-cache';
+import {PostTypes} from "@/interface/post.interface";
 
-const cache = new LRUCache<string, PostData>({
+const cache = new LRUCache<string, PostTypes>({
   max: 100,
   ttl: 1000 * 60 * 24
 });
@@ -20,14 +21,6 @@ const getGithubData = async () => {
       }
   );
   return response.json();
-}
-
-
-interface PostData {
-  title: string;
-  slug: string;
-  content: string;
-  description: string;
 }
 
 
@@ -49,7 +42,7 @@ const getPostData = async () => {
         const _title = _getFileAttributes(fileContent, '_title')
         const _description = _getFileAttributes(fileContent, '_description')
         const _content = _sanitize(content)
-        const returnData: PostData = {
+        const returnData: PostTypes = {
           title: _title,
           slug: _slug,
           description: _description,
@@ -62,10 +55,10 @@ const getPostData = async () => {
 }
 
 
-const getPostDataBySlug = async (slug: string) => {
+const getPostDataBySlug = async (slug: string): Promise<PostTypes | null> => {
   try {
     if (cache.has(slug) && process.env.PROJECT_ENV !== 'development') {
-      return cache.get(slug)
+      return cache.get(slug) as PostTypes
     }
 
     const filePath = path.join(process.cwd(), 'src/posts', `${slug}.md`)
@@ -78,7 +71,7 @@ const getPostDataBySlug = async (slug: string) => {
       slug: slug,
       description: _getFileAttributes(fileContent, 'description'),
       content: _sanitize(_content)
-    } as PostData
+    } as PostTypes
   } catch (e) {
     return null
   }
@@ -121,7 +114,4 @@ export {
   getPostData,
   getPostDataBySlug,
   getAllSlugs
-}
-export type {
-  PostData
 }

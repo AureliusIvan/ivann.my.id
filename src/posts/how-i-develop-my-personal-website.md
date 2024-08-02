@@ -28,9 +28,11 @@ This is a great feature because it allows you to choose the best rendering metho
 ```
 
 ...and for the client side rendering:
+
 ```javascript
 "use client";
 ```
+
 Which will allow us to use some web APIs that are not available on the server side.
 
 ## Deployment

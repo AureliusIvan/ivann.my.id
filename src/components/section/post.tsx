@@ -1,10 +1,14 @@
 "use server";
 
-import type {PostData} from "@/app/action";
+import {PostTypes} from "@/interface/post.interface";
 import {getPostData} from "@/app/action";
 import {MDXRemote} from "next-mdx-remote/rsc";
 import {CardTitle} from "@/components/ui/card";
+import {Separator} from "@/components/ui/separator";
 import Link from "next/link";
+import {Button} from "@/components/ui/button";
+import {cn} from "@/lib/utils";
+import {MonoglyphicFont} from "@/app/font/font";
 
 async function PostSection() {
   const res: any = await getPostData()
@@ -13,7 +17,7 @@ async function PostSection() {
           className={"grid grid-cols-1 gap-2 w-full max-w-3xl p-2 border"}
       >
         {
-          res.map((post: PostData) => {
+          res.map((post: PostTypes) => {
             return (
                 <Link key={post.title}
                       href={`/post/${post.slug}`}
@@ -28,12 +32,19 @@ async function PostSection() {
                          duration-300 pointer-events-auto cursor-pointer
                          '
                 >
-                  <CardTitle>
+                  <CardTitle className={cn(MonoglyphicFont.className, "tracking-wider font-light")}>
                     {post.title}
                   </CardTitle>
 
-                  <MDXRemote source={post.description}/>
+                  <Separator/>
 
+                  <MDXRemote source={post.description}/>
+                  <Button
+                      variant={"secondary"}
+                      size={"sm"}
+                  >
+                    Read More
+                  </Button>
                 </Link>
             )
           })
