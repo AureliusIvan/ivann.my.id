@@ -36,7 +36,7 @@ async function Home() {
   return (
       <main
           className='flex flex-col items-center justify-center
-            w-full h-full gap-4 p-6 relative'
+            w-full h-full gap-12 p-6 relative'
       >
 
         {/* Hero Section */}
@@ -52,7 +52,9 @@ async function Home() {
             </span>
           </Title>
 
-          <HoverCard>
+          <HoverCard
+              openDelay={200}
+          >
             <HoverCardTrigger
                 className={cn(MonoglyphicFont.className, `tracking-wide cursor-pointer opacity-80 hover:opacity-60 underline`)}
             >
@@ -70,11 +72,13 @@ async function Home() {
               title={"Download CV"}
               href={'/cv.pdf'}
               target={"_blank"}
-              className="
-              border
-              text-center font-bold
-              bg-black text-white py-2 px-4
-              dark:bg-black relative cursor-pointer md:hover:bg-neutral-800"
+              className={cn(MonoglyphicFont.className,
+                  `border
+                  text-white text-center font-bold
+                  bg-black dark:bg-black md:hover:bg-neutral-800
+                  py-2 px-4
+                  relative cursor-pointer
+                  flex items-center justify-center gap-2`)}
           >
             Download CV
           </a>
@@ -98,7 +102,7 @@ async function Home() {
         </section>
 
 
-        {/*In Progress */}
+        {/* Project Section */}
         <section
             className="w-full flex flex-col items-center
             justify-center gap-4 m-4"
@@ -109,8 +113,6 @@ async function Home() {
             ;
             </span>
           </Title>
-
-          (on development 🛠️)
 
           <ProjectSection/>
 

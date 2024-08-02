@@ -16,13 +16,13 @@ const data = [
     title: 'Confess',
     description: 'Wanna say something really private? Try confess 💖',
     image: '/image/confess.ivann.my.id.png',
-    github: ''
+    github: 'https://github.com/AureliusIvan/confess'
   },
   {
     title: 'Remembear',
     description: 'An app for people with short-term-memory 🧠',
     image: '/image/remembear.webp',
-    github: ''
+    github: 'https://github.com/AureliusIvan/remembear'
   }
 ]
 
@@ -30,7 +30,10 @@ const ProjectSection = async () => {
   return (
       <article
           className={
-            'max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-4 border p-2'
+            `max-w-3xl 
+            grid grid-cols-1 md:grid-cols-2 gap-4 
+            p-2
+            border border-black dark:border-white`
           }
       >
 
@@ -38,26 +41,28 @@ const ProjectSection = async () => {
             <Card
                 key={index}
                 className={
-                  `shadow-lg overflow-hidden md:hover:opacity-60 border border-gray-200 dark:border-white   
+                  `shadow-lg overflow-hidden 
+                  md:hover:opacity-60 
+                  border border-black dark:border-white
+                  dark:bg-transparent
                   transition-transform duration-300 pointer-events-auto cursor-pointer`
                 }
             >
               <CardHeader>
-
                 <CardTitle>
                   {post.title}
                 </CardTitle>
-
                 <CardDescription>
                   {post.description}
                 </CardDescription>
-
               </CardHeader>
 
               <CardContent className={"isolate z-0"}>
                 <Image
                     className={
-                      `w-full h-52 object-cover object-top border`
+                      `w-full h-52 object-cover object-top
+                      border border-black dark:border-white
+                      `
                     }
                     src={post.image}
                     alt={"Image"}
@@ -68,7 +73,8 @@ const ProjectSection = async () => {
 
               </CardContent>
 
-              <CardFooter>
+              <CardFooter
+              >
                 <a
                     href={post.github}
                     target={"_blank"}

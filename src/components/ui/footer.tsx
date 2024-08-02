@@ -22,15 +22,15 @@ const Spotify = async () => {
             bg-transparent 
             text-white
             hover:opacity-60 
-            border`
+            border border-black dark:border-white`
           }
       >
         <FaSpotify
-            className={"w-6 h-6"}
+            className={`w-6 h-6 invert dark:invert-0`}
         />
 
         <section>
-          <h1 className={'font-bold'}>
+          <h1 className={'text-black dark:text-white'}>
             Beautiful Things - Benson Boone
           </h1>
         </section>
@@ -52,16 +52,16 @@ const Github = async () => {
             bg-transparent 
             text-white
             hover:opacity-60 
-            border`
+            border border-black dark:border-white`
           }
       >
         <FaGithub
-            className={"w-6 h-6"}
+            className={"w-6 h-6 invert dark:invert-0"}
         />
         <div
             className={"flex flex-col"}
         >
-          <span>
+          <span className={`text-black dark:text-white`}>
             AureliusIvan | {data?.public_repos} Repositories
           </span>
         </div>
