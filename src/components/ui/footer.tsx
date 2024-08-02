@@ -3,23 +3,29 @@
 import Image from "next/image";
 import Mail from "@/static/svg/mail-icon.svg";
 import SpotifyIcon from "@/static/svg/spotify.svg";
-import GithubIcon from "@/static/svg/github-icon.svg";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger
 } from "@/components/ui/hover-card";
 import {getGithubData} from "@/app/action";
+import Link from "next/link";
 
 
 const Spotify = async () => {
   return (
-      <div
+      <Link
+          target={"_blank"}
+          href={"https://open.spotify.com/track/6tNQ70jh4OwmPGpYy6R2o9?si=365309aa3c0b493b"}
           className={
-              'select-none pointer-events-auto cursor-pointer ' +
-              'flex flex-row gap-2.5 ' +
-              'bg-gray-800 py-[1rem] px-[2rem] backdrop-blur-2xl ' +
-              'rounded-[5rem] dark:bg-gray-900 dark:text-white'
+            `select-none pointer-events-auto cursor-pointer 
+            px-[1rem] py-[0.5rem] rounded-[5rem]
+            flex flex-row gap-2.5 
+            backdrop-blur-2xl 
+            bg-transparent 
+            text-white
+            hover:opacity-60 
+            border`
           }
       >
         <Image
@@ -30,18 +36,18 @@ const Spotify = async () => {
 
         <section>
           <h1>
-            Beautiful Things by Benson Boone
+            Beautiful Things - Benson Boone
           </h1>
 
-          <a
-              target={"_blank"}
-              href={"https://open.spotify.com/track/6tNQ70jh4OwmPGpYy6R2o9?si=365309aa3c0b493b"}
-              className={"font-bold underline"}
-          >
-            On Spotify
-          </a>
+          {/*<a*/}
+          {/*    target={"_blank"}*/}
+          {/*    href={"https://open.spotify.com/track/6tNQ70jh4OwmPGpYy6R2o9?si=365309aa3c0b493b"}*/}
+          {/*    className={"font-bold underline"}*/}
+          {/*>*/}
+          {/*  On Spotify*/}
+          {/*</a>*/}
         </section>
-      </div>
+      </Link>
   )
 }
 
@@ -50,15 +56,21 @@ const Github = async () => {
   return (
       <section
           className={
-              'select-none pointer-events-auto cursor-pointer ' +
-              'flex flex-row gap-2.5 ' +
-              'bg-gray-800 py-[1rem] px-[2rem] backdrop-blur-2xl ' +
-              'rounded-[5rem] dark:bg-gray-900 dark:text-white'
+            `select-none pointer-events-auto cursor-pointer 
+            px-[1rem] py-[0.5rem] rounded-[5rem]
+            flex flex-row gap-2.5 
+            backdrop-blur-2xl 
+            bg-transparent 
+            text-white
+            hover:opacity-60 
+            border`
           }
       >
         <Image
-            className={"h-auto w-[44px] invert"}
-            src={GithubIcon}
+            className={"h-auto w-[44px] object-cover rounded-full"}
+            src={data?.avatar_url}
+            width={44}
+            height={44}
             alt={"spotify icon"}
         />
         <div
@@ -146,7 +158,8 @@ async function Footer() {
         >
 
           <div className="flex gap-2.5">
-            <SocialMediaIcon id={"linkedin"} href={"https://www.linkedin.com/in/aurelius-ivan-wijaya/"} alt={"linkedin"}/>
+            <SocialMediaIcon id={"linkedin"} href={"https://www.linkedin.com/in/aurelius-ivan-wijaya/"}
+                             alt={"linkedin"}/>
             <SocialMediaIcon id={"instagram"} href={"https://www.instagram.com/aureli.van/"} alt={"instagram"}/>
           </div>
 
