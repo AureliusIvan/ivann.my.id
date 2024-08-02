@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+    @media screen and (max-width: 768px) {
+        .page {
+            padding: 1rem 1rem;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .page {
+            padding: 2rem 2rem;
+        }
+    }
+
+
+    --bg-conic: conic-gradient(
+            from 10deg at 50% 50%,
+                /*#450d9a 160deg,*/ #450d9a 0deg,
+            transparent 360deg
+    );
+
+    #main-page {
+        background: var(--bg-conic);
+        background-size: 200% 100%;
+    }
+}

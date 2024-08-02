@@ -10,4 +10,4 @@ RUN npm install -g pnpm
 RUN apk add --no-cache make
 
 USER root
-WORKDIR /appc
+WORKDIR /app
