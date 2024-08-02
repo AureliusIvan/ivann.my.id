@@ -1,16 +1,13 @@
 'use server'
 
 import Image from "next/image";
-import Mail from "@/static/svg/mail-icon.svg";
-import SpotifyIcon from "@/static/svg/spotify.svg";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger
-} from "@/components/ui/hover-card";
 import {getGithubData} from "@/app/action";
 import Link from "next/link";
-
+import {cn} from "@/lib/utils";
+import {MonoglyphicFont} from "@/app/font/font";
+import {FaGithub, FaLinkedin, FaSpotify} from "react-icons/fa";
+import {MdEmail} from "react-icons/md";
+import {FaSquareInstagram} from "react-icons/fa6";
 
 const Spotify = async () => {
   return (
@@ -19,7 +16,7 @@ const Spotify = async () => {
           href={"https://open.spotify.com/track/6tNQ70jh4OwmPGpYy6R2o9?si=365309aa3c0b493b"}
           className={
             `select-none pointer-events-auto cursor-pointer 
-            px-[1rem] py-[0.5rem] rounded-[5rem]
+            px-[1rem] py-[0.5rem]
             flex flex-row gap-2.5 
             backdrop-blur-2xl 
             bg-transparent 
@@ -28,24 +25,14 @@ const Spotify = async () => {
             border`
           }
       >
-        <Image
-            className={"h-auto w-[44px]"}
-            src={SpotifyIcon}
-            alt={"spotify icon"}
+        <FaSpotify
+            className={"w-6 h-6"}
         />
 
         <section>
-          <h1>
+          <h1 className={'font-bold'}>
             Beautiful Things - Benson Boone
           </h1>
-
-          {/*<a*/}
-          {/*    target={"_blank"}*/}
-          {/*    href={"https://open.spotify.com/track/6tNQ70jh4OwmPGpYy6R2o9?si=365309aa3c0b493b"}*/}
-          {/*    className={"font-bold underline"}*/}
-          {/*>*/}
-          {/*  On Spotify*/}
-          {/*</a>*/}
         </section>
       </Link>
   )
@@ -54,10 +41,12 @@ const Spotify = async () => {
 const Github = async () => {
   const data = await getGithubData();
   return (
-      <section
+      <a
+          target={"_blank"}
+          href={"https://github.com/AureliusIvan/"}
           className={
             `select-none pointer-events-auto cursor-pointer 
-            px-[1rem] py-[0.5rem] rounded-[5rem]
+            px-[1rem] py-[0.5rem]
             flex flex-row gap-2.5 
             backdrop-blur-2xl 
             bg-transparent 
@@ -66,42 +55,17 @@ const Github = async () => {
             border`
           }
       >
-        <Image
-            className={"h-auto w-[44px] object-cover rounded-full"}
-            src={data?.avatar_url}
-            width={44}
-            height={44}
-            alt={"spotify icon"}
+        <FaGithub
+            className={"w-6 h-6"}
         />
         <div
             className={"flex flex-col"}
         >
           <span>
-            <HoverCard>
-              <HoverCardTrigger>{data?.login} </HoverCardTrigger>
-
-              <HoverCardContent>
-                <Image
-                    src={data.avatar_url}
-                    alt={"avatar"}
-                    width={100}
-                    height={100}/>
-
-              </HoverCardContent>
-
-            </HoverCard>
-            | {data?.public_repos} Repositories
+            AureliusIvan | {data?.public_repos} Repositories
           </span>
-
-          <a
-              target={"_blank"}
-              href={data?.html_url || "#"}
-              className={"font-bold underline"}
-          >
-            On Github
-          </a>
         </div>
-      </section>
+      </a>
   )
 }
 
@@ -112,33 +76,15 @@ interface SocialMediaIconProps {
   alt: string
 }
 
-const SocialMediaIcon = ({id, href, alt}: SocialMediaIconProps) => {
-  return (
-      <a
-          title={alt}
-          href={href}
-          target={"_blank"}
-          className={"bg-gray-800 rounded-full p-[0.5rem]"}
-      >
-        <Image
-            className='w-6 h-6 pointer-events-auto cursor-pointer
-            hover:scale-125 transition-transform duration-300 ease-in-out'
-            src={`/image/icon-${id}.svg`}
-            alt={alt}
-            width={48}
-            height={48}
-        />
-      </a>
-  )
-}
-
-
 async function Footer() {
   return (
       <footer
           id={"footer"}
           className={
-            `text-white md:p-[4rem] p-[1.5rem] flex md:flex-row justify-between flex-col md:items-center md:gap-4 bg-gray-800 dark:bg-gray-900`
+            `text-white 
+            p-[1.5rem] md:p-[4rem]  
+            flex md:flex-row flex-col justify-between md:items-center gap-4 md:gap-4 
+            border-t border-black dark:border-white`
           }
       >
         <section
@@ -146,11 +92,6 @@ async function Footer() {
         >
           <Spotify/>
           <Github/>
-          <span
-              className={"font-bold md:text-left text-center"}
-          >
-                &copy; 2024 Ivan
-                </span>
         </section>
 
         <section
@@ -158,12 +99,25 @@ async function Footer() {
         >
 
           <div className="flex gap-2.5">
-            <SocialMediaIcon id={"linkedin"} href={"https://www.linkedin.com/in/aurelius-ivan-wijaya/"}
-                             alt={"linkedin"}/>
-            <SocialMediaIcon id={"instagram"} href={"https://www.instagram.com/aureli.van/"} alt={"instagram"}/>
+            <a
+                target={"_blank"}
+                href={"https://www.linkedin.com/in/aureliusivan/"}
+            >
+              <FaLinkedin
+                  className={"w-6 h-6"}
+              />
+            </a>
+            <a
+                target={"_blank"}
+                href={"https://www.instagram.com/aureliusivan/"}
+            >
+              <FaSquareInstagram
+                  className={"w-6 h-6"}
+              />
+            </a>
           </div>
 
-          <h1>Or.. send me a mail!</h1>
+          <h1 className={cn(`text-black dark:text-white`, MonoglyphicFont.className)}>Or.. send me a mail</h1>
 
           <a
               title={"email to ivan"}
@@ -171,19 +125,17 @@ async function Footer() {
               target={"_blank"}
           >
 
-            <Image
-                className={
-                    "w-12 h-12 pointer-events-auto " +
-                    "cursor-pointer hover:scale-125 " +
-                    "transition-transform duration-300 " +
-                    "ease-in-out"}
-                src={Mail}
-                alt={"email aureliusivanwijaya@gmail.com"}
+            <MdEmail
+                className={"w-12 h-12 hover:opacity-60"}
             />
-
           </a>
-        </section>
 
+        </section>
+        <span
+            className={cn(`md:text-left text-center block md:hidden tracking-wide font-light`, MonoglyphicFont.className)}
+        >
+                &copy; 2024 Ivan
+          </span>
       </footer>
   )
 }

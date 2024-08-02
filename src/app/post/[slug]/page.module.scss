@@ -5,7 +5,6 @@
   padding-inline: 20px;
   min-height: 100vh;
 
-
   .article {
     animation: fadeIn 0.3s ease-in-out 1;
     will-change: opacity, transform;
@@ -52,9 +51,8 @@
   pre {
     background-color: #2e2e2e;
     padding: 10px;
-    border-radius: 5px;
     overflow-x: auto;
-    color: #e1b970;
+    color: #ffffff;
   }
 
   img {
@@ -62,8 +60,7 @@
     border-radius: 5px;
   }
 
-  a{
-    color: #a4ff9c;
+  a {
     text-decoration: none;
     font-weight: 700;
   }

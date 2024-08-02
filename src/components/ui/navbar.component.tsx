@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import {DarkModeToggle} from './dark-mode-toogle'
 import {usePathname} from 'next/navigation'
+import {cn} from "@/lib/utils";
+import {MonoglyphicFont} from "@/app/font/font";
 
 interface NavbarRouteTypes {
   path: string
@@ -13,14 +15,15 @@ function Navbar({routes}: Readonly<{ routes: NavbarRouteTypes[] }>) {
   let currentPath: string = usePathname().split('/')[1]
   return (
       <nav
-          className={
-            `flex justify-center items-center
-            bg-transparent gap-4 p-4 relative z-10 w-full h-16`
+          className={cn(`
+          flex justify-center items-center gap-4
+          bg-transparent p-4 relative z-10 
+          w-full h-16 
+          tracking-wide 
+          border-b dark:border-white border-black`,
+              MonoglyphicFont.className)
           }
       >
-        <div
-            className={"transform-gpu transition-transform hover:scale-110"}
-        />
 
         {
           routes.map((page, index) => {
@@ -31,7 +34,7 @@ function Navbar({routes}: Readonly<{ routes: NavbarRouteTypes[] }>) {
                           dark:hover:text-gray-300 font-bold
                           bg-blue-50 bg-opacity-20
                           dark:bg-gray-700 px-[0.3rem]
-                          border dark:border-white border-black
+                          border-2 dark:border-white border-black
                           transform-gpu transition-transform
                           flex flex-row'
                           key={index}

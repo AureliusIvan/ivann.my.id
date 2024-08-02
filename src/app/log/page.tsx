@@ -2,12 +2,14 @@
 
 import {MDXRemote} from 'next-mdx-remote/rsc'
 import {handleGetChangelog} from "@/app/log/action";
+import {cn} from "@/lib/utils";
+import {MonoglyphicFont} from "@/app/font/font";
 
 export async function generateMetadata() {
   return {
-    title: `Changelog`,
+    title: `Log`,
     openGraph: {
-      description: "Changelog for the site",
+      description: "Changelog for the ivann.my.id website.",
       type: 'website',
     },
     robots: {
@@ -22,5 +24,9 @@ export default async function RemoteMdxPage() {
   if (!data) return <div>...</div>
   let markdown = data?.content
   if (!markdown) return <div>Loading...</div>
-  return <MDXRemote source={markdown}/>
+  return (
+      <section className={cn(MonoglyphicFont.className, `tracking-wide font-light text-opacity-80 my-2.5`)}>
+        <MDXRemote source={markdown}/>
+      </section>
+  )
 }

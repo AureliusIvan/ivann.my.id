@@ -8,50 +8,20 @@ import {
   CardHeader,
   CardTitle
 } from "@/components/ui/card";
-import {Button} from "@/components/ui/button";
 import Image from "next/image";
 import GithubIcon from "@/static/svg/github-icon.svg";
 
 const data = [
   {
-    id: 0,
-    title: 'File Morph',
-    description: 'To Do',
-    image: 'https://picsum.photos/200/300',
+    title: 'Confess',
+    description: 'Wanna say something really private? Try confess 💖',
+    image: '/image/confess.ivann.my.id.png',
     github: ''
   },
   {
-    id: 1,
-    title: 'Ghostrun',
-    description: 'In Progress',
-    image: 'https://picsum.photos/200/300',
-    github: ''
-  },
-  {
-    id: 2,
-    title: 'Perfume Recommender AI',
-    description: 'Done',
-    image: 'https://picsum.photos/200/300',
-    github: ''
-  },
-  {
-    id: 3,
-    title: 'Kantong Neko',
-    description: 'Done',
-    image: 'https://picsum.photos/200/300',
-    github: ''
-  },
-  {
-    id: 4,
-    title: 'Room Reservation System',
-    description: 'Done',
-    image: 'https://picsum.photos/200/300'
-  },
-  {
-    id: 4,
-    title: 'Seven Days at UMN',
-    description: 'a game project',
-    image: 'https://picsum.photos/200/300',
+    title: 'Remembear',
+    description: 'An app for people with short-term-memory 🧠',
+    image: '/image/remembear.webp',
     github: ''
   }
 ]
@@ -64,9 +34,9 @@ const ProjectSection = async () => {
           }
       >
 
-        {data.map((post) => (
+        {data.map((post, index) => (
             <Card
-                key={post.id}
+                key={index}
                 className={
                   `shadow-lg overflow-hidden md:hover:opacity-60 border border-gray-200 dark:border-white   
                   transition-transform duration-300 pointer-events-auto cursor-pointer`
@@ -85,10 +55,9 @@ const ProjectSection = async () => {
               </CardHeader>
 
               <CardContent className={"isolate z-0"}>
-
                 <Image
                     className={
-                      `w-full h-52 object-cover object-center`
+                      `w-full h-52 object-cover object-top border`
                     }
                     src={post.image}
                     alt={"Image"}
@@ -104,25 +73,14 @@ const ProjectSection = async () => {
                     href={post.github}
                     target={"_blank"}
                 >
-                  <Button
-                      className={
-                        "p-2"
-                      }
-                      title={"View on Github"}
-                      variant={"outline"}
-                      size={"icon"}
-                  >
-
-                    <Image
-                        className={"dark:invert"}
-                        src={GithubIcon}
-                        alt={"Github Icon"}
-                        width={24}
-                        height={24}
-                        priority
-                    />
-
-                  </Button>
+                  <Image
+                      className={"dark:invert"}
+                      src={GithubIcon}
+                      alt={"Github Icon"}
+                      width={24}
+                      height={24}
+                      priority
+                  />
                 </a>
               </CardFooter>
             </Card>

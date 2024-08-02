@@ -10,12 +10,27 @@ import {MDXRemote} from "next-mdx-remote/rsc";
 import {getPostDataBySlug} from "@/app/action";
 import {LinkButton} from "@/components/ui/button";
 import {cn} from "@/lib/utils"
+import {PostTypes} from "@/interface/post.interface";
+import {Separator} from "@/components/ui/separator";
+import {MonoglyphicFont} from "@/app/font/font";
 
 export async function generateMetadata(
     {params}: { params: { slug: string } },
     parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const res: any = await getPostDataBySlug(params.slug)
+  const res: PostTypes | null = await getPostDataBySlug(params.slug)
+
+  if (!res) {
+    return {
+      title: '404',
+      description: '404',
+      openGraph: {
+        description: '404',
+        type: 'website',
+      }
+    }
+  }
+
   return {
     title: res.title,
     description: res.description,
@@ -34,21 +49,20 @@ export default async function Page({params}: { params: { slug: string } }) {
 
   return (
       <section
-          className={styles.page}
+          className={cn(styles.page, `mt-5`) }
       >
 
         <article
             className={cn(
                 styles.article,
-                'backdrop-blur-2xl bg-white/30 dark:bg-white/10 p-4 ' +
-                'w-full max-w-[50rem] mx-auto mt-4'
+                `border border-gray-200 dark:border-gray-700 mb-4 p-4`
             )}
         >
 
 
           {/* top bar */}
           <div
-              className={"flex justify-between items-center gap-4 w-full max-w-[50rem]"}
+              className={`flex justify-between items-center gap-4 w-full max-w-[50rem]`}
           >
 
             {/* close button */}
@@ -65,22 +79,20 @@ export default async function Page({params}: { params: { slug: string } }) {
               />
             </Link>
 
-            {/* share button */}
-            <LinkButton
-                variant={'icon'}
-                href={'/'}
-            >
-              Share
-            </LinkButton>
-
           </div>
 
           <h1
-              className={"text-[2rem] font-bold text-center"}
+              className={cn("text-[2rem] font-bold text-center", MonoglyphicFont.className)}
           >
-            {res.title}
+            &ldquo;{res.title}&rdquo;
           </h1>
 
+          <span
+              className={'text-gray-500 text-center block mt-2 mb-4'}
+          >
+            by ivan
+          </span>
+          <Separator/>
           <MDXRemote source={res.content}/>
         </article>
       </section>

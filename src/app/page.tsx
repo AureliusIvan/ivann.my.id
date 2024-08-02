@@ -5,6 +5,14 @@ import type {Metadata} from 'next'
 import {Title} from '@/components/ui/title';
 import {ProjectSection} from "@/components/section/project";
 import PostSection from "@/components/section/post";
+import {cn} from "@/lib/utils";
+import {MonoglyphicFont} from "@/app/font/font";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
+
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -39,10 +47,23 @@ async function Home() {
         >
           <Title size={"large"}>
             The Boring Web
+            <span className={cn(MonoglyphicFont.className, `tracking-wide opacity-40`)}>
+            ;
+            </span>
           </Title>
-          <span>
-            by Ivan
-          </span>
+
+          <HoverCard>
+            <HoverCardTrigger
+                className={cn(MonoglyphicFont.className, `tracking-wide cursor-pointer opacity-80 hover:opacity-60 underline`)}
+            >
+              by @Ivan
+            </HoverCardTrigger>
+            <HoverCardContent
+                className={cn(MonoglyphicFont.className, `tracking-wide text-opacity-80 no-underline font-light`)}
+            >
+              A Software Engineer who loves to write about web development, technology, and life.
+            </HoverCardContent>
+          </HoverCard>
 
           {/*  download cv*/}
           <a
@@ -66,6 +87,10 @@ async function Home() {
         >
           <Title size={"medium"}>
             Recent Post
+            <span className={'opacity-60'}>
+            ;
+            </span>
+
           </Title>
 
           <PostSection/>
@@ -80,6 +105,9 @@ async function Home() {
         >
           <Title size={"medium"}>
             Project
+            <span className={'opacity-60'}>
+            ;
+            </span>
           </Title>
 
           (on development 🛠️)
