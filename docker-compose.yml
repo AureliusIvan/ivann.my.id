@@ -23,7 +23,7 @@ services:
 
   mongo:
     container_name: mongo-${PROJECT_NAME}
-    image: mongo:5.0
+    image: mongo:7.0
     tty: true
     ports:
       - 27017:27017
