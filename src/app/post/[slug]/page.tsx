@@ -8,11 +8,11 @@ import Image from "next/image";
 import CloseIcon from "@/static/svg/close.svg";
 import {MDXRemote} from "next-mdx-remote/rsc";
 import {getPostDataBySlug} from "@/app/action";
-import {LinkButton} from "@/components/ui/button";
 import {cn} from "@/lib/utils"
 import {PostTypes} from "@/interface/post.interface";
 import {Separator} from "@/components/ui/separator";
 import {MonoglyphicFont} from "@/app/font/font";
+import {Author} from "@/components/author";
 
 export async function generateMetadata(
     {params}: { params: { slug: string } },
@@ -49,13 +49,13 @@ export default async function Page({params}: { params: { slug: string } }) {
 
   return (
       <section
-          className={cn(styles.page, `mt-5`) }
+          className={cn(styles.page, `mt-5`)}
       >
 
         <article
             className={cn(
                 styles.article,
-                `border border-gray-200 dark:border-gray-700 mb-4 p-4`
+                `mb-4 p-4 w-full max-w-[50rem]`
             )}
         >
 
@@ -64,7 +64,6 @@ export default async function Page({params}: { params: { slug: string } }) {
           <div
               className={`flex justify-between items-center gap-4 w-full max-w-[50rem]`}
           >
-
             {/* close button */}
             <Link
                 title={'Back to home'}
@@ -78,22 +77,23 @@ export default async function Page({params}: { params: { slug: string } }) {
                   height={20}
               />
             </Link>
-
           </div>
 
-          <h1
-              className={cn("text-[2rem] font-bold text-center", MonoglyphicFont.className)}
+          <section
+              className={cn(`text-center my-3`)}
           >
-            &ldquo;{res.title}&rdquo;
-          </h1>
+            <h1
+                className={cn("text-[2rem] font-bold text-center", MonoglyphicFont.className)}
+            >
+              &ldquo;{res.title}&rdquo;
+            </h1>
+            <Author/>
+          </section>
 
-          <span
-              className={'text-gray-500 text-center block mt-2 mb-4'}
-          >
-            by ivan
-          </span>
           <Separator/>
+
           <MDXRemote source={res.content}/>
+
         </article>
       </section>
   )

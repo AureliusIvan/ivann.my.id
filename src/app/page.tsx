@@ -7,11 +7,7 @@ import {ProjectSection} from "@/components/section/project";
 import PostSection from "@/components/section/post";
 import {cn} from "@/lib/utils";
 import {MonoglyphicFont} from "@/app/font/font";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card"
+import {Author} from "@/components/author";
 
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -52,20 +48,7 @@ async function Home() {
             </span>
           </Title>
 
-          <HoverCard
-              openDelay={200}
-          >
-            <HoverCardTrigger
-                className={cn(MonoglyphicFont.className, `tracking-wide cursor-pointer opacity-80 hover:opacity-60 underline`)}
-            >
-              by @Ivan
-            </HoverCardTrigger>
-            <HoverCardContent
-                className={cn(MonoglyphicFont.className, `tracking-wide text-opacity-80 no-underline font-light`)}
-            >
-              A Software Engineer who loves to write about web development, technology, and life.
-            </HoverCardContent>
-          </HoverCard>
+          <Author/>
 
           {/*  download cv*/}
           <a
@@ -94,7 +77,6 @@ async function Home() {
             <span className={'opacity-60'}>
             ;
             </span>
-
           </Title>
 
           <PostSection/>
