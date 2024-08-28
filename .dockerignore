@@ -1,3 +1,4 @@
 ./volumes/*
 */docker-compose.yml
 */Dockerfile
+.git

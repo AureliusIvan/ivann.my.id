@@ -1,7 +1,6 @@
 "use server";
 
 import {PostTypes} from "@/interface/post.interface";
-import {getPostData} from "@/app/action";
 import {MDXRemote} from "next-mdx-remote/rsc";
 import {CardTitle} from "@/components/ui/card";
 import {Separator} from "@/components/ui/separator";
@@ -9,9 +8,15 @@ import Link from "next/link";
 import {Button} from "@/components/ui/button";
 import {cn} from "@/lib/utils";
 import {MonoglyphicFont} from "@/app/font/font";
+import {getDocuments} from 'outstatic/server'
+
+async function getData() {
+  return getDocuments('posts', ['title', "description", "slug"])
+}
+
 
 async function PostSection() {
-  const res: any = await getPostData()
+  const res: any = await getData()
   return (
       <article
           className={`

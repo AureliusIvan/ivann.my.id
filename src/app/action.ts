@@ -1,3 +1,4 @@
+// legacy code (since we already use outstatic)
 "use server"
 
 import {promises as fs} from 'fs';
