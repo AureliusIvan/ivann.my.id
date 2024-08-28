@@ -1,0 +1,24 @@
+{
+  "commit": "7984f9503de1cd33a13369b0b7f2d38a2542e277",
+  "generated": "Wed, 28 Aug 2024 16:57:29 GMT",
+  "metadata": [
+    {
+      "__outstatic": {
+        "commit": "ccabefb786048aedfbb1f0c4a396f50212da1fbb",
+        "hash": "3306152763",
+        "path": "outstatic/content/posts/how-i-develop-my-personal-website.md"
+      },
+      "author": {
+        "name": "Aurelius Ivan Wijaya",
+        "picture": "https://avatars.githubusercontent.com/u/102419837?v=4"
+      },
+      "collection": "posts",
+      "coverImage": "",
+      "description": "I've been working on my personal website for a while now and I'm documenting my process here. I'm using a combination of technologies to build the site and I'm also using some tools to automate the deployment process. I'm using Next.js, Tailwind CSS, and MDX to build the site. I'm also using React for the frontend and Nginx for the server. I'm hosting the site on DigitalOcean and using GitHub Actions to automate the deployment process. I'm also using digitalocean for deployments.",
+      "publishedAt": "2024-08-28T17:00:21.064Z",
+      "slug": "how-i-develop-my-personal-website",
+      "status": "published",
+      "title": "How i develop my personal website"
+    }
+  ]
+}
