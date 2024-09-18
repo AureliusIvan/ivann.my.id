@@ -1,6 +1,6 @@
 {
-  "commit": "7984f9503de1cd33a13369b0b7f2d38a2542e277",
-  "generated": "Wed, 28 Aug 2024 16:57:29 GMT",
+  "commit": "c941aff19b3e64362e5267c7dc672336ce32fcab",
+  "generated": "2024-09-18T04:49:54.145Z",
   "metadata": [
     {
       "__outstatic": {
@@ -19,6 +19,24 @@
       "slug": "how-i-develop-my-personal-website",
       "status": "published",
       "title": "How i develop my personal website"
+    },
+    {
+      "__outstatic": {
+        "commit": "c941aff19b3e64362e5267c7dc672336ce32fcab",
+        "hash": "57964205",
+        "path": "outstatic/content/posts/this-is-test-post.md"
+      },
+      "author": {
+        "name": "Aurelius Ivan Wijaya",
+        "picture": "https://avatars.githubusercontent.com/u/102419837?v=4"
+      },
+      "collection": "posts",
+      "coverImage": "",
+      "description": "",
+      "publishedAt": "2024-09-18T05:30:55.453Z",
+      "slug": "this-is-test-post",
+      "status": "draft",
+      "title": "This is test post"
     }
   ]
 }
