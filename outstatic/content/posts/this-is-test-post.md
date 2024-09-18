@@ -1,6 +1,6 @@
 ---
 title: 'This is test post'
-status: 'draft'
+status: 'published'
 author:
   name: 'Aurelius Ivan Wijaya'
   picture: 'https://avatars.githubusercontent.com/u/102419837?v=4'
