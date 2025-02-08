@@ -101,7 +101,7 @@ async function Footer() {
           <div className="flex gap-2.5">
             <a
                 target={"_blank"}
-                href={"https://www.linkedin.com/in/aureliusivan/"}
+                href={"https://www.linkedin.com/in/aurelius-ivan-wijaya"}
             >
               <FaLinkedin
                   className={"w-6 h-6"}
@@ -109,7 +109,7 @@ async function Footer() {
             </a>
             <a
                 target={"_blank"}
-                href={"https://www.instagram.com/aureliusivan/"}
+                href={"https://www.instagram.com/aureli.van/"}
             >
               <FaSquareInstagram
                   className={"w-6 h-6"}
