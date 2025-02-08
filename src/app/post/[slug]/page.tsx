@@ -11,8 +11,9 @@ import { MonoglyphicFont } from "@/app/font/font";
 import { Author } from "@/components/author";
 import { getDocumentBySlug } from "outstatic/server";
 
-async function getData({params}: { params: { slug: string } }) {
-    return getDocumentBySlug('posts', params.slug, [
+async function getData({params}: { params: Promise<{ slug: string }> }) {
+    const {slug} = await params
+    return getDocumentBySlug('posts', slug, [
         'title',
         'publishedAt',
         'slug',
@@ -22,8 +23,9 @@ async function getData({params}: { params: { slug: string } }) {
     ])
 }
 
-export default async function Page({params}: { params: { slug: string } }) {
-    const res: any = await getData({params})
+export default async function Page({params}: { params: Promise<{ slug: string }> }) {
+    // const res: any = await getData({params})
+    const res = await getData({params})
     if (!res) {
         return <div>404</div>
     }
