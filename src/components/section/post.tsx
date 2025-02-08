@@ -11,7 +11,7 @@ import { MonoglyphicFont } from "@/app/font/font";
 import { getPostData } from "@/components/section/action";
 
 async function PostSection() {
-    const postData: PostTypes[] | null = await getPostData()
+    const postData = await getPostData()
     return (
         <article
             className={`
@@ -22,7 +22,7 @@ async function PostSection() {
             {
                 // conditionally render the posts
                 postData ?
-                    postData?.map((post: PostTypes) => {
+                    postData?.map((post) => {
                         return (
                             <Link key={post.title}
                                   href={`/post/${post.slug}`}
@@ -42,7 +42,11 @@ async function PostSection() {
 
                                 <Separator/>
 
-                                <MDXRemote source={post.description}/>
+                                {
+                                    post.description && (
+                                        <MDXRemote source={post.description}/>
+                                    )
+                                }
 
                                 <Button
                                     className={`border border-black dark:border-white rounded-none`}
