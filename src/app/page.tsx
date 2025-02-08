@@ -11,8 +11,6 @@ import { CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { Button } from "@/components/ui/button";
-import { getDocuments } from "outstatic/server";
-
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
@@ -35,9 +33,9 @@ export async function generateMetadata(): Promise<Metadata> {
 async function Home() {
     async function getPostData() {
         "use server";
-        const res = getDocuments('posts', ['title', "description", "slug"])
-        console.log(res)
-        return res
+        const res = await import("@/app/api/post/route")
+        // return await res.json()
+        return (await res.GET());
     }
 
     const postData = await getPostData()
@@ -101,7 +99,7 @@ async function Home() {
                     {
                         // conditionally render the posts
                         postData ?
-                            postData?.map((post) => {
+                            postData?.map((post: any) => {
                                 return (
                                     <Link key={post.title}
                                           href={`/post/${post.slug}`}
