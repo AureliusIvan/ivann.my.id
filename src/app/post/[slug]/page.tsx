@@ -1,49 +1,15 @@
 "use server"
 
-import type { Metadata, ResolvingMetadata } from 'next'
-
 import styles from '@/app/post/[slug]/page.module.scss'
 import Link from "next/link";
 import Image from "next/image";
 import CloseIcon from "@/static/svg/close.svg";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { cn } from "@/lib/utils"
-import { PostTypes } from "@/interface/post.interface";
 import { Separator } from "@/components/ui/separator";
 import { MonoglyphicFont } from "@/app/font/font";
 import { Author } from "@/components/author";
 import { getDocumentBySlug } from "outstatic/server";
-
-export async function generateMetadata(
-    {params}: { params: { slug: string } },
-    parent: ResolvingMetadata
-): Promise<Metadata> {
-    const res: PostTypes | null = getDocumentBySlug(
-        'posts',
-        params.slug,
-        ['title', 'description', 'slug', 'content']
-    ) as PostTypes
-
-    if (!res) {
-        return {
-            title: '404',
-            description: '404',
-            openGraph: {
-                description: '404',
-                type: 'website',
-            }
-        }
-    }
-
-    return {
-        title: res.title,
-        description: res.description,
-        openGraph: {
-            description: res.description,
-            type: 'website',
-        }
-    }
-}
 
 async function getData({params}: { params: { slug: string } }) {
     return getDocumentBySlug('posts', params.slug, [
