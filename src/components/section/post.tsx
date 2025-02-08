@@ -1,6 +1,5 @@
 "use server";
 
-import { PostTypes } from "@/interface/post.interface";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -12,6 +11,7 @@ import { getPostData } from "@/components/section/action";
 
 async function PostSection() {
     const postData = await getPostData()
+    console.log(postData)
     return (
         <article
             className={`
