@@ -3,10 +3,15 @@
 import type { Metadata } from 'next'
 import { Title } from '@/components/ui/title';
 import { ProjectSection } from "@/components/section/project";
-import { PostSection } from "@/components/section/post";
 import { cn } from "@/lib/utils";
 import { MonoglyphicFont } from "@/app/font/font";
 import { Author } from "@/components/author";
+import Link from "next/link";
+import { CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { Button } from "@/components/ui/button";
+import { getDocuments } from "outstatic/server";
 
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -28,6 +33,15 @@ export async function generateMetadata(): Promise<Metadata> {
 
 
 async function Home() {
+    async function getPostData() {
+        "use server";
+        const res = getDocuments('posts', ['title', "description", "slug"])
+        console.log(res)
+        return res
+    }
+
+    const postData = await getPostData()
+
     return (
         <main
             className='flex flex-col items-center justify-center
@@ -78,7 +92,59 @@ async function Home() {
             </span>
                 </Title>
 
-                <PostSection/>
+                <article
+                    className={`
+          grid grid-cols-1 gap-2 
+          w-full max-w-3xl 
+          p-2`}
+                >
+                    {
+                        // conditionally render the posts
+                        postData ?
+                            postData?.map((post) => {
+                                return (
+                                    <Link key={post.title}
+                                          href={`/post/${post.slug}`}
+                                          className='
+                         md:p-4 p-4
+                         flex flex-col gap-2
+                         border border-black dark:border-white
+                         backdrop-blur-2xl
+                         dark:text-neutral-50
+                         shadow-lg overflow-hidden hover:opacity-60 transition-transform
+                         duration-300 pointer-events-auto cursor-pointer
+                         '
+                                    >
+                                        <CardTitle
+                                            className={cn(MonoglyphicFont.className, "tracking-wider font-light")}>
+                                            {post.title}
+                                        </CardTitle>
+
+                                        <Separator/>
+
+                                        {
+                                            post.description && (
+                                                <MDXRemote source={post.description}/>
+                                            )
+                                        }
+
+                                        <Button
+                                            className={`border border-black dark:border-white rounded-none`}
+                                            variant={"secondary"}
+                                            size={"sm"}
+                                        >
+                                            Read More
+                                        </Button>
+                                    </Link>
+                                )
+                            })
+                            : (
+                                <div>
+                                    No Post Found
+                                </div>
+                            )
+                    }
+                </article>
 
             </section>
 
