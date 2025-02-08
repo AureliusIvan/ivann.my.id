@@ -1,5 +1,3 @@
-"use server"
-
 import {
     Card,
     CardContent,
@@ -26,7 +24,7 @@ const data = [
     }
 ]
 
-const ProjectSection = async () => {
+const ProjectSection = () => {
     return (
         <article
             className={

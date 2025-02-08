@@ -5,7 +5,6 @@ import type { NavbarRouteTypes } from '@/components/ui/navbar.component';
 
 import { ReactNode } from "react";
 import { ThemeProvider } from '@/components/theme-provider';
-import dynamic from 'next/dynamic';
 import {
     GoogleTagManager,
 } from '@next/third-parties/google'
@@ -13,9 +12,8 @@ import { MontserratFont } from "@/app/font/font";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next";
 import { cn } from "@/lib/utils";
-
-const Footer = dynamic(() => import('@/components/ui/footer'), {})
-const Navbar = dynamic(() => import('@/components/ui/navbar.component'), {})
+import Footer from "@/components/ui/footer";
+import Navbar from "@/components/ui/navbar.component";
 
 export const metadata: Metadata = {
     title: "Aurelius Ivan Wijaya",
@@ -49,7 +47,7 @@ interface RootLayoutProps {
 }
 
 
-export default async function RootLayout(
+export default function RootLayout(
     {children}: Readonly<RootLayoutProps>
 ) {
     return (

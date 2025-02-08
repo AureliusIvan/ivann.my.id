@@ -1,10 +1,9 @@
-'use server'
+"use server";
 
 import type { Metadata } from 'next'
-
 import { Title } from '@/components/ui/title';
 import { ProjectSection } from "@/components/section/project";
-import PostSection from "@/components/section/post";
+import { PostSection } from "@/components/section/post";
 import { cn } from "@/lib/utils";
 import { MonoglyphicFont } from "@/app/font/font";
 import { Author } from "@/components/author";

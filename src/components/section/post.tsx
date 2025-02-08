@@ -8,15 +8,10 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { MonoglyphicFont } from "@/app/font/font";
-import { getDocuments } from 'outstatic/server'
-
-async function getData() {
-    return getDocuments('posts', ['title', "description", "slug"])
-}
-
+import { getPostData } from "@/components/section/action";
 
 async function PostSection() {
-    const res: any = await getData()
+    const postData: PostTypes[] | null = await getPostData()
     return (
         <article
             className={`
@@ -26,8 +21,8 @@ async function PostSection() {
         >
             {
                 // conditionally render the posts
-                res ?
-                    res.map((post: PostTypes) => {
+                postData ?
+                    postData?.map((post: PostTypes) => {
                         return (
                             <Link key={post.title}
                                   href={`/post/${post.slug}`}
@@ -48,6 +43,7 @@ async function PostSection() {
                                 <Separator/>
 
                                 <MDXRemote source={post.description}/>
+
                                 <Button
                                     className={`border border-black dark:border-white rounded-none`}
                                     variant={"secondary"}
@@ -68,4 +64,4 @@ async function PostSection() {
     )
 }
 
-export default PostSection;
+export { PostSection }
