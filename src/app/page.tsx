@@ -41,7 +41,7 @@ async function Home() {
             mt-10 min-h-[30vh] w-full'
             >
                 <Title size={"large"}>
-                    The Boring Web
+                    Ivan W
                     <span className={cn(MonoglyphicFont.className, `tracking-wide opacity-40`)}>
             ;
             </span>
