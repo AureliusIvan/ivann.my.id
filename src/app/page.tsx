@@ -1,5 +1,3 @@
-"use server";
-
 import type { Metadata } from 'next'
 import { Title } from '@/components/ui/title';
 import { ProjectSection } from "@/components/section/project";
@@ -11,6 +9,9 @@ import { CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { Button } from "@/components/ui/button";
+import { getDocuments } from "outstatic/server";
+
+export const dynamic = 'force-static';
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
@@ -32,10 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 async function Home() {
     async function getPostData() {
-        "use server";
-        const res = await import("@/app/api/post/route")
-        // return await res.json()
-        return (await res.GET());
+        return getDocuments('posts', ['title', "description", "slug"])
     }
 
     const postData = await getPostData()
