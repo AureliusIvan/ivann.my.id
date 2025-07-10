@@ -9,8 +9,8 @@ import { cn } from "@/lib/utils"
 import { Separator } from "@/components/ui/separator";
 import { MonoglyphicFont } from "@/app/font/font";
 import { Author } from "@/components/author";
-import { getDocumentBySlug, OutstaticDocument } from "outstatic/server"; // Import OutstaticDocument
-import {notFound} from "next/navigation";
+import { getDocumentBySlug } from "outstatic/server"; // Import OutstaticDocument
+import { notFound } from "next/navigation";
 
 // Define a type for the author object if Outstatic provides one, or create a simple one
 interface PostAuthor {
@@ -19,7 +19,7 @@ interface PostAuthor {
 }
 
 // Extend OutstaticDocument if needed, or use it directly if it includes author correctly
-interface PostData extends OutstaticDocument {
+interface PostData {
     title: string;
     publishedAt: string;
     slug: string;
@@ -30,7 +30,7 @@ interface PostData extends OutstaticDocument {
 
 
 async function getData(slug: string): Promise<PostData | null> {
-    const post = await getDocumentBySlug<PostData>('posts', slug, [
+    const post = await getDocumentBySlug('posts', slug, [
         'title',
         'publishedAt',
         'slug',
@@ -38,11 +38,12 @@ async function getData(slug: string): Promise<PostData | null> {
         'content',
         'coverImage'
     ]);
-    return post || null;
+    return post as unknown as PostData | null;
 }
 
-export default async function Page({params}: { params: { slug: string } }) {
-    const res = await getData(params.slug);
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+    const resolvedParams = await params;
+    const res = await getData(resolvedParams.slug);
 
     if (!res) {
         // Use Next.js notFound utility for better 404 handling
@@ -117,10 +118,10 @@ export default async function Page({params}: { params: { slug: string } }) {
                     </div>
                 </section>
 
-                <Separator className="my-8"/> {/* Increased margin for separator */}
+                <Separator className="my-8" /> {/* Increased margin for separator */}
 
                 <div className="prose dark:prose-invert max-w-none"> {/* Added prose class for MDX styling */}
-                  <MDXRemote source={res.content}/>
+                    <MDXRemote source={res.content} />
                 </div>
 
             </article>
