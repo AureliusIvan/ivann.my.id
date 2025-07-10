@@ -70,7 +70,7 @@ export default function RootLayout(
                 id={'main-page'}
                 className={cn(MontserratFont.className,
                     `min-h-screen h-full overflow-x-hidden relative
-                dark:bg-black dark:text-textPrimaryDark
+                dark:bg-primaryDark dark:text-textPrimaryDark
                 bg-primaryLight text-textPrimaryLight
                 selection:text-white
                 selection:bg-black
