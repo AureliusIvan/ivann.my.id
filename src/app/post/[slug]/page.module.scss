@@ -1,66 +1,105 @@
-.page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-inline: 20px;
-  min-height: 100vh;
+// Modern post page styles
+.article {
+  animation: fadeInUp 0.8s ease-out forwards;
+  will-change: opacity, transform;
 
-  .article {
-    animation: fadeIn 0.3s ease-in-out 1;
-    will-change: opacity, transform;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(50vh);
+  // Enhanced prose styling for better readability
+  .prose {
+    // Custom scrollbar for code blocks
+    pre {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+      
+      &::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
+      }
+      
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 4px;
+      }
+      
+      &::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.5);
+      }
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+
+    // Better table styling
+    table {
+      margin: 2rem 0;
+      border-collapse: collapse;
+      width: 100%;
+      
+      th, td {
+        padding: 0.75rem 1rem;
+        border: 1px solid theme('colors.neutral.200');
+        text-align: left;
+      }
+      
+      th {
+        background: theme('colors.neutral.50');
+        font-weight: 600;
+      }
+      
+      @media (prefers-color-scheme: dark) {
+        th, td {
+          border-color: theme('colors.neutral.700');
+        }
+        
+        th {
+          background: theme('colors.neutral.800');
+        }
+      }
+    }
+
+    // Enhanced list styling
+    ul, ol {
+      li {
+        margin: 0.5rem 0;
+        
+        &::marker {
+          color: theme('colors.blue.500');
+        }
+      }
+    }
+
+    // Better hr styling
+    hr {
+      margin: 3rem 0;
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, theme('colors.neutral.300'), transparent);
+      
+      @media (prefers-color-scheme: dark) {
+        background: linear-gradient(90deg, transparent, theme('colors.neutral.700'), transparent);
+      }
     }
   }
+}
 
-  h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+// Smooth fade in animation
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-
-  h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  h3 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-top: 1.25rem;
-    margin-bottom: 1rem;
-  }
-
-  p {
-    max-width: 800px;
-    text-align: left;
-    margin-top: 1rem;
-  }
-
-  pre {
-    background-color: #2e2e2e;
-    padding: 10px;
-    overflow-x: auto;
-    color: #ffffff;
-  }
-
-  img {
-    max-width: 100%;
-    border-radius: 5px;
-  }
-
-  a {
-    text-decoration: underline;
+// Responsive image enhancement
+.article img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   }
 }
