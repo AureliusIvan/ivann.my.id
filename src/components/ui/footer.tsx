@@ -130,10 +130,16 @@ async function Footer() {
 
         </section>
         <span
-            className={cn(`md:text-left text-center block md:hidden tracking-wide font-light text-textPrimaryLight dark:text-textPrimaryDark`, MonoglyphicFont.className)} // Updated text color
+            className={cn(
+                `w-full md:w-auto mt-8 md:mt-0  // Add margin top on small screens, reset on medium
+                 text-center md:text-left      // Responsive text alignment
+                 tracking-wide font-light
+                 text-textPrimaryLight dark:text-textPrimaryDark`,
+                MonoglyphicFont.className
+            )}
         >
-                &copy; 2024 Ivan
-          </span>
+            &copy; {new Date().getFullYear()} Ivan {/* Dynamic year and ensure full width on mobile for centering */}
+        </span>
       </footer>
   )
 }

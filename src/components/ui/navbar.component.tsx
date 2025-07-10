@@ -16,11 +16,11 @@ function Navbar({routes}: Readonly<{ routes: NavbarRouteTypes[] }>) {
     return (
         <nav
             className={cn(`
-          flex justify-center items-center gap-4
+          flex justify-center items-center gap-6  // Increased gap for items
           bg-transparent p-4 relative z-10 
           w-full h-16 
           tracking-wide 
-          border-b-0 dark:border-textPrimaryDark border-black`, // Updated border color
+          border-b border-neutral-200 dark:border-neutral-700`, // Consistent subtle bottom border
                 MonoglyphicFont.className)
             }
         >
@@ -31,21 +31,24 @@ function Navbar({routes}: Readonly<{ routes: NavbarRouteTypes[] }>) {
                             return (
                                 <Link
                                     className='
-                          dark:hover:text-accentDark font-bold // Updated hover text color
-                          bg-blue-50 bg-opacity-20
-                          dark:bg-neutral-800 px-[0.3rem] // Updated active link background
-                          border-2 dark:border-textPrimaryDark border-black // Updated border color
-                          transform-gpu transition-transform
-                          flex flex-row'
+                          text-neutral-900 dark:text-neutral-100 // Base text colors
+                          hover:text-blue-600 dark:hover:text-blue-400 // Consistent hover colors
+                          font-semibold // Adjusted font weight
+                          bg-neutral-100 dark:bg-neutral-800
+                          px-3 py-1 // Adjusted padding
+                          border border-neutral-300 dark:border-neutral-600 // Subtle border
+                          rounded-md // Added rounded corners
+                          transform-gpu transition-all duration-150 ease-in-out
+                          flex flex-row items-center gap-1' // Align items and add gap
                                     key={index}
                                     href={`/${page.path}`}>
 
-                                    <h4 className={"font-light"}>
+                                    <h4 className={"font-light opacity-75"}> {/* Softer prefix */}
                                         root:/
                                     </h4>
 
                                     <h4
-                                        className={"animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-textPrimaryDark "} // Updated border color for typing animation
+                                        className={"animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-neutral-900 dark:border-r-neutral-100"} // Typing animation border color matches text
                                     >
                                         {page.name.toLowerCase()}
                                     </h4>
@@ -62,7 +65,7 @@ function Navbar({routes}: Readonly<{ routes: NavbarRouteTypes[] }>) {
                     }
                 )
             }
-            <DarkModeToggle/>
+            <DarkModeToggle/> {/* Ensure DarkModeToggle is styled if necessary, or stands out appropriately */}
         </nav>
     )
 }
@@ -70,7 +73,7 @@ function Navbar({routes}: Readonly<{ routes: NavbarRouteTypes[] }>) {
 function UrlLink({path, name}: NavbarRouteTypes) {
     return (
         <Link
-            className={"hover:text-gray-300 dark:hover:text-accentDark font-bold"} // Updated hover text color for dark mode
+            className={"font-medium text-neutral-700 dark:text-neutral-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-150 ease-in-out"}
             href={`/${path}`}
             key={path}
         >
