@@ -102,30 +102,33 @@ async function Home() {
                                     <Link key={post.title}
                                           href={`/post/${post.slug}`}
                                           className='
-                         md:p-4 p-4
-                         flex flex-col gap-2
+                         md:p-6 p-4  /* Increased padding */
+                         flex flex-col gap-4 /* Increased gap */
                          border border-black dark:border-white
                          backdrop-blur-2xl
                          dark:text-neutral-50
-                         shadow-lg overflow-hidden hover:opacity-60 transition-transform
+                         shadow-lg overflow-hidden hover:opacity-80 transition-all /* Changed hover opacity and transition */
                          duration-300 pointer-events-auto cursor-pointer
+                         hover:shadow-xl /* Added hover shadow */
                          '
                                     >
                                         <CardTitle
-                                            className={cn(MonoglyphicFont.className, "tracking-wider font-light")}>
+                                            className={cn(MonoglyphicFont.className, "tracking-wider font-semibold text-xl")}> {/* Increased font weight and size */}
                                             {post.title}
                                         </CardTitle>
 
-                                        <Separator/>
+                                        <Separator className="my-2" /> {/* Added margin to separator */}
 
                                         {
                                             post.description && (
-                                                <MDXRemote source={post.description}/>
+                                                <div className="text-sm opacity-80"> {/* Added styling for description */}
+                                                    <MDXRemote source={post.description}/>
+                                                </div>
                                             )
                                         }
 
                                         <Button
-                                            className={`border border-black dark:border-white rounded-none`}
+                                            className={`border border-black dark:border-white rounded-none mt-auto self-start`} /* Align button to start and add margin top */
                                             variant={"secondary"}
                                             size={"sm"}
                                         >

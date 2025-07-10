@@ -20,7 +20,7 @@ function Navbar({routes}: Readonly<{ routes: NavbarRouteTypes[] }>) {
           bg-transparent p-4 relative z-10 
           w-full h-16 
           tracking-wide 
-          border-b-0 dark:border-white border-black`,
+          border-b-0 dark:border-textPrimaryDark border-black`, // Updated border color
                 MonoglyphicFont.className)
             }
         >
@@ -31,10 +31,10 @@ function Navbar({routes}: Readonly<{ routes: NavbarRouteTypes[] }>) {
                             return (
                                 <Link
                                     className='
-                          dark:hover:text-gray-300 font-bold
+                          dark:hover:text-accentDark font-bold // Updated hover text color
                           bg-blue-50 bg-opacity-20
-                          dark:bg-gray-700 px-[0.3rem]
-                          border-2 dark:border-white border-black
+                          dark:bg-neutral-800 px-[0.3rem] // Updated active link background
+                          border-2 dark:border-textPrimaryDark border-black // Updated border color
                           transform-gpu transition-transform
                           flex flex-row'
                                     key={index}
@@ -45,7 +45,7 @@ function Navbar({routes}: Readonly<{ routes: NavbarRouteTypes[] }>) {
                                     </h4>
 
                                     <h4
-                                        className={"animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white "}
+                                        className={"animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-textPrimaryDark "} // Updated border color for typing animation
                                     >
                                         {page.name.toLowerCase()}
                                     </h4>
@@ -70,7 +70,7 @@ function Navbar({routes}: Readonly<{ routes: NavbarRouteTypes[] }>) {
 function UrlLink({path, name}: NavbarRouteTypes) {
     return (
         <Link
-            className={"hover:text-gray-300 font-bold"}
+            className={"hover:text-gray-300 dark:hover:text-accentDark font-bold"} // Updated hover text color for dark mode
             href={`/${path}`}
             key={path}
         >

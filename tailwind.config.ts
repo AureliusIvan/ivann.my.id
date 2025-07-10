@@ -20,6 +20,13 @@ const config = {
       },
     },
     extend: {
+      colors: {
+        primaryLight: '#FFFFFF', // Example light mode background
+        textPrimaryLight: '#000000', // Example light mode text
+        primaryDark: '#121212', // Dark mode background
+        textPrimaryDark: '#E0E0E0', // Dark mode text
+        accentDark: '#BB86FC', // Example accent color for dark mode
+      },
       keyframes: {
         "accordion-down": {
           from: {height: "0"},

@@ -39,10 +39,10 @@ const ProjectSection = () => {
                     key={index}
                     className={
                         `shadow-lg overflow-hidden 
-                  md:hover:opacity-60 
                   border border-black dark:border-white
                   dark:bg-transparent
-                  transition-transform duration-300 pointer-events-auto cursor-pointer`
+                  transition-all duration-300 pointer-events-auto cursor-pointer
+                  hover:shadow-xl hover:scale-105 md:hover:opacity-90`
                     }
                 >
                     <CardHeader>
