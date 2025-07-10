@@ -54,26 +54,48 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = "Button"
 
+// LinkButtonProps extends ButtonProps and adds href, but HTMLAnchorElement attributes like href are already in ButtonHTMLAttributes
+// We need to ensure 'href' is part of the props Link will receive.
+import Link from "next/link";
 
-const LinkButton = React.forwardRef<HTMLAnchorElement, ButtonProps | any>(
-    ({className, variant, size, asChild = false, ...props}, ref) => {
-      const Comp = asChild ? Slot : "a" as any
-      return (
-          <Comp
-              className={cn(buttonVariants({variant, size, className}))}
-              ref={ref}
-              onClick={() => {
-                window.location.href = props.href as string
-              }}
-              {...props}
-          />
-      )
-    }
-)
-LinkButton.displayName = "LinkButton"
+interface LinkButtonProps extends ButtonProps {
+  href: string;
+}
+
+const LinkButton = React.forwardRef<HTMLAnchorElement, LinkButtonProps>(
+  ({ className, variant, size, asChild = false, href, ...props }, ref) => {
+    // If asChild is true, Link will pass its props to the child, which should handle them.
+    // If asChild is false (default for this usage), Link itself is the component.
+    // We want to style the Link component as a button.
+    // The `buttonVariants` generates style classes.
+    // Next.js Link component should be used for navigation.
+    return (
+      <Link href={href} passHref legacyBehavior={asChild ? undefined : true}>
+        <Comp
+          className={cn(buttonVariants({ variant, size, className }))}
+          ref={ref}
+          {...(asChild ? {} : { ...props })} // Spread props only if not asChild, Link handles props for its direct child if asChild
+        />
+      </Link>
+    );
+  }
+);
+LinkButton.displayName = "LinkButton";
+
+// Helper for the above LinkButton, defining what Comp is.
+// This was implicitly "a" before, now explicitly part of the Link structure.
+const Comp = React.forwardRef<HTMLAnchorElement, React.HTMLAttributes<HTMLAnchorElement>>(
+  (props, ref) => {
+    // If asChild was true and the child was <button>, this would need to be a button.
+    // But for a simple Link styled as a button, it's an anchor.
+    return <a ref={ref} {...props} />;
+  }
+);
+Comp.displayName = "AnchorForLinkButton";
+
 
 export {
   Button,
-  LinkButton,
+  LinkButton, // Export the corrected LinkButton
   buttonVariants
 }

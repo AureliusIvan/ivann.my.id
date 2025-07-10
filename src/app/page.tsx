@@ -33,7 +33,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 async function Home() {
     async function getPostData() {
-        return getDocuments('posts', ['title', "description", "slug"])
+        // Fetch only necessary fields for the homepage list
+        return getDocuments('posts', ['title', "description", "slug", "publishedAt", "author"])
     }
 
     const postData = await getPostData()
@@ -41,14 +42,14 @@ async function Home() {
     return (
         <main
             className='flex flex-col items-center justify-center
-            w-full h-full gap-12 p-6 relative'
+            w-full h-full gap-12 p-4 md:p-8 relative' // Consistent padding
         >
 
             {/* Hero Section */}
             <section
                 className='
             flex flex-col items-center justify-center gap-4
-            mt-10 min-h-[30vh] w-full'
+            mt-10 min-h-[30vh] w-full text-center' // Added text-center
             >
                 <Title size={"large"}>
                     Ivan W
@@ -57,7 +58,11 @@ async function Home() {
             </span>
                 </Title>
 
-                <Author/>
+                <Author
+                    name="Ivan"
+                    // picture="https://avatars.githubusercontent.com/u/102419837?v=4" // Optional: add picture if desired
+                    description="A Software Engineer who loves to write about web development, technology, and life."
+                />
 
                 {/*  download cv*/}
                 <a
@@ -65,12 +70,15 @@ async function Home() {
                     href={'/cv.pdf'}
                     target={"_blank"}
                     className={cn(MonoglyphicFont.className,
-                        `border
-                  text-white text-center font-bold
-                  bg-black dark:bg-black md:hover:bg-neutral-800
-                  py-2 px-4
+                        `border border-black dark:border-white
+                  text-black dark:text-white
+                  bg-white dark:bg-black
+                  hover:bg-neutral-100 dark:hover:bg-neutral-800
+                  py-2 px-4 mt-4
+                  font-medium // Adjusted font weight
                   relative cursor-pointer
-                  flex items-center justify-center gap-2`)}
+                  flex items-center justify-center gap-2
+                  transition-colors duration-200 ease-in-out`)} // Added transition
                 >
                     Download CV
                 </a>
@@ -79,10 +87,10 @@ async function Home() {
             {/* Post Section */}
             <section
                 className="w-full flex flex-col
-            items-center justify-center gap-4"
+            items-center justify-center gap-6" // Increased gap
             >
                 <Title size={"medium"}>
-                    Recent Post
+                    Recent Posts {/* Corrected typo: Post -> Posts */}
                     <span className={'opacity-60'}>
             ;
             </span>
@@ -90,45 +98,51 @@ async function Home() {
 
                 <article
                     className={`
-          grid grid-cols-1 gap-2 
-          w-full max-w-3xl 
+          grid grid-cols-1 md:grid-cols-2 gap-6 // Responsive grid and increased gap
+          w-full max-w-4xl // Increased max-width for two columns
           p-2`}
                 >
                     {
-                        // conditionally render the posts
-                        postData ?
-                            postData?.map((post: any) => {
+                        postData && postData.length > 0 ? // Check if postData is not empty
+                            postData.map((post: any) => { // Consider defining a type for post
                                 return (
                                     <Link key={post.title}
                                           href={`/post/${post.slug}`}
                                           className='
-                         md:p-6 p-4  /* Increased padding */
-                         flex flex-col gap-4 /* Increased gap */
-                         border border-black dark:border-white
-                         backdrop-blur-2xl
-                         dark:text-neutral-50
-                         shadow-lg overflow-hidden hover:opacity-80 transition-all /* Changed hover opacity and transition */
-                         duration-300 pointer-events-auto cursor-pointer
-                         hover:shadow-xl /* Added hover shadow */
-                         '
+                         group // Added group for hover effects
+                         md:p-6 p-4
+                         flex flex-col gap-3 // Adjusted gap
+                         border border-neutral-300 dark:border-neutral-700 // Softer borders
+                         bg-white dark:bg-neutral-900 // Card background
+                         text-black dark:text-white // Explicit text colors
+                         rounded-lg // Added rounded corners
+                         shadow-md hover:shadow-xl // Enhanced shadow effect
+                         transition-all duration-300 ease-in-out
+                         cursor-pointer'
                                     >
                                         <CardTitle
-                                            className={cn(MonoglyphicFont.className, "tracking-wider font-semibold text-xl")}> {/* Increased font weight and size */}
+                                            className={cn(MonoglyphicFont.className,
+                                                "tracking-wider font-semibold text-xl group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" // Hover effect for title
+                                                )}>
                                             {post.title}
                                         </CardTitle>
 
-                                        <Separator className="my-2" /> {/* Added margin to separator */}
+                                        <Separator className="my-2 border-neutral-200 dark:border-neutral-800" />
 
                                         {
                                             post.description && (
-                                                <div className="text-sm opacity-80"> {/* Added styling for description */}
+                                                <div className="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-3"> {/* Clamped description */}
                                                     <MDXRemote source={post.description}/>
                                                 </div>
                                             )
                                         }
 
                                         <Button
-                                            className={`border border-black dark:border-white rounded-none mt-auto self-start`} /* Align button to start and add margin top */
+                                            className={`
+                                            border border-neutral-400 dark:border-neutral-600
+                                            text-neutral-700 dark:text-neutral-300
+                                            hover:bg-neutral-100 dark:hover:bg-neutral-800
+                                            rounded-md mt-auto self-start transition-colors`} // More subtle button
                                             variant={"secondary"}
                                             size={"sm"}
                                         >
@@ -138,8 +152,8 @@ async function Home() {
                                 )
                             })
                             : (
-                                <div>
-                                    No Post Found
+                                <div className="col-span-full text-center text-neutral-500 dark:text-neutral-400 py-8">
+                                    No posts found yet. Check back soon!
                                 </div>
                             )
                     }
@@ -151,10 +165,10 @@ async function Home() {
             {/* Project Section */}
             <section
                 className="w-full flex flex-col items-center
-            justify-center gap-4 m-4"
+            justify-center gap-6 m-4" // Increased gap
             >
                 <Title size={"medium"}>
-                    Project
+                    Projects {/* Corrected typo: Project -> Projects */}
                     <span className={'opacity-60'}>
             ;
             </span>

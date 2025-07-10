@@ -9,79 +9,119 @@ import { cn } from "@/lib/utils"
 import { Separator } from "@/components/ui/separator";
 import { MonoglyphicFont } from "@/app/font/font";
 import { Author } from "@/components/author";
-import { getDocumentBySlug } from "outstatic/server";
+import { getDocumentBySlug, OutstaticDocument } from "outstatic/server"; // Import OutstaticDocument
+import {notFound} from "next/navigation";
 
-async function getData({params}: { params: Promise<{ slug: string }> }) {
-    const {slug} = await params
-    return getDocumentBySlug('posts', slug, [
+// Define a type for the author object if Outstatic provides one, or create a simple one
+interface PostAuthor {
+    name?: string;
+    picture?: string;
+}
+
+// Extend OutstaticDocument if needed, or use it directly if it includes author correctly
+interface PostData extends OutstaticDocument {
+    title: string;
+    publishedAt: string;
+    slug: string;
+    author: PostAuthor; // Ensure this matches the structure from Outstatic
+    content: string;
+    coverImage?: string;
+}
+
+
+async function getData(slug: string): Promise<PostData | null> {
+    const post = await getDocumentBySlug<PostData>('posts', slug, [
         'title',
         'publishedAt',
         'slug',
         'author',
         'content',
         'coverImage'
-    ])
+    ]);
+    return post || null;
 }
 
-export default async function Page({params}: { params: Promise<{ slug: string }> }) {
-    // const res: any = await getData({params})
-    const res = await getData({params})
+export default async function Page({params}: { params: { slug: string } }) {
+    const res = await getData(params.slug);
+
     if (!res) {
-        return <div>404</div>
+        // Use Next.js notFound utility for better 404 handling
+        notFound();
     }
+
+    // Default author details if not provided by the post
+    const authorName = res.author?.name || "The Author";
+    // Using a default description here, but ideally, this could come from author data or be a site-wide default
+    const authorDescription = "A Software Engineer who loves to write about web development, technology, and life.";
+
 
     return (
         <section
             className={cn(styles.page, `mt-5`)}
         >
-
             <article
                 className={cn(
                     styles.article,
                     `mb-4 p-4 w-full max-w-[50rem]`
                 )}
             >
-
                 {/* top bar */}
                 <div
-                    className={`flex justify-between items-center gap-4 w-full max-w-[50rem]`}
+                    className={`flex justify-between items-center gap-4 w-full max-w-[50rem] mb-4`}
                 >
-                    {/* close button */}
                     <Link
                         title={'Back to home'}
-                        className='text-blue-500'
+                        className='text-blue-500 hover:underline'
                         href={'/'}>
-
                         <Image
                             className={'dark:invert'}
                             src={CloseIcon}
                             alt={'Back'}
-                            width={20}
-                            height={20}
+                            width={24}
+                            height={24}
                         />
-
                     </Link>
                 </div>
 
+                {res.coverImage && (
+                    <div className="mb-8 w-full aspect-video relative overflow-hidden rounded-lg shadow-lg">
+                        <Image
+                            src={res.coverImage}
+                            alt={res.title || "Post cover image"}
+                            layout="fill"
+                            objectFit="cover"
+                            className="rounded-lg"
+                        />
+                    </div>
+                )}
+
                 <section
-                    className={cn(`text-center my-3`)}
+                    className={cn(`text-center my-6`)} // Increased vertical margin
                 >
                     <h1
                         className={cn(
-                            "text-[2rem] font-bold text-center",
-                            MonoglyphicFont.className)
-                        }
+                            "text-3xl md:text-4xl font-bold text-center", // Responsive text size
+                            MonoglyphicFont.className
+                        )}
                     >
                         &ldquo;{res.title}&rdquo;
                     </h1>
 
-                    <Author/>
-
+                    <div className="mt-4 flex justify-center"> {/* Centering the author component */}
+                        <Author
+                            name={res.author?.name}
+                            picture={res.author?.picture}
+                            defaultName="Aurelius Ivan Wijaya" // Default name if not in post
+                            description={authorDescription} // Pass the description
+                        />
+                    </div>
                 </section>
 
-                <Separator/>
+                <Separator className="my-8"/> {/* Increased margin for separator */}
 
-                <MDXRemote source={res.content}/>
+                <div className="prose dark:prose-invert max-w-none"> {/* Added prose class for MDX styling */}
+                  <MDXRemote source={res.content}/>
+                </div>
 
             </article>
         </section>
