@@ -40,6 +40,18 @@ const Routes: NavbarRouteTypes[] = [
         path: '',
         name: 'Home'
     },
+    {
+        path: 'blog',
+        name: 'Blog'
+    },
+    {
+        path: 'projects',
+        name: 'Projects'
+    },
+    {
+        path: 'about',
+        name: 'About'
+    },
 ]
 
 interface RootLayoutProps {
