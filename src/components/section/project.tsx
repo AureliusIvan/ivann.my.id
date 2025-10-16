@@ -44,19 +44,26 @@ const ProjectSection = () => {
                     className={cn(
                         "group relative overflow-hidden",
                         "bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-800",
-                        "border-0 shadow-lg hover:shadow-2xl",
+                        "border-0 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10",
                         "transition-all duration-500 ease-out",
-                        "hover:-translate-y-2 hover:scale-[1.02]",
-                        "cursor-pointer"
+                        "hover:-translate-y-3 hover:scale-[1.02]",
+                        "cursor-pointer animate-fade-in"
                     )}
+                    style={{ animationDelay: `${index * 0.1}s` }}
                 >
+                    {/* Shimmer Effect */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer bg-[length:1000px_100%]" />
+                    </div>
+
                     {/* Status Badge */}
                     <div className="absolute top-4 right-4 z-10">
                         <span className={cn(
-                            "px-3 py-1 text-xs font-medium rounded-full",
+                            "px-3 py-1 text-xs font-medium rounded-full shadow-sm",
+                            "backdrop-blur-sm transition-transform group-hover:scale-110",
                             project.status === 'Live' 
-                                ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                                : "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400"
+                                ? "bg-green-100/90 text-green-700 dark:bg-green-900/40 dark:text-green-400 ring-1 ring-green-500/20"
+                                : "bg-orange-100/90 text-orange-700 dark:bg-orange-900/40 dark:text-orange-400 ring-1 ring-orange-500/20"
                         )}>
                             {project.status}
                         </span>
@@ -89,17 +96,26 @@ const ProjectSection = () => {
                     </CardHeader>
 
                     <CardContent className="px-6 pb-6">
-                        <div className="relative overflow-hidden rounded-lg group-hover:scale-105 transition-transform duration-500">
-                            <Image
-                                className="w-full h-48 object-cover object-top"
-                                src={project.image}
-                                alt={`${project.title} preview`}
-                                width={400}
-                                height={200}
-                                decoding="async"
-                            />
-                            {/* Overlay gradient */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="relative overflow-hidden rounded-lg shadow-md group-hover:shadow-xl transition-all duration-500">
+                            <div className="relative overflow-hidden group-hover:scale-110 transition-transform duration-700 ease-out">
+                                <Image
+                                    className="w-full h-48 object-cover object-top"
+                                    src={project.image}
+                                    alt={`${project.title} preview`}
+                                    width={400}
+                                    height={200}
+                                    decoding="async"
+                                />
+                                {/* Enhanced overlay gradient */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                
+                                {/* View indicator */}
+                                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <div className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                                        <span className="text-white text-sm font-medium">View Project</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </CardContent>
 
@@ -112,7 +128,9 @@ const ProjectSection = () => {
                                     className={cn(
                                         "bg-black dark:bg-white text-white dark:text-black",
                                         "hover:bg-neutral-800 dark:hover:bg-neutral-200",
-                                        "transition-all duration-200 group-hover:scale-105"
+                                        "hover:shadow-lg hover:shadow-black/20 dark:hover:shadow-white/20",
+                                        "transition-all duration-300 group-hover:scale-110",
+                                        "transform hover:-translate-y-0.5"
                                     )}
                                 >
                                     <a
@@ -140,7 +158,11 @@ const ProjectSection = () => {
                                         className={cn(
                                             "border-neutral-300 dark:border-neutral-700",
                                             "hover:bg-neutral-100 dark:hover:bg-neutral-800",
-                                            "transition-all duration-200 group-hover:scale-105"
+                                            "hover:border-blue-500 dark:hover:border-blue-400",
+                                            "hover:text-blue-600 dark:hover:text-blue-400",
+                                            "hover:shadow-lg hover:shadow-blue-500/20",
+                                            "transition-all duration-300 group-hover:scale-110",
+                                            "transform hover:-translate-y-0.5"
                                         )}
                                     >
                                         <a

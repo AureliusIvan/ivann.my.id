@@ -46,11 +46,11 @@ async function Home() {
         >
 
             {/* Hero Section */}
-            <section className="relative flex flex-col items-center justify-center gap-8 mt-16 mb-24 min-h-[80vh] w-full text-center overflow-hidden">
+            <section className="relative flex flex-col items-center justify-center gap-8 mt-16 mb-32 min-h-[85vh] w-full text-center overflow-hidden">
                 {/* Background Elements */}
                 <div className="absolute inset-0 -z-10">
-                    {/* Gradient Background */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-neutral-900 dark:via-neutral-800 dark:to-blue-900/20" />
+                    {/* Gradient Background with Animation */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-neutral-900 dark:via-neutral-800 dark:to-blue-900/20 animate-gradient-shift bg-[length:200%_200%]" />
                     
                     {/* Animated Background Pattern */}
                     <div className="absolute inset-0 opacity-5 dark:opacity-10">
@@ -58,9 +58,10 @@ async function Home() {
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(147,51,234,0.15)_0%,transparent_50%)] animate-pulse" style={{animationDelay: '1s'}} />
                     </div>
                     
-                    {/* Floating Elements */}
-                    <div className="absolute top-20 left-20 w-32 h-32 bg-blue-200/20 dark:bg-blue-500/10 rounded-full blur-xl animate-float" />
-                    <div className="absolute bottom-40 right-20 w-24 h-24 bg-purple-200/20 dark:bg-purple-500/10 rounded-full blur-xl animate-float" style={{animationDelay: '2s'}} />
+                    {/* Enhanced Floating Elements */}
+                    <div className="absolute top-20 left-20 w-32 h-32 bg-blue-200/20 dark:bg-blue-500/10 rounded-full blur-2xl animate-float" />
+                    <div className="absolute bottom-40 right-20 w-24 h-24 bg-purple-200/20 dark:bg-purple-500/10 rounded-full blur-2xl animate-float" style={{animationDelay: '2s'}} />
+                    <div className="absolute top-1/2 right-1/4 w-20 h-20 bg-pink-200/10 dark:bg-pink-500/5 rounded-full blur-xl animate-float" style={{animationDelay: '3s'}} />
                 </div>
 
                 {/* Main Content */}
@@ -186,15 +187,21 @@ async function Home() {
             </section>
 
             {/* Posts Section */}
-            <section className="w-full flex flex-col items-center justify-center gap-12 py-16">
-                <div className="text-center space-y-4">
+            <section className="w-full flex flex-col items-center justify-center gap-12 py-20">
+                <div className="text-center space-y-6 animate-fade-in">
+                    <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800">
+                        <svg className="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        <span className="text-sm font-medium text-blue-700 dark:text-blue-300">Latest Articles</span>
+                    </div>
                     <Title size={"medium"}>
                         <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 dark:from-blue-400 dark:via-purple-400 dark:to-blue-300 bg-clip-text text-transparent">
                             Recent Posts
                         </span>
                         <span className="opacity-60">;</span>
                     </Title>
-                    <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+                    <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed">
                         Thoughts on technology, development, and the digital world
                     </p>
                 </div>
@@ -208,17 +215,24 @@ async function Home() {
                                 className={cn(
                                     "group relative overflow-hidden",
                                     "bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-800",
-                                    "border-0 shadow-lg hover:shadow-2xl",
+                                    "border-0 shadow-lg hover:shadow-2xl hover:shadow-blue-500/10",
                                     "rounded-2xl p-8",
                                     "transition-all duration-500 ease-out",
-                                    "hover:-translate-y-2 hover:scale-[1.02]",
+                                    "hover:-translate-y-3 hover:scale-[1.02]",
                                     "cursor-pointer",
-                                    "block"
+                                    "block animate-fade-in",
+                                    "ring-1 ring-neutral-200/50 dark:ring-neutral-700/50 hover:ring-blue-500/30"
                                 )}
+                                style={{ animationDelay: `${index * 0.1}s` }}
                             >
                                 {/* Background Pattern */}
                                 <div className="absolute inset-0 opacity-5 dark:opacity-10">
                                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.15)_1px,transparent_0)] [background-size:20px_20px]" />
+                                </div>
+
+                                {/* Shimmer Effect */}
+                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer bg-[length:1000px_100%]" />
                                 </div>
 
                                 {/* Content */}
@@ -314,19 +328,26 @@ async function Home() {
 
 
             {/* Project Section */}
-            <section
-                className="w-full flex flex-col items-center
-            justify-center gap-6 m-4" // Increased gap
-            >
-                <Title size={"medium"}>
-                    Projects {/* Corrected typo: Project -> Projects */}
-                    <span className={'opacity-60'}>
-            ;
-            </span>
-                </Title>
+            <section className="w-full flex flex-col items-center justify-center gap-12 py-20">
+                <div className="text-center space-y-6 animate-fade-in">
+                    <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800">
+                        <svg className="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                        <span className="text-sm font-medium text-purple-700 dark:text-purple-300">Featured Work</span>
+                    </div>
+                    <Title size={"medium"}>
+                        <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 dark:from-blue-400 dark:via-purple-400 dark:to-blue-300 bg-clip-text text-transparent">
+                            Projects
+                        </span>
+                        <span className={'opacity-60'}>;</span>
+                    </Title>
+                    <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+                        Exploring ideas through code and creativity
+                    </p>
+                </div>
 
                 <ProjectSection/>
-
             </section>
 
         </main>

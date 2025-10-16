@@ -16,15 +16,16 @@ const Spotify = async () => {
           href="https://open.spotify.com/track/6tNQ70jh4OwmPGpYy6R2o9?si=365309aa3c0b493b"
           className={cn(
             "group select-none cursor-pointer",
-            "px-4 py-3 rounded-lg",
+            "px-4 py-3 rounded-xl",
             "flex items-center gap-3",
-            "bg-white/50 dark:bg-neutral-800/50 backdrop-blur-md",
+            "bg-white/70 dark:bg-neutral-800/70 backdrop-blur-md",
             "border border-neutral-200 dark:border-neutral-700",
-            "hover:bg-white/70 dark:hover:bg-neutral-800/70",
+            "hover:bg-white dark:hover:bg-neutral-800",
             "hover:border-green-400 dark:hover:border-green-500",
-            "hover:shadow-lg hover:shadow-green-500/20",
+            "hover:shadow-xl hover:shadow-green-500/30",
             "transition-all duration-300 ease-out",
-            "hover:-translate-y-1"
+            "hover:-translate-y-2 hover:scale-[1.02]",
+            "ring-1 ring-neutral-100 dark:ring-neutral-700"
           )}
       >
         <div className="flex-shrink-0 p-2 rounded-full bg-green-500/10 group-hover:bg-green-500/20 transition-colors">
@@ -55,15 +56,16 @@ const Github = async () => {
           href="https://github.com/AureliusIvan/"
           className={cn(
             "group select-none cursor-pointer",
-            "px-4 py-3 rounded-lg",
+            "px-4 py-3 rounded-xl",
             "flex items-center gap-3",
-            "bg-white/50 dark:bg-neutral-800/50 backdrop-blur-md",
+            "bg-white/70 dark:bg-neutral-800/70 backdrop-blur-md",
             "border border-neutral-200 dark:border-neutral-700",
-            "hover:bg-white/70 dark:hover:bg-neutral-800/70",
+            "hover:bg-white dark:hover:bg-neutral-800",
             "hover:border-neutral-400 dark:hover:border-neutral-500",
-            "hover:shadow-lg hover:shadow-neutral-500/20",
+            "hover:shadow-xl hover:shadow-neutral-500/30",
             "transition-all duration-300 ease-out",
-            "hover:-translate-y-1"
+            "hover:-translate-y-2 hover:scale-[1.02]",
+            "ring-1 ring-neutral-100 dark:ring-neutral-700"
           )}
       >
         <div className="flex-shrink-0 p-2 rounded-full bg-neutral-500/10 group-hover:bg-neutral-500/20 transition-colors">
@@ -113,18 +115,20 @@ const SocialLinks = () => {
             href={social.href}
             className={cn(
               "p-3 rounded-full",
-              "bg-white/50 dark:bg-neutral-800/50 backdrop-blur-md",
+              "bg-white/70 dark:bg-neutral-800/70 backdrop-blur-md",
               "border border-neutral-200 dark:border-neutral-700",
               "text-neutral-600 dark:text-neutral-400",
               social.color,
               "hover:border-neutral-400 dark:hover:border-neutral-500",
-              "hover:shadow-lg hover:-translate-y-1",
+              "hover:shadow-xl hover:-translate-y-2",
+              "hover:scale-110",
               "transition-all duration-300 ease-out",
+              "ring-1 ring-neutral-100 dark:ring-neutral-700",
               "group"
             )}
             aria-label={social.label}
           >
-            <Icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
+            <Icon className="w-5 h-5 group-hover:scale-125 group-hover:rotate-6 transition-all" />
           </a>
         );
       })}
@@ -137,9 +141,9 @@ async function Footer() {
       <footer
           id="footer"
           className={cn(
-            "relative mt-24 py-16 px-6 md:px-8",
-            "bg-gradient-to-br from-neutral-50 to-white dark:from-neutral-900 dark:to-neutral-800",
-            "border-t border-neutral-200 dark:border-neutral-700"
+            "relative mt-32 py-20 px-6 md:px-8",
+            "bg-gradient-to-br from-neutral-50 via-blue-50/30 to-white dark:from-neutral-900 dark:via-blue-950/20 dark:to-neutral-800",
+            "border-t border-neutral-200 dark:border-neutral-700 shadow-inner"
           )}
       >
         {/* Background Pattern */}
@@ -185,18 +189,22 @@ async function Footer() {
                 href="mailto:aureliusivanwijaya@gmail.com?subject=Hello Ivan!&body=Hello Ivan! I want to say..."
                 target="_blank"
                 className={cn(
-                  "group inline-flex items-center gap-3 px-6 py-3 rounded-full",
+                  "group relative overflow-hidden inline-flex items-center gap-3 px-8 py-4 rounded-full",
                   "bg-gradient-to-r from-blue-500 to-purple-600",
                   "text-white font-medium",
                   "hover:from-blue-600 hover:to-purple-700",
-                  "hover:shadow-lg hover:shadow-blue-500/25",
-                  "hover:-translate-y-1",
+                  "hover:shadow-xl hover:shadow-blue-500/30",
+                  "hover:-translate-y-2 hover:scale-105",
                   "transition-all duration-300 ease-out",
                   MonoglyphicFont.className
                 )}
               >
-                <MdEmail className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                Send Email
+                {/* Shimmer effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer bg-[length:1000px_100%]" />
+                </div>
+                <MdEmail className="w-5 h-5 group-hover:scale-125 group-hover:rotate-12 transition-all relative z-10" />
+                <span className="relative z-10">Send Email</span>
               </a>
             </div>
 
