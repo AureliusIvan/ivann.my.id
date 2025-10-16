@@ -14,6 +14,8 @@ import { Analytics } from "@vercel/analytics/next";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/ui/footer";
 import Navbar from "@/components/ui/navbar.component";
+import { BackToTop } from "@/components/ui/back-to-top";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
 
 export const metadata: Metadata = {
     title: "Aurelius Ivan Wijaya",
@@ -78,6 +80,8 @@ export default function RootLayout(
             attribute="class"
             defaultTheme="dark"
         >
+            <ScrollProgress />
+            
             <main
                 id={'main-page'}
                 className={cn(MontserratFont.className,
@@ -96,6 +100,8 @@ export default function RootLayout(
                 {children}
 
                 <Footer/>
+                
+                <BackToTop />
             </main>
         </ThemeProvider>
 

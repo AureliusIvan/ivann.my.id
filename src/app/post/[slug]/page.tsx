@@ -53,23 +53,29 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     const readingTime = Math.ceil(res.content.length / 1000) || 3; // Rough reading time calculation
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-blue-50/30 dark:from-neutral-900 dark:via-neutral-800 dark:to-blue-900/10">
+        <div className="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-blue-50/30 dark:from-neutral-900 dark:via-neutral-800 dark:to-blue-900/10 animate-fade-in">
             {/* Background Pattern */}
             <div className="fixed inset-0 opacity-5 dark:opacity-10 pointer-events-none">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.15)_1px,transparent_0)] [background-size:20px_20px]" />
             </div>
 
+            {/* Decorative gradient orbs */}
+            <div className="fixed top-20 right-20 w-96 h-96 bg-blue-200/20 dark:bg-blue-500/5 rounded-full blur-3xl pointer-events-none animate-float" />
+            <div className="fixed bottom-40 left-20 w-80 h-80 bg-purple-200/20 dark:bg-purple-500/5 rounded-full blur-3xl pointer-events-none animate-float" style={{animationDelay: '2s'}} />
+
             {/* Navigation */}
-            <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-neutral-900/80 border-b border-neutral-200 dark:border-neutral-700">
+            <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-neutral-900/80 border-b border-neutral-200 dark:border-neutral-700 shadow-sm">
                 <div className="max-w-4xl mx-auto px-6 py-4">
                     <Link
                         href="/"
                         className={cn(
-                            "inline-flex items-center gap-3 px-4 py-2 rounded-full",
+                            "inline-flex items-center gap-3 px-5 py-2.5 rounded-full",
                             "text-neutral-600 dark:text-neutral-400",
                             "hover:text-neutral-900 dark:hover:text-neutral-100",
                             "hover:bg-neutral-100 dark:hover:bg-neutral-800",
-                            "transition-all duration-200",
+                            "hover:shadow-md hover:-translate-x-1",
+                            "transition-all duration-300",
+                            "border border-transparent hover:border-neutral-200 dark:hover:border-neutral-700",
                             "group"
                         )}
                     >
@@ -197,8 +203,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                     <footer className="mt-20 pt-12 border-t border-neutral-200 dark:border-neutral-700">
                         <div className="space-y-8">
                             {/* Author Card */}
-                            <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 border border-blue-200 dark:border-blue-800">
-                                <div className="flex items-start gap-6">
+                            <div className="relative overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-8 border border-blue-200 dark:border-blue-800 shadow-lg hover:shadow-xl transition-all duration-300 group">
+                                {/* Decorative background */}
+                                <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200/20 dark:bg-blue-500/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                
+                                <div className="relative flex items-start gap-6">
                                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
                                         <span className={cn("text-white text-xl font-bold", MonoglyphicFont.className)}>
                                             {authorName[0]}
@@ -215,30 +224,41 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                                             <Link
                                                 href="/#footer"
                                                 className={cn(
-                                                    "inline-flex items-center gap-2 px-4 py-2 rounded-full",
+                                                    "group/btn relative overflow-hidden inline-flex items-center gap-2 px-5 py-2.5 rounded-full",
                                                     "bg-blue-600 text-white",
                                                     "hover:bg-blue-700",
-                                                    "transition-colors duration-200",
+                                                    "hover:shadow-lg hover:shadow-blue-500/30",
+                                                    "hover:-translate-y-1 hover:scale-105",
+                                                    "transition-all duration-300",
                                                     "text-sm font-medium"
                                                 )}
                                             >
-                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <span className="absolute inset-0 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500">
+                                                    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer bg-[length:1000px_100%]" />
+                                                </span>
+                                                <svg className="w-4 h-4 relative z-10 group-hover/btn:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                                 </svg>
-                                                Get in touch
+                                                <span className="relative z-10">Get in touch</span>
                                             </Link>
                                             <Link
                                                 href="/"
                                                 className={cn(
-                                                    "inline-flex items-center gap-2 px-4 py-2 rounded-full",
-                                                    "border border-neutral-300 dark:border-neutral-600",
+                                                    "inline-flex items-center gap-2 px-5 py-2.5 rounded-full",
+                                                    "border-2 border-neutral-300 dark:border-neutral-600",
                                                     "text-neutral-700 dark:text-neutral-300",
                                                     "hover:bg-neutral-100 dark:hover:bg-neutral-800",
-                                                    "transition-colors duration-200",
+                                                    "hover:border-blue-500 dark:hover:border-blue-400",
+                                                    "hover:-translate-y-1 hover:scale-105",
+                                                    "hover:shadow-md",
+                                                    "transition-all duration-300",
                                                     "text-sm font-medium"
                                                 )}
                                             >
-                                                More posts
+                                                <span>More posts</span>
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                                </svg>
                                             </Link>
                                         </div>
                                     </div>

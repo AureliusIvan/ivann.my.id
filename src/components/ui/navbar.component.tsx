@@ -103,15 +103,21 @@ function Navbar({routes}: Readonly<{ routes: NavbarRouteTypes[] }>) {
                                 href="/cv.pdf"
                                 target="_blank"
                                 className={cn(
-                                    "px-4 py-2 rounded-full text-sm font-medium",
+                                    "relative overflow-hidden px-5 py-2.5 rounded-full text-sm font-medium",
                                     "bg-gradient-to-r from-blue-600 to-purple-600",
                                     "text-white hover:from-blue-700 hover:to-purple-700",
-                                    "transition-all duration-200 hover:scale-105",
-                                    "shadow-lg hover:shadow-xl",
+                                    "transition-all duration-300 hover:scale-110 hover:-translate-y-0.5",
+                                    "shadow-lg hover:shadow-xl hover:shadow-blue-500/30",
+                                    "focus:outline-none focus:ring-4 focus:ring-blue-500/50",
+                                    "group",
                                     MonoglyphicFont.className
                                 )}
                             >
-                                Download CV
+                                {/* Shimmer effect */}
+                                <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer bg-[length:1000px_100%]" />
+                                </span>
+                                <span className="relative z-10">Download CV</span>
                             </a>
                         </div>
                     </div>
