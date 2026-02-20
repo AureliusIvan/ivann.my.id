@@ -36,6 +36,15 @@ const nextConfig = {
       }
     ]
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: 'https://aurelivan.com',
+        permanent: true,
+      },
+    ];
+  },
   serverRuntimeConfig: {
     apiURL: process.env.API_URL
   },
