@@ -41,7 +41,7 @@ const nextConfig = {
       {
         source: '/',
         destination: 'https://aurelivan.com',
-        permanent: true,
+        statusCode: 301,
       },
     ];
   },
